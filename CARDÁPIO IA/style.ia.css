@@ -1,0 +1,319 @@
+
+      /* VARIAVEIS DA MARCA SANTO FORNO */
+      :root {
+        --laranja-santo-forno: #FFB05F;
+        --azul-marinho: #0E0E52;
+        --bege-fundo: #FFF5EC;
+        --branco: #FFFFFF;
+        --vermelho-edicao: #901119;
+
+        --fonte-logo: 'Poiret One', cursive;
+        --fonte-titulos: 'Amatica SC', sans-serif;
+        --fonte-corpo: 'Bai Jamjuree', sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bege-fundo);
+        color: var(--azul-marinho);
+        font-family: var(--fonte-corpo);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+
+      /* MENU DE NAVEGAÇÃO SUPERIOR */
+      .menu-navegacao {
+        background-color: var(--azul-marinho);
+        padding: 15px 10px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      }
+
+      .menu-navegacao ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .menu-navegacao a {
+        color: var(--bege-fundo);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+
+      .menu-navegacao a:hover {
+        color: var(--laranja-santo-forno);
+      }
+
+      /* CABEÇALHO E LOGO */
+      .header-principal {
+        text-align: center;
+        padding-bottom: 30px;
+      }
+
+      .brand-container {
+        padding: 30px 20px 10px;
+      }
+
+      .logo-img {
+        border-radius: 50%;
+        border: 3px solid var(--laranja-santo-forno);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+
+      .logo-titulo {
+        font-family: var(--fonte-logo);
+        color: var(--azul-marinho);
+        font-size: 46px;
+        margin: 10px 0 0 0;
+        letter-spacing: 2px;
+      }
+
+      .subtitulo-header {
+        font-family: var(--fonte-titulos);
+        font-size: 28px;
+        color: var(--laranja-santo-forno);
+        margin: 0;
+      }
+
+      .sobre-texto {
+        max-width: 650px;
+        margin: 20px auto 0;
+        padding: 0 20px;
+        font-size: 15px;
+        color: var(--azul-marinho);
+      }
+
+      /* SEÇÕES E CARTÕES */
+      .container-cardapio {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .menu-titulo {
+        font-family: var(--fonte-titulos);
+        font-size: 50px;
+        text-align: center;
+        color: var(--azul-marinho);
+        margin-bottom: 40px;
+        border-bottom: 2px solid var(--laranja-santo-forno);
+        padding-bottom: 10px;
+      }
+
+      .secao-cardapio {
+        background-color: var(--branco);
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 40px;
+        box-shadow: 0 4px 12px rgba(14, 14, 82, 0.05);
+        border: 1px solid rgba(255, 176, 95, 0.2);
+      }
+
+      .secao-cardapio h3 {
+        font-family: var(--fonte-titulos);
+        font-size: 38px;
+        color: var(--azul-marinho);
+        margin: 0 0 5px 0;
+        text-align: left;
+      }
+
+      .descricao-secao {
+        font-size: 14px;
+        color: #555;
+        margin-top: 0;
+        margin-bottom: 25px;
+        font-style: italic;
+      }
+
+      /* LISTAS DE ITENS */
+      .lista-produtos {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 25px 0;
+      }
+
+      .lista-produtos li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 12px 0;
+        border-bottom: 1px dashed #e0e0e0;
+      }
+
+      .lista-produtos li:last-child {
+        border-bottom: none;
+      }
+
+      .preco {
+        font-weight: 700;
+        color: var(--azul-marinho);
+        margin-left: 10px;
+        white-space: nowrap;
+      }
+
+      .selo {
+        background-color: var(--laranja-santo-forno);
+        color: var(--azul-marinho);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+
+      .obs {
+        font-size: 12px;
+        color: #777;
+        margin-left: 5px;
+      }
+
+      .obs-paragrafo {
+        font-size: 12px;
+        color: #666;
+        margin-top: -15px;
+        margin-bottom: 20px;
+      }
+
+      #campeao {
+        background-color: var(--bege-fundo);
+        padding: 8px 10px;
+        border-radius: 6px;
+        font-weight: 600;
+      }
+
+      .imagem-produto {
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+
+      /* CARD DE DESTAQUE */
+      .card-destaque {
+        background-color: var(--azul-marinho);
+        color: var(--branco);
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .card-destaque h3 {
+        font-family: var(--fonte-titulos);
+        font-size: 40px;
+        color: var(--laranja-santo-forno);
+        margin: 0;
+      }
+
+      .destaque-tag {
+        background-color: var(--laranja-santo-forno);
+        color: var(--azul-marinho);
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        margin: 10px 0;
+      }
+
+      .preco-destaque {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--bege-fundo);
+        margin: 5px 0;
+      }
+
+      .descricao-destaque {
+        font-size: 14px;
+        color: #e0e0e0;
+        max-width: 500px;
+        margin: 10px auto 20px;
+      }
+
+      .imagem-destaque {
+        width: 100%;
+        max-width: 350px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .btn-whatsapp {
+        display: inline-block;
+        background-color: #25D366;
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 12px 24px;
+        border-radius: 6px;
+        transition: transform 0.2s;
+      }
+
+      .btn-whatsapp:hover {
+        transform: scale(1.05);
+      }
+
+      /* SUB-CATEGORIAS DE TORTAS E MASSAS */
+      .subtitulo-massa, .titulo-subcategoria {
+        font-weight: 700;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--laranja-santo-forno);
+        padding-bottom: 4px;
+      }
+
+      .lista-simples {
+        padding-left: 20px;
+        margin-bottom: 20px;
+      }
+
+      /* RODAPÉ */
+      .rodape {
+        background-color: var(--azul-marinho);
+        color: var(--branco);
+        text-align: center;
+        padding: 40px 20px;
+        margin-top: 50px;
+      }
+
+      .rodape h2 {
+        font-family: var(--fonte-titulos);
+        font-size: 36px;
+        color: var(--laranja-santo-forno);
+        margin-top: 0;
+      }
+
+      .btn-whatsapp-rodape {
+        display: inline-block;
+        background-color: var(--laranja-santo-forno);
+        color: var(--azul-marinho);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 18px;
+        padding: 14px 28px;
+        border-radius: 8px;
+        transition: background-color 0.2s, transform 0.2s;
+      }
+
+      .btn-whatsapp-rodape:hover {
+        background-color: var(--bege-fundo);
+        transform: scale(1.03);
+      }

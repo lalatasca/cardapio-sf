@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SANTO FORNO - Cardápio Artesanal</title>
+  <meta name="description" content="Pães de fermentação natural e massas artesanais em Serra Negra - SP." />
+
+  <!-- ================================================================= -->
+  <!-- [AJUSTE DE ÍCONE] ONDE FICA O ÍCONE DA ABA DO NAVEGADOR (FAVICON) -->
+  <!-- ALTERE O "paoicone.jpg" PELO NOME DO SEU ARQUIVO DE ÍCONE          -->
+  <!-- ================================================================= -->
+  <link rel="icon" href="paoicone.jpg" type="image/x-icon" />
+
+  <!-- Fontes Oficiais do Guia da Marca -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amatica+SC:wght@400;700&family=Bai+Jamjuree:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poiret+One&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.ia.css">
+</head>
+
+<body>
+  <header class="header-principal">
+    <nav class="menu-navegacao">
+      <ul>
+        <li><a href="#paes">Pães Italianos</a></li>
+        <li><a href="#especiais">Especiais da Casa</a></li>
+        <li><a href="#massas">Massas Artesanais</a></li>
+        <li><a href="#tortas">Tortas</a></li>
+        <li><a href="#mel">Mel Santa Colmeia</a></li>
+        <li><a href="#queijos">Queijos Alvorada da Serra</a></li>
+        <li><a href="#geleias">Geléias Belo Sapore</a></li>
+      </ul>
+    </nav>
+
+    <div class="brand-container">
+      <!-- ================================================================= -->
+      <!-- [IMAGEM 1 DE 8] ONDE FICA A LOGO DA SANTO FORNO (NO TOPO DA PÁGINA)-->
+      <!-- ALTERE O "SRC" ABAIXO PELO LINK OU NOME DO ARQUIVO DA SUA LOGO     -->
+      <!-- ================================================================= -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmmt7bwzwHcUUloR1fyWfPs6hBsVNeeW5Bdid4kSBq1w&s"
+        alt="Logo Santo Forno" class="logo-img" height="100" />
+      <h1 class="logo-titulo">SANTO FORNO</h1>
+      <p class="subtitulo-header">Cardápio de Agosto · Serra Negra - SP</p>
+    </div>
+
+    <p class="sobre-texto">
+      Somos uma padaria de fermentação natural, portas fechadas em Serra
+      Negra-SP. Trabalhamos com delivery ou retirada. Utilizamos ingredientes
+      selecionados, nossos pães de fermentação natural e massas são feitos com
+      farinha italiana sem adição de aditivos. Nosso segredo: Fazemos tudo com
+      tempo e amor.
+    </p>
+  </header>
+
+  <main class="container-cardapio">
+    <h2 class="menu-titulo">Menu</h2>
+
+    <!-- Pães Italianos -->
+    <section id="paes" class="secao-cardapio">
+      <h3>Pães Italianos</h3>
+      <p class="descricao-secao">
+        Fermentação natural. Três ingredientes: Água, Farinha Italiana e Sal.
+      </p>
+      <ul class="lista-produtos">
+        <li>
+          <span>Queijo Alvorada da Serra</span>
+          <span class="preco">R$ 45</span>
+        </li>
+        <li>
+          <span>Tradicional</span>
+          <span class="preco">R$ 35</span>
+        </li>
+        <li>
+          <span>Toscano <span class="selo">Mais vendido!</span></span>
+          <span class="preco">R$ 35</span>
+        </li>
+        <li>
+          <span>Integral</span>
+          <span class="preco">R$ 40</span>
+        </li>
+        <li>
+          <span>Multigrãos</span>
+          <span class="preco">R$ 40</span>
+        </li>
+        <li>
+          <span>Pesto</span>
+          <span class="preco">R$ 40</span>
+        </li>
+      </ul>
+      <!-- ================================================================= -->
+      <!-- [IMAGEM 2 DE 8] FOTO DA SEÇÃO DE PÃES ITALIÂNOS                   -->
+      <!-- ALTERE O "SRC" ABAIXO PELA IMAGEM DOS PÃES ITALIANOS               -->
+      <!-- ================================================================= -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8qxUh_bJu5DUYlp1zXpmhyKXJUoeoo8YlMPZtce9wZQ&s"
+        alt="Pão Italiano de Fermentação Natural" class="imagem-produto" />
+    </section>
+
+    <!-- Destaque do Produto Campeão -->
+    <section class="card-destaque">
+      <article>
+        <h3>Pão Italiano Toscano</h3>
+        <p class="destaque-tag">Mais vendido</p>
+        <p class="preco-destaque">500 g — R$ 45</p>
+        <p class="descricao-destaque">
+          Fermentação natural de 24 horas, farinha italiana, casca crocante e
+          miolo alveolado.
+        </p>
+        <!-- ================================================================= -->
+        <!-- [IMAGEM 3 DE 8] FOTO DE DESTAQUE DO PÃO TOSCANO                    -->
+        <!-- ALTERE O "SRC" ABAIXO PELA FOTO DO SEU PÃO TOSCANO (LOCAL OU URL)  -->
+        <!-- ================================================================= -->
+        <img src="paotradicional.jpg" alt="Pão Italiano Toscano" class="imagem-destaque" />
+        <br />
+        <!-- ================================================================= -->
+        <!-- [LINK DE WHATSAPP DO TOSCANO] ALTERE O NÚMERO SE PRECISAR        -->
+        <!-- ================================================================= -->
+        <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20de%20um%20Toscano%20!"
+          class="btn-whatsapp" target="_blank">Peça seu Toscano!</a>
+      </article>
+    </section>
+
+    <!-- Especiais da Casa -->
+    <section id="especiais" class="secao-cardapio">
+      <h3>Especiais da Casa</h3>
+      <p class="descricao-secao">Nossos queridinhos</p>
+      <ul class="lista-produtos">
+        <li>
+          <span>Focaccia Italiana
+            <span class="selo">Sucesso de Vendas</span></span>
+          <span class="preco">R$ 70</span>
+        </li>
+        <li>
+          <span>Pão de Queijo Mineiro (0,5Kg)
+            <i class="obs">*Assado acréscimo de R$5</i></span>
+          <span class="preco">R$ 30</span>
+        </li>
+        <li>
+          <span>Granola Artesanal <i class="obs">Mais Vendido!</i></span>
+          <span class="preco">R$ 40</span>
+        </li>
+        <li>
+          <span>Granola Salgada</span>
+          <span class="preco">R$ 40</span>
+        </li>
+        <li>
+          <span>Caseirinho <i class="obs">Pão Macio</i></span>
+          <span class="preco">R$ 25</span>
+        </li>
+        <li>
+          <span>Brioche <i class="obs">Lançamento</i></span>
+          <span class="preco">R$ 40</span>
+        </li>
+      </ul>
+      <!-- ================================================================= -->
+      <!-- [IMAGEM 4 DE 8] FOTO DA SEÇÃO ESPECIAIS DA CASA (FOCACCIA/GRANOLA) -->
+      <!-- ALTERE O "SRC" ABAIXO PELA IMAGEM DOS ESPECIAIS                    -->
+      <!-- ================================================================= -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnYGNWCWoQ9ahlSWcxsaizgQhgMtyOChsgZwe6DJwSSg&s"
+        alt="Especiais da Casa" class="imagem-produto" />
+    </section>
+
+    <!-- Massas Artesanais -->
+    <section id="massas" class="secao-cardapio">
+      <h3>Massas Artesanais</h3>
+      <p class="descricao-secao">
+        Receitas tradicionais da cidade feitas com Farinha Italiana
+      </p>
+      <ul class="lista-produtos">
+        <li>
+          <span>Ravioli de Ragu de Ossobuco (0,5Kg)</span>
+          <span class="preco">R$ 75</span>
+        </li>
+        <li>
+          <span>Ravioli de Boursin (0,5Kg)</span>
+          <span class="preco">R$ 75</span>
+        </li>
+        <li id="campeao">
+          <span>Capeletti de Linguiça com Parmesão (0,5Kg)
+            <i class="obs">Mais Vendido!</i></span>
+          <span class="preco">R$ 55</span>
+        </li>
+        <li>
+          <span>Capeletti de 4 queijos (0,5Kg)</span>
+          <span class="preco">R$ 40</span>
+        </li>
+        <li>
+          <span>Capeletti de Ragu de Ossobuco (0,5Kg)</span>
+          <span class="preco">R$ 25</span>
+        </li>
+        <li>
+          <span>Brioche <i class="obs">Lançamento</i></span>
+          <span class="preco">R$ 40</span>
+        </li>
+      </ul>
+
+      <p class="subtitulo-massa">
+        Recomendamos fazer sua massa com nosso:
+      </p>
+      <ul class="lista-produtos">
+        <li>
+          <span>Ragu de Ossobuco</span>
+          <span class="preco">R$ 55</span>
+        </li>
+        <li>
+          <span>Brodo</span>
+          <span class="preco">R$ 27</span>
+        </li>
+        <li>
+          <span>Molho napolitano</span>
+          <span class="preco">R$ 27</span>
+        </li>
+      </ul>
+      <!-- ================================================================= -->
+      <!-- [IMAGEM 5 DE 8] FOTO DA SEÇÃO DE MASSAS ARTESANAIS                -->
+      <!-- ALTERE O "SRC" ABAIXO PELA IMAGEM DAS MASSAS DA SANTO FORNO        -->
+      <!-- ================================================================= -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP-UjAxx_HC7V5Wn7-y29sEwmCcyWD8_zT-lmkPMpLGQ&s=10"
+        alt="Massas Artesanais" class="imagem-produto" />
+    </section>
+
+    <!-- Empório das Tortas -->
+    <section id="tortas" class="secao-cardapio">
+      <h3>Empório das Tortas</h3>
+      <div class="categoria-torta">
+        <p class="titulo-subcategoria">
+          <span>Tortas Doces ~ 1,5Kg</span>
+          <span class="preco">R$ 160</span>
+        </p>
+        <ul class="lista-simples">
+          <li>Alemã</li>
+          <li>Limão</li>
+          <li>Holandesa</li>
+          <li>Iogurte com Damasco</li>
+          <li>Banoffe</li>
+          <li>Crocante</li>
+          <li>Frutas Vermelhas</li>
+        </ul>
+      </div>
+
+      <div class="categoria-torta">
+        <p class="titulo-subcategoria">
+          <span>Tortas Salgadas ~ 1,7Kg</span>
+          <span class="preco">R$ 130</span>
+        </p>
+        <ul class="lista-simples">
+          <li>Frango com Catupiry</li>
+          <li>Palmito</li>
+        </ul>
+      </div>
+      <!-- ================================================================= -->
+      <!-- [IMAGEM 6 DE 8] FOTO DA SEÇÃO DE TORTAS                          -->
+      <!-- ALTERE O "SRC" ABAIXO PELA IMAGEM DO EMPÓRIO DAS TORTAS            -->
+      <!-- ================================================================= -->
+      <img
+        src="https://edge.osuper.com.br/sUPsx033j7Q4bNpgFuM0saGLXdE=/1600x0/smart/https://osuper-ecommerce-novabenta.s3.sa-east-1.amazonaws.com/34192081-torta-sweet-pie-emptortas.jpg"
+        alt="Variedade de tortas doces e salgadas do Empório das Tortas" class="imagem-produto" />
+    </section>
+
+    <!-- Santa Colmeia -->
+    <section id="mel" class="secao-cardapio">
+      <h3>Santa Colmeia</h3>
+      <ul class="lista-produtos">
+        <li>
+          <span>Mel 330g</span>
+          <span class="preco">R$ 25</span>
+        </li>
+        <li>
+          <span>Mel 750g</span>
+          <span class="preco">R$ 60</span>
+        </li>
+      </ul>
+      <p class="obs-paragrafo">*Floradas especiais acréscimo de R$5</p>
+
+      <ul class="lista-produtos">
+        <li>
+          <span>Própolis 30 ml</span>
+          <span class="preco">R$ 28</span>
+        </li>
+      </ul>
+      <p class="obs-paragrafo">*30% álcool cereal</p>
+
+      <ul class="lista-produtos">
+        <li>
+          <span>Pólen Apícola 80g</span>
+          <span class="preco">R$ 35</span>
+        </li>
+      </ul>
+      <!-- ================================================================= -->
+      <!-- [IMAGEM 7 DE 8] FOTO DA SEÇÃO SANTA COLMEIA (MEL)                 -->
+      <!-- ALTERE O "SRC" ABAIXO PELA IMAGEM DO MEL SANTA COLMEIA             -->
+      <!-- ================================================================= -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFxD3IlAlS5ZYsvhSpsyvZrqtBoAKim3Hm-hFwBNr0mg&s=10"
+        alt="Pote de Mel de verdade da Santa Colmeia" class="imagem-produto" />
+    </section>
+
+    <!-- Alvorada da Serra -->
+    <section id="queijos" class="secao-cardapio">
+      <h3>Alvorada da Serra</h3>
+      <ul class="lista-produtos">
+        <li>
+          <span>Boursin</span>
+          <span class="preco">R$ 30</span>
+        </li>
+        <li>
+          <span>Fresco</span>
+          <span class="preco">R$ 30</span>
+        </li>
+        <li>
+          <span>Meia Cura</span>
+          <span class="preco">R$ 35</span>
+        </li>
+      </ul>
+      <!-- ================================================================= -->
+      <!-- [IMAGEM 8 DE 8] FOTO DA SEÇÃO ALVORADA DA SERRA (QUEIJOS)         -->
+      <!-- ALTERE O "SRC" ABAIXO PELA IMAGEM DOS QUEIJOS                      -->
+      <!-- ================================================================= -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3e7n0Pejy6yYxTQHGCRSnXMTq8vBHmwKonZZ188Cyig&s=10"
+        alt="Queijos artesanais Alvorada da Serra" class="imagem-produto" />
+    </section>
+
+    <!-- Belo Sapore -->
+    <section id="geleias" class="secao-cardapio">
+      <h3>Belo Sapore</h3>
+      <ul class="lista-produtos">
+        <li>
+          <span>Geléia de Pimenta 200g</span>
+          <span class="preco">R$ 45</span>
+        </li>
+        <li>
+          <span>Geléia de Gengibre 200g</span>
+          <span class="preco">R$ 45</span>
+        </li>
+        <li>
+          <span>Geléia de Limão Siciliano 200g</span>
+          <span class="preco">R$ 45</span>
+        </li>
+        <li>
+          <span>Geléia de Licor de Maracujá 200g</span>
+          <span class="preco">R$ 45</span>
+        </li>
+        <li>
+          <span>Chutney de Manga 200g</span>
+          <span class="preco">R$ 45</span>
+        </li>
+      </ul>
+      <!-- ================================================================= -->
+      <!-- [IMAGEM EXTRA] FOTO DA SEÇÃO BELO SAPORE (GELÉIAS)                -->
+      <!-- ALTERE O "SRC" ABAIXO PELA IMAGEM DAS GELÉIAS                      -->
+      <!-- ================================================================= -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUioIWG0EB66-wbyTGfSPformhlLMEDfifS3QE0lQ_ww&s=10"
+        alt="Pote de geléia artesanal Belo Sapore junto a um pão caseiro" class="imagem-produto" />
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <h2>Faça seu pedido aqui:</h2>
+    <!-- ================================================================= -->
+    <!-- [LINK DE WHATSAPP DO RODAPÉ] ALTERE O NÚMERO SE PRECISAR          -->
+    <!-- ================================================================= -->
+    <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!"
+      class="btn-whatsapp-rodape" target="_blank">
+      Pedir pelo WhatsApp
+    </a>
+  </footer>
+</body>
+
+</html>
