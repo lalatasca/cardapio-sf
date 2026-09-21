@@ -1,0 +1,63 @@
+h1 {
+    color: #FFB05F;
+    font-size: 48px;
+    text-align: center;
+}
+
+h3 {
+    color: #FFB05F;
+    font-size: 28px;
+    text-align: center;
+
+}
+
+body {
+    background-color: #0E0E52;
+    color: white;
+}
+
+.selo {
+    background-color: #FFF5EC;
+    color: #0E0E52;
+    font-size: 12px;
+}
+
+#campeao {
+    color: #FFF5EC;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.estrutura {
+    display: flex;
+    justify-content: center;
+
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul {
+    display: flex;  /* filhos lado a lado */
+    gap: 50px; /* espaço entre os itens */
+    justify-content: center;  /* tira as bolinhas */
+    list-style-type: none;
+    padding: 0;/* PRA QUE SERVE? */
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+}
+
+.pedido {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: white;/* não consegui deixar escrito em branco */
+
+}
