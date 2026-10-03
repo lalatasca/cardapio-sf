@@ -1,0 +1,677 @@
+/* ==========================================================================
+   1. VARIÁVEIS E REGRAS GERAIS
+   ========================================================================== */
+:root {
+  /* Marca Santo Forno */
+  --laranja-santo-forno: #FFB05F;
+  --azul-marinho: #0E0E52;
+  --bege-fundo: #FFF5EC;
+  --branco: #FFFFFF;
+  --vermelho-edicao: #901119;
+
+  --fonte-logo: 'Poiret One', cursive;
+  --fonte-titulos: 'Amatica SC', sans-serif;
+  --fonte-corpo: 'Bai Jamjuree', sans-serif;
+
+  /* Marca Santa Colmeia */
+  --sc-preto: #000000;
+  --sc-amarelo: #FFDA5E;
+  --sc-laranja: #F28610;
+
+  --fonte-sc-titulo: 'Libre Bodoni', serif;
+  --fonte-sc-corpo: 'Jura', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+/* FAIXA LARANJA DO CABEÇALHO COM LOGO LOCAL */
+.faixa-laranja-header {
+  background-color: var(--laranja-santo-forno);
+  padding: 25px 0;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.brand-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 4px solid var(--bege-fundo);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  background-color: var(--bege-fundo);
+  object-fit: cover;
+}
+body {
+  background-color: var(--bege-fundo);
+  color: var(--azul-marinho);
+  font-family: var(--fonte-corpo);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. MENU DE NAVEGAÇÃO SUPERIOR (RESPONSIVO)
+   ========================================================================== */
+.menu-navegacao {
+  background-color: var(--azul-marinho);
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.menu-navegacao ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.menu-navegacao a {
+  color: var(--bege-fundo);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.menu-navegacao a:hover {
+  color: var(--laranja-santo-forno);
+}
+
+/* Menu Hambúrguer (Mobile) */
+.menu-toggle,
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    width: 30px;
+    margin-left: auto;
+  }
+
+  .hamburger span {
+    height: 3px;
+    width: 100%;
+    background-color: var(--bege-fundo);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .menu-navegacao ul {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 15px;
+    gap: 12px;
+  }
+
+  .menu-toggle:checked~ul {
+    display: flex;
+  }
+}
+
+/* ==========================================================================
+   3. CABEÇALHO E SEÇÃO HISTÓRIA (SANTO FORNO)
+   ========================================================================== */
+.header-principal {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.brand-container {
+  padding: 30px 20px 10px;
+}
+
+.logo-img {
+  border-radius: 50%;
+  border: 3px solid var(--laranja-santo-forno);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-titulo {
+  font-family: var(--fonte-logo);
+  color: var(--azul-marinho);
+  font-size: 46px;
+  margin: 10px 0 0 0;
+  letter-spacing: 2px;
+}
+
+.subtitulo-header {
+  font-family: var(--fonte-titulos);
+  font-size: 28px;
+  color: var(--laranja-santo-forno);
+  margin: 0;
+}
+
+.historia-container {
+  max-width: 700px;
+  margin: 20px auto 10px;
+  padding: 25px;
+  background-color: var(--branco);
+  border-radius: 12px;
+  border-left: 4px solid var(--laranja-santo-forno);
+  box-shadow: 0 4px 12px rgba(14, 14, 82, 0.05);
+  text-align: center;
+}
+
+.historia-container h2 {
+  font-family: var(--fonte-titulos);
+  font-size: 36px;
+  color: var(--azul-marinho);
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.historia-texto {
+  font-size: 15px;
+  color: var(--azul-marinho);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.imagem-familia {
+  width: 100%;
+  max-width: 500px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 20px auto 0 auto;
+  display: block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   4. ESTRUTURA GERAL DO CARDÁPIO & PRODUTOS
+   ========================================================================== */
+.container-cardapio {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.menu-titulo {
+  font-family: var(--fonte-titulos);
+  font-size: 50px;
+  text-align: center;
+  color: var(--azul-marinho);
+  margin-bottom: 40px;
+  border-bottom: 2px solid var(--laranja-santo-forno);
+  padding-bottom: 10px;
+}
+
+.secao-cardapio {
+  background-color: var(--branco);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 12px rgba(14, 14, 82, 0.05);
+  border: 1px solid rgba(255, 176, 95, 0.2);
+}
+
+.secao-cardapio h3 {
+  font-family: var(--fonte-titulos);
+  font-size: 38px;
+  color: var(--azul-marinho);
+  margin: 0 0 5px 0;
+  text-align: left;
+}
+
+.descricao-secao {
+  font-size: 14px;
+  color: #555;
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+.lista-produtos {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+}
+
+.lista-produtos li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px dashed #e0e0e0;
+}
+
+.lista-produtos li:last-child {
+  border-bottom: none;
+}
+
+.preco {
+  font-weight: 700;
+  color: var(--azul-marinho);
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.selo {
+  background-color: var(--laranja-santo-forno);
+  color: var(--azul-marinho);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.obs {
+  font-size: 12px;
+  color: #777;
+  margin-left: 5px;
+}
+
+.obs-paragrafo {
+  font-size: 12px;
+  color: #666;
+  margin-top: -15px;
+  margin-bottom: 20px;
+}
+
+#campeao {
+  background-color: var(--bege-fundo);
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.imagem-produto {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 15px;
+  display: block;
+}
+
+/* Subcategorias e Massas */
+.subtitulo-massa,
+.titulo-subcategoria {
+  font-weight: 700;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--laranja-santo-forno);
+  padding-bottom: 4px;
+}
+
+.lista-simples {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   5. MOSAICO DE TORTAS (FLEXBOX)
+   ========================================================================== */
+.mosaico-tortas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.item-torta {
+  flex: 1 1 calc(33.333% - 15px);
+  min-width: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--bege-fundo);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 176, 95, 0.3);
+}
+
+.item-torta img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.item-torta span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--azul-marinho);
+}
+
+.item-torta-larga {
+  flex: 1 1 100%;
+  max-width: 320px;
+}
+
+.item-torta-larga img {
+  height: 160px;
+}
+
+@media (max-width: 600px) {
+  .item-torta {
+    flex: 1 1 calc(50% - 15px);
+  }
+}
+
+/* ==========================================================================
+   6. SEÇÃO SANTA COLMEIA (TEMA AMARELO)
+   ========================================================================== */
+.secao-santa-colmeia {
+  background-color: var(--sc-amarelo);
+  color: var(--sc-preto);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.santa-colmeia-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-santa-colmeia {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 15px auto;
+}
+
+.santa-colmeia-historia p {
+  font-family: var(--fonte-sc-corpo);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--sc-preto);
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid var(--sc-preto);
+  margin-bottom: 20px;
+}
+
+.imagem-apiario {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid var(--sc-preto);
+}
+
+.santa-colmeia-produtos .lista-produtos li {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+  font-family: var(--fonte-sc-corpo);
+  font-size: 16px;
+}
+
+.santa-colmeia-produtos .lista-produtos span,
+.santa-colmeia-produtos .preco {
+  color: var(--sc-preto);
+  font-weight: 600;
+}
+
+.santa-colmeia-produtos .obs-paragrafo {
+  color: #333333;
+  font-family: var(--fonte-sc-corpo);
+}
+
+/* ==========================================================================
+   7. SEÇÃO BELO SAPORE 
+   ========================================================================== */
+.sobre-belo-sapore {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.logo-secao {
+  max-width: 120px;
+  /* Logo menor e delicada */
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+.titulo-belo-sapore {
+  font-family: var(--fonte-titulos);
+  font-size: 34px;
+  color: var(--azul-marinho);
+  margin: 0 0 15px 0;
+  text-align: center;
+}
+
+/* Card do texto no estilo Santa Colmeia (quadradinho com borda lateral) */
+.belo-sapore-historia {
+  background-color: var(--bege-fundo);
+  padding: 18px 20px;
+  border-radius: 8px;
+  border-left: 4px solid var(--azul-marinho);
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.belo-sapore-historia p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--azul-marinho);
+  text-align: left;
+  /* <-- ALINHA O TEXTO À ESQUERDA */
+  margin: 0 0 10px 0;
+}
+
+.belo-sapore-historia p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   8. BOTÃO DE WHATSAPP EM DESTAQUE (ANTES DAS AVALIAÇÕES)
+   ========================================================================== */
+.container-btn-whatsapp-principal {
+  text-align: center;
+  margin: 30px 0 40px 0;
+}
+
+.btn-whatsapp-destaque {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: #25D366;
+  /* Verde oficial do WhatsApp */
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-whatsapp-destaque:hover {
+  background-color: #20BA5A;
+  transform: scale(1.04);
+}
+
+.icone-whatsapp-circulo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #FFFFFF;
+}
+
+/* ==========================================================================
+   8. AVALIAÇÕES E BOTÕES
+   ========================================================================== */
+.secao-avaliacoes {
+  text-align: center;
+}
+
+.cards-avaliacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.card-avaliacao {
+  background-color: var(--bege-fundo);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 176, 95, 0.4);
+}
+
+.estrelas {
+  color: #FFD700;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.texto-avaliacao {
+  font-size: 14px;
+  font-style: italic;
+  margin: 0 0 8px 0;
+  color: var(--azul-marinho);
+}
+
+.autor-avaliacao {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+}
+
+.botoes-avaliacoes {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-ver-avaliacoes,
+.btn-avaliar {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+
+.btn-ver-avaliacoes {
+  background-color: var(--azul-marinho);
+  color: var(--branco);
+}
+
+.btn-avaliar {
+  background-color: var(--laranja-santo-forno);
+  color: var(--azul-marinho);
+}
+
+.btn-ver-avaliacoes:hover,
+.btn-avaliar:hover {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   9. RODAPÉ
+   ========================================================================== */
+.rodape {
+  background-color: var(--azul-marinho);
+  color: var(--branco);
+  padding: 40px 20px 20px;
+  margin-top: 50px;
+}
+
+.rodape-conteudo {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.rodape-coluna {
+  flex: 1;
+  min-width: 250px;
+}
+
+.rodape-coluna h3 {
+  font-family: var(--fonte-titulos);
+  font-size: 28px;
+  color: var(--laranja-santo-forno);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.rodape-coluna p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+}
+
+.link-instagram {
+  color: var(--laranja-santo-forno);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link-instagram:hover {
+  text-decoration: underline;
+}
+
+.btn-whatsapp-rodape {
+  display: inline-block;
+  background-color: var(--laranja-santo-forno);
+  color: var(--azul-marinho);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-whatsapp-rodape:hover {
+  background-color: var(--bege-fundo);
+  transform: scale(1.03);
+}
+
+.rodape-copyright {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 30px;
+  padding-top: 15px;
+  font-size: 12px;
+  color: #aaa;
+}
