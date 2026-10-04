@@ -2,9 +2,19 @@
 <html lang="pt-BR">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSD1EFT6VT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-JSD1EFT6VT');
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SANTO FORNO - Cardápio Artesanal</title>
+  <title>SANTO FORNO - Cardápio </title>
   <meta name="description" content="Pães de fermentação natural e massas artesanais em Serra Negra - SP." />
 
   <!-- Ícone da aba -->
@@ -30,38 +40,27 @@
         <span></span>
         <span></span>
       </label>
-
       <ul>
-        <li><a href="#nossa-historia">Nossa História</a></li>
         <li><a href="#paes">Pães Italianos</a></li>
         <li><a href="#especiais">Especiais da Casa</a></li>
         <li><a href="#massas">Massas Artesanais</a></li>
         <li><a href="#tortas">Tortas</a></li>
         <li><a href="#mel">Mel Santa Colmeia</a></li>
         <li><a href="#geleias">Geléias Belo Sapore</a></li>
+        <li><a href="#nossa-historia">Nossa História</a></li>
         <li><a href="#avaliacoes">Avaliações</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
 
     <div class="faixa-laranja-header">
       <div class="brand-container">
         <img src="imagens/Logo oficial SF.png" alt="Logo Santo Forno" class="logo-img" />
+
       </div>
     </div>
 
-    <!-- Seção História da Marca -->
-    <section id="nossa-historia" class="historia-container">
-      <h2>Nossa História</h2>
-      <p class="historia-texto">
-        A Santo Forno nasceu em 2022 da paixão da Valéria por alimentos de verdade. Nossa proposta é unir o sabor
-        acolhedor da origem mineira à delicadeza da cozinha italiana: do pão de queijo às massas artesanais, como
-        capeletti e ravioli, nossos carros-chefe, além do pão italiano de fermentação natural (levain). Trabalhamos com
-        ingredientes selecionados, como a farinha italiana e queijos artesanais locais. Nosso principal objetivo é
-        produzir alimentos que celebram o tempo de mesa em família. Atendemos principalmente sob encomenda, garantindo o
-        cuidado artesanal e entregas personalizadas. Experimente também nosso mel Santa Colméia® de produção própria.
-      </p>
-      <img src="imagens/FAMILIA.jpg" alt="Família Santo Forno" class="imagem-familia" />
-    </section>
+
   </header>
 
   <main class="container-cardapio">
@@ -82,7 +81,7 @@
         </li>
         <li>
           <span>Toscano <span class="selo">Mais vendido!</span></span>
-          <span class="preco">R$ 35</span>
+          <span class="preco">R$ 40</span>
         </li>
         <li>
           <span>Integral</span>
@@ -115,11 +114,11 @@
         </li>
         <li>
           <span>Granola Artesanal <i class="obs">Mais Vendido!</i></span>
-          <span class="preco">R$ 40</span>
+          <span class="preco">R$ 45</span>
         </li>
         <li>
           <span>Granola Salgada</span>
-          <span class="preco">R$ 40</span>
+          <span class="preco">R$ 45</span>
         </li>
         <li>
           <span>Caseirinho <i class="obs">Pão Macio</i></span>
@@ -127,16 +126,21 @@
         </li>
         <li>
           <span>Brioche <i class="obs">Lançamento</i></span>
-          <span class="preco">R$ 40</span>
+          <span class="preco">R$ 65</span>
+        </li>
+        <li>
+          <span>Brioche com blend de chocolate nobre <i class="obs">Lançamento</i></span>
+          <span class="preco">R$ 70</span>
         </li>
       </ul>
-      <img src="imagens/FOCACCIA.jpg" alt="Especiais da Casa" class="imagem-produto" />
-    </section>
+<img src="imagens/FOCACCIA.jpg" alt="Especiais da Casa" class="imagem-produto-especiais" />    </section>
 
     <!-- Massas Artesanais -->
     <section id="massas" class="secao-cardapio">
       <h3>Massas Artesanais</h3>
       <p class="descricao-secao">Receitas tradicionais da cidade feitas com Farinha Italiana</p>
+      <!-- Recado de Recomendação por Refeição -->
+      <p class="dica-porcao">💡 <strong>Dica do Santo Forno:</strong> Recomendação por refeição: 250g por pessoa!</p>
       <ul class="lista-produtos">
         <li>
           <span>Ravioli de Ragu de Ossobuco (0,5Kg)</span>
@@ -146,20 +150,19 @@
           <span>Ravioli de Boursin (0,5Kg)</span>
           <span class="preco">R$ 75</span>
         </li>
-        <li id="campeao">
-          <span>Capeletti de Linguiça com Parmesão (0,5Kg) <i class="obs">Mais Vendido!</i></span>
+        <li>
+          <span>Capeletti de Linguiça com Parmesão (0,5Kg) <span class="selo">Mais Vendido!</span></span>
           <span class="preco">R$ 55</span>
         </li>
         <li>
           <span>Capeletti de 4 queijos (0,5Kg)</span>
-          <span class="preco">R$ 40</span>
+          <span class="preco">R$ 60</span>
         </li>
         <li>
           <span>Capeletti de Ragu de Ossobuco (0,5Kg)</span>
-          <span class="preco">R$ 25</span>
+          <span class="preco">R$ 65</span>
         </li>
       </ul>
-
       <p class="subtitulo-massa">Recomendamos fazer sua massa com nosso:</p>
       <ul class="lista-produtos">
         <li>
@@ -175,27 +178,18 @@
           <span class="preco">R$ 27</span>
         </li>
       </ul>
-      <img src="imagens/CAPELETTI.jpg" alt="Massas Artesanais" class="imagem-produto" />
-    </section>
+<img src="imagens/CAPELETTI.jpg" alt="Massas Artesanais" class="imagem-produto-massas" />    </section>
 
     <!-- Empório das Tortas -->
     <section id="tortas" class="secao-cardapio">
       <h3>Empório das Tortas</h3>
-
       <div class="categoria-torta">
         <p class="titulo-subcategoria">
           <span>Tortas Doces ~ 1,5Kg</span>
           <span class="preco">R$ 160</span>
         </p>
-        <ul class="lista-simples">
-          <li>Alemã</li>
-          <li>Limão</li>
-          <li>Holandesa</li>
-          <li>Iogurte com Damasco</li>
-          <li>Crocante</li>
-          <li>Frutas Vermelhas</li>
-        </ul>
 
+        <p class="obs-paragrafo">Rende de 10 a 12 fatias bem servidas.</p>
         <div class="mosaico-tortas">
           <div class="item-torta">
             <img src="imagens/ALEMA.jpg" alt="Torta Alemã" />
@@ -223,21 +217,17 @@
           </div>
         </div>
       </div>
-
       <div class="categoria-torta">
         <p class="titulo-subcategoria">
           <span>Tortas Salgadas ~ 1,7Kg</span>
           <span class="preco">R$ 130</span>
         </p>
-        <ul class="lista-simples">
-          <li>Frango com Catupiry</li>
-          <li>Palmito</li>
-        </ul>
+        <p class="obs-paragrafo">Rende de 10 a 12 fatias bem servidas.</p>
 
         <div class="mosaico-tortas">
           <div class="item-torta item-torta-larga">
             <img src="imagens/FRANGO.jpg" alt="Tortas Salgadas (Frango e Palmito)" />
-            <span>Frango com Catupiry / Palmito</span>
+            <span>Frango com Catupiry ou Palmito</span>
           </div>
         </div>
       </div>
@@ -248,7 +238,6 @@
       <div class="santa-colmeia-header">
         <img src="imagens/LOGO SC.png" alt="Logo Santa Colmeia" class="logo-santa-colmeia" />
       </div>
-
       <div class="santa-colmeia-historia">
         <p>
           Localizado na Fazenda Lyria em Socorro (SP), na Serra da Mantiqueira, o Apiário Santa Colmeia®, cujo
@@ -258,9 +247,7 @@
           inigualável: <strong>mel de verdade</strong>.
         </p>
       </div>
-
       <img src="imagens/APIARIO.jpeg" alt="Apiário Santa Colmeia na Serra da Mantiqueira" class="imagem-apiario" />
-
       <div class="santa-colmeia-produtos">
         <ul class="lista-produtos">
           <li>
@@ -273,7 +260,7 @@
           </li>
           <li>
             <span>Própolis 30 ml <small class="obs">*30% álcool de cereal</small></span>
-            <span class="preco">R$ 28</span>
+            <span class="preco">R$ 30</span>
           </li>
           <li>
             <span>Pólen Apícola 80g</span>
@@ -281,7 +268,6 @@
           </li>
         </ul>
       </div>
-
       <img src="imagens/MEL.JPG" alt="Pote de Mel de verdade da Santa Colmeia" class="imagem-produto" />
     </section>
 
@@ -290,12 +276,10 @@
       <div class="sobre-belo-sapore">
         <img src="imagens/LOGOBS.jpeg" alt="Logo Belo Sapore" class="logo-secao" />
         <h3 class="titulo-belo-sapore">Belo Sapore</h3>
-
-        <!-- Textinho no quadradinho com borda lateral -->
         <div class="belo-sapore-historia">
           <p>
-            Fundada em 2024 pela ex-executiva Mari Carvalho, carinhosamente conhecida por Mari Mineira, a Belo Sapore
-            surgiu para transformar 10 toneladas de mangas anualmente até então desperdiçadas em produtos artesanais
+            Fundada em 2026 pela ex-executiva Mari Carvalho, carinhosamente conhecida por Mari Mineira, a Belo Sapore
+            surgiu para transformar 30 toneladas de mangas anualmente até então desperdiçadas em produtos artesanais
             únicos.
           </p>
           <p>
@@ -305,33 +289,32 @@
           </p>
         </div>
       </div>
-
       <ul class="lista-produtos">
         <li>
           <span>Geléia de Pimenta 200g</span>
-          <span class="preco">R$ 45</span>
+          <span class="preco">R$ 40</span>
         </li>
         <li>
           <span>Geléia de Gengibre 200g</span>
-          <span class="preco">R$ 45</span>
+          <span class="preco">R$ 40</span>
         </li>
         <li>
           <span>Geléia de Limão Siciliano 200g</span>
-          <span class="preco">R$ 45</span>
+          <span class="preco">R$ 40</span>
         </li>
         <li>
           <span>Geléia de Licor de Maracujá 200g</span>
-          <span class="preco">R$ 45</span>
+          <span class="preco">R$ 40</span>
         </li>
         <li>
           <span>Chutney de Manga 200g</span>
           <span class="preco">R$ 45</span>
         </li>
       </ul>
-      <img src="imagens/GELEIA.jpg" alt="Pote de geléia artesanal Belo Sapore" class="imagem-produto" />
+      <img src="imagens/GELEIA.jpg" alt="Pote de geléia artesanal Belo Sapore" class="imagem-produto-ampliada" />
     </section>
 
-    <!-- BOTÃO DE PEDIDO VIA WHATSAPP (EM DESTAQUE VERDE) -->
+    <!-- Botão WhatsApp -->
     <div class="container-btn-whatsapp-principal">
       <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!" target="_blank"
         class="btn-whatsapp-destaque">
@@ -339,62 +322,125 @@
         Faça seu Pedido via WhatsApp
       </a>
     </div>
-
+    <!-- Seção História da Marca -->
+    <section id="nossa-historia" class="historia-container">
+      <h2>Nossa História</h2>
+      <p class="historia-texto">
+        A Santo Forno nasceu em 2022 da paixão da Valéria por alimentos de verdade. Nossa proposta é unir o sabor
+        acolhedor da origem mineira à delicadeza da cozinha italiana: do pão de queijo às massas artesanais, como
+        capeletti e ravioli, nossos carros-chefe, além do pão italiano de fermentação natural (levain). Trabalhamos com
+        ingredientes selecionados, como a farinha italiana e queijos artesanais locais. Nosso principal objetivo é
+        produzir alimentos que celebram o tempo de mesa em família. Atendemos principalmente sob encomenda, garantindo o
+        cuidado artesanal e entregas personalizadas. Experimente também nosso mel Santa Colméia® de produção própria.
+      </p>
+      <img src="imagens/FAMILIA.jpg" alt="Família Santo Forno" class="imagem-familia" />
+    </section>
     <!-- Avaliações -->
     <section id="avaliacoes" class="secao-cardapio secao-avaliacoes">
-      ...
-
-      <!-- Avaliações -->
-      <section id="avaliacoes" class="secao-cardapio secao-avaliacoes">
-        <h3>O que nossos clientes dizem</h3>
-        <p class="descricao-secao">Avaliações no Google</p>
-
-        <div class="cards-avaliacoes">
-          <div class="card-avaliacao">
-            <div class="estrelas">★★★★★</div>
-            <p class="texto-avaliacao">
-              "Os pães de fermentação natural e os capelettis são espetaculares! Dá para sentir o cuidado artesanal e o
-              sabor do queijo de verdade em cada pedaço."
-            </p>
-            <span class="autor-avaliacao">— Cliente Google</span>
-          </div>
-
-          <div class="card-avaliacao">
-            <div class="estrelas">★★★★★</div>
-            <p class="texto-avaliacao">
-              "Atendimento impecável e produtos de primeiríssima qualidade. A focaccia e o pão toscano são meus
-              favoritos para a mesa em família."
-            </p>
-            <span class="autor-avaliacao">— Cliente Google</span>
-          </div>
+      <h3>O que nossos clientes dizem</h3>
+      <p class="descricao-secao">Avaliações no Google</p>
+      <div class="cards-avaliacoes">
+        <div class="card-avaliacao">
+          <div class="estrelas">★★★★★</div>
+          <p class="texto-avaliacao">
+            "Os pães de fermentação natural e os capelettis são espetaculares! Dá para sentir o cuidado artesanal e o
+            sabor do queijo de verdade em cada pedaço."
+          </p>
+          <span class="autor-avaliacao">— Cliente Google</span>
         </div>
-
-        <div class="botoes-avaliacoes">
-          <a href="https://share.google/I1H2Zja1DKblYSSiT" target="_blank" class="btn-ver-avaliacoes">
-            Ver mais no Google
-          </a>
-          <a href="https://g.page/r/CcaCV4fHKdFTEAI/review" target="_blank" class="btn-avaliar">
-            Faça sua Avaliação
-          </a>
+        <div class="card-avaliacao">
+          <div class="estrelas">★★★★★</div>
+          <p class="texto-avaliacao">
+            "Atendimento impecável e produtos de primeiríssima qualidade. A focaccia e o pão toscano são meus
+            favoritos para a mesa em família."
+          </p>
+          <span class="autor-avaliacao">— Cliente Google</span>
         </div>
-      </section>
+      </div>
+      <div class="botoes-avaliacoes">
+        <a href="https://share.google/I1H2Zja1DKblYSSiT" target="_blank" class="btn-ver-avaliacoes">
+          Ver mais no Google
+        </a>
+        <a href="https://g.page/r/CcaCV4fHKdFTEAI/review" target="_blank" class="btn-avaliar">
+          Faça sua Avaliação
+        </a>
+      </div>
+    </section>
+    <!-- Seção Perguntas Frequentes (FAQ Colapsável) -->
+    <section id="faq" class="secao-cardapio secao-faq">
+      <h3>Perguntas Frequentes (FAQ)</h3>
+      <p class="descricao-secao">Clique na pergunta para ver a resposta</p>
+
+      <div class="faq-categoria">
+        <h4>1. Pedidos e Funcionamento</h4>
+        <details class="faq-item">
+          <summary><strong>Com quanto tempo de antecedência devo fazer meu pedido?</strong></summary>
+          <p>Pedimos que os pedidos sejam feitos com no mínimo 2 dias de antecedência. Como nossos pães passam por um
+            processo de longa fermentação natural (levain) e nossas massas são feitas artesanalmente, precisamos desse
+            tempo para preparar tudo com o devido cuidado.</p>
+        </details>
+        <details class="faq-item">
+          <summary><strong>O que acontece em caso de desistência?</strong></summary>
+          <p>Fazemos encomendas sob medida para o seu momento. Porém, por se tratar de um processo artesanal e sob
+            demanda, cancelamentos ou desistências feitos com menos de 24 horas de antecedência serão cobrados
+            normalmente, pois a produção já terá sido iniciada e isso gera desperdício de insumos nobres.</p>
+        </details>
+        <details class="faq-item">
+          <summary><strong>Vocês têm espaço físico para sentar e tomar um café?</strong></summary>
+          <p>Não. Trabalhamos com portas fechadas, focados exclusivamente na produção artesanal. Atendemos apenas via
+            retirada no local (sob encomenda) ou delivery.</p>
+        </details>
+      </div>
+
+      <div class="faq-categoria">
+        <h4>2. Produtos e Disponibilidade</h4>
+        <details class="faq-item">
+          <summary><strong>Como funciona a disponibilidade e o envio das tortas?</strong></summary>
+          <p>Recomendamos sempre consultar a disponibilidade a pronta entrega pelo nosso WhatsApp. Ao fazer seu pedido,
+            você pode escolher se prefere retirar a torta congelada ou pronta para consumo/preparo.</p>
+        </details>
+        <details class="faq-item">
+          <summary><strong>As massas artesanais vêm frescas ou congeladas?</strong></summary>
+          <p>Todas as nossas massas (como capelettis e raviolis) são entregues congeladas e sem preparo.</p>
+        </details>
+        <details class="faq-item">
+          <summary><strong>O pão de queijo é vendido assado ou congelado?</strong></summary>
+          <p>Você pode escolher! Vendemos o pacote de pão de queijo mineiro congelado para você assar quando quiser ou
+            assado na hora (com acréscimo de R$ 5,00 no pedido).</p>
+        </details>
+        <details class="faq-item">
+          <summary><strong>Os pães contêm glúten?</strong></summary>
+          <p>Sim. Apesar de trabalharmos com o processo de longa fermentação, os nossos pães e massas podem conter
+            glúten e não são indicados para pessoas celíacas.</p>
+        </details>
+      </div>
+
+      <div class="faq-categoria">
+        <h4>3. Entregas e Pagamento</h4>
+        <details class="faq-item">
+          <summary><strong>Vocês fazem entregas na região de Serra Negra? Qual é o valor do frete?</strong></summary>
+          <p>Entregamos em Serra Negra com taxa fixa de R$ 5,00. Para entregas em cidades vizinhas da região, consulte a
+            disponibilidade e o valor do frete diretamente no nosso WhatsApp.</p>
+        </details>
+        <details class="faq-item">
+          <summary><strong>Vocês enviam produtos não perecíveis por Correios?</strong></summary>
+          <p>Sim! Enviamos todos os produtos Santa Colmeia (mel, própolis e pólen), geléias Belo Sapore e granolas por
+            Correios para todo o Brasil.</p>
+        </details>
+        <details class="faq-item">
+          <summary><strong>Quais são as formas de pagamento aceitas?</strong></summary>
+          <p>Aceitamos pagamentos via PIX ou Dinheiro. O pagamento deve ser realizado no momento da retirada do produto
+            ou no ato da entrega.</p>
+        </details>
+      </div>
+    </section>
+
   </main>
 
   <!-- Rodapé -->
   <footer class="rodape">
     <div class="rodape-conteudo">
-      <div class="rodape-coluna">
-        <h3>SANTO FORNO</h3>
-        <p>
-          Trabalhamos com portas fechadas.<br />
-          <strong>Atendimento:</strong> Entrega a domicílio ou retirada sob encomenda em Serra Negra - SP e região.
-        </p>
-        <p>
-          <strong>Horário de Funcionamento:</strong><br />
-          Todos os dias, das 8h às 19h.
-        </p>
-      </div>
-
+      
       <div class="rodape-coluna">
         <h3>Contato & Pedidos</h3>
         <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!"
@@ -403,13 +449,18 @@
         </a>
         <br /><br />
         <p>
-          <strong>Instagram:</strong><br />
+          <strong>Instagram Santo Forno:</strong><br />
           <a href="https://www.instagram.com/santoforno.paes/" target="_blank" class="link-instagram">
             @santoforno.paes
           </a>
         </p>
+        <p>
+          <strong>Instagram Santa Colmeia:</strong><br />
+          <a href="https://www.instagram.com/santacolmeia.mel/" target="_blank" class="link-instagram">
+            @melsantacolmeia
+          </a>
+        </p>
       </div>
-
       <div class="rodape-coluna">
         <h3>Dados de Pagamento</h3>
         <p>
@@ -417,12 +468,21 @@
           <strong>Chave Pix:</strong> 45.950.178/0001-31 (CNPJ)
         </p>
       </div>
+      <div class="rodape-coluna">
+        <h3>Horário de Funcionamento</h3>
+                  Todos os dias, das 8h às 19h.
+        </p>
+      </div>
     </div>
-
     <div class="rodape-copyright">
       <p>© SANTO FORNO · Todos os direitos reservados</p>
     </div>
   </footer>
+  <!-- Botão Flutuante do WhatsApp -->
+  <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!" target="_blank"
+    class="whatsapp-flutuante" title="Fazer pedido pelo WhatsApp">
+    <img src="imagens/LOGO WAPP.jpeg" alt="WhatsApp Santo Forno" />
+  </a>
 </body>
 
 </html>

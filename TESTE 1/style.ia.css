@@ -8,52 +8,27 @@
   --bege-fundo: #FFF5EC;
   --branco: #FFFFFF;
   --vermelho-edicao: #901119;
-
   --fonte-logo: 'Poiret One', cursive;
   --fonte-titulos: 'Amatica SC', sans-serif;
   --fonte-corpo: 'Bai Jamjuree', sans-serif;
-
+  
   /* Marca Santa Colmeia */
   --sc-preto: #000000;
   --sc-amarelo: #FFDA5E;
   --sc-laranja: #F28610;
-
   --fonte-sc-titulo: 'Libre Bodoni', serif;
   --fonte-sc-corpo: 'Jura', sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 60px; /* Garante que o menu fixo não cubra o título da seção ao clicar */
 }
 
 * {
   box-sizing: border-box;
 }
-/* FAIXA LARANJA DO CABEÇALHO COM LOGO LOCAL */
-.faixa-laranja-header {
-  background-color: var(--laranja-santo-forno);
-  padding: 25px 0;
-  width: 100%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
 
-.brand-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-}
-
-.logo-img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  border: 4px solid var(--bege-fundo);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  background-color: var(--bege-fundo);
-  object-fit: cover;
-}
 body {
   background-color: var(--bege-fundo);
   color: var(--azul-marinho);
@@ -64,14 +39,16 @@ body {
 }
 
 /* ==========================================================================
-   2. MENU DE NAVEGAÇÃO SUPERIOR (RESPONSIVO)
+   2. MENU DE NAVEGAÇÃO SUPERIOR (FIXO NO TOPO)
    ========================================================================== */
 .menu-navegacao {
   background-color: var(--azul-marinho);
-  padding: 15px 20px;
-  position: sticky;
+  padding: 12px 20px;
+  position: fixed; /* Deixa o menu fixo mesmo ao rolar a página */
   top: 0;
-  z-index: 100;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -102,8 +79,7 @@ body {
 .hamburger {
   display: none;
 }
-
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hamburger {
     display: flex;
     flex-direction: column;
@@ -111,6 +87,8 @@ body {
     cursor: pointer;
     width: 30px;
     margin-left: auto;
+    position: relative;
+    z-index: 1001;
   }
 
   .hamburger span {
@@ -118,7 +96,7 @@ body {
     width: 100%;
     background-color: var(--bege-fundo);
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
   }
 
   .menu-navegacao ul {
@@ -130,81 +108,83 @@ body {
     gap: 12px;
   }
 
-  .menu-toggle:checked~ul {
+  .menu-toggle:checked ~ ul {
     display: flex;
   }
+
+  /* --- Transição do Hambúrguer para X --- */
+  .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+/* Reduz o espaçamento do topo do cardápio principal */
+.container-cardapio {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px 20px 20px 20px; /* Reduz o padding superior de 20px para 10px */
 }
 
+/* Tira o espaçamento exagerado em cima do título MENU */
+.menu-titulo {
+  font-family: var(--fonte-titulos);
+  font-size: 50px;
+  text-align: center;
+  color: var(--azul-marinho);
+  margin-top: 10px; /* Reduz a margem do topo */
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--laranja-santo-forno);
+  padding-bottom: 10px;
+}
+
+/* Zera a margem da faixa laranja no cabeçalho */
+.faixa-laranja-header {
+  background-color: var(--laranja-santo-forno);
+  padding: 15px 0;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0; /* Remove a margem inferior para o conteúdo encostar mais */
+}
 /* ==========================================================================
-   3. CABEÇALHO E SEÇÃO HISTÓRIA (SANTO FORNO)
+   3. CABEÇALHO E FAIXA DA LOGO (INTEIRIÇA E SEM CÍRCULO)
    ========================================================================== */
 .header-principal {
   text-align: center;
   padding-bottom: 20px;
+  margin-top: 45px; /* Compensa a altura do menu fixo para não cobrir a logo */
+}
+
+.faixa-laranja-header {
+  background-color: var(--laranja-santo-forno);
+  padding: 15px 0; /* Reduz o espaçamento interno superior/inferior */
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .brand-container {
-  padding: 30px 20px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
 }
 
 .logo-img {
-  border-radius: 50%;
-  border: 3px solid var(--laranja-santo-forno);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 140px;
+  height: auto;
+  border-radius: 0; /* Remove o formato circular */
+  border: none; /* Remove a borda branca */
+  box-shadow: none; /* Remove a sombra do círculo */
+  background-color: transparent; /* Mantém o fundo transparente */
+  object-fit: contain;
 }
-
-.logo-titulo {
-  font-family: var(--fonte-logo);
-  color: var(--azul-marinho);
-  font-size: 46px;
-  margin: 10px 0 0 0;
-  letter-spacing: 2px;
-}
-
-.subtitulo-header {
-  font-family: var(--fonte-titulos);
-  font-size: 28px;
-  color: var(--laranja-santo-forno);
-  margin: 0;
-}
-
-.historia-container {
-  max-width: 700px;
-  margin: 20px auto 10px;
-  padding: 25px;
-  background-color: var(--branco);
-  border-radius: 12px;
-  border-left: 4px solid var(--laranja-santo-forno);
-  box-shadow: 0 4px 12px rgba(14, 14, 82, 0.05);
-  text-align: center;
-}
-
-.historia-container h2 {
-  font-family: var(--fonte-titulos);
-  font-size: 36px;
-  color: var(--azul-marinho);
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-.historia-texto {
-  font-size: 15px;
-  color: var(--azul-marinho);
-  line-height: 1.7;
-  margin: 0;
-}
-
-.imagem-familia {
-  width: 100%;
-  max-width: 500px;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin: 20px auto 0 auto;
-  display: block;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
 /* ==========================================================================
    4. ESTRUTURA GERAL DO CARDÁPIO & PRODUTOS
    ========================================================================== */
@@ -314,6 +294,16 @@ body {
   display: block;
 }
 
+/* Ajusta o enquadramento da imagem dos Especiais da Casa */
+.imagem-produto-especiais {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin-top: 15px;
+  display: block;
+}
 /* Subcategorias e Massas */
 .subtitulo-massa,
 .titulo-subcategoria {
@@ -328,6 +318,30 @@ body {
 .lista-simples {
   padding-left: 20px;
   margin-bottom: 20px;
+}
+
+/* Ajusta o enquadramento da imagem das Massas Artesanais */
+.imagem-produto-massas {
+  width: 100%;
+  height: 380px; /* Aumenta a altura para exibir a foto completa */
+  object-fit: cover; /* Ou 'contain', caso queira ver a imagem sem nenhum zoom */
+  object-position: center; /* Centraliza a foto para destacar os capelettis */
+  border-radius: 8px;
+  margin-top: 15px;
+  display: block;
+}
+
+/* Dica de porção recomendada para massas */
+.dica-porcao {
+  background-color: var(--bege-fundo);
+  border-left: 4px solid var(--laranja-santo-forno);
+  color: var(--azul-marinho);
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  display: block;
 }
 
 /* ==========================================================================
@@ -410,7 +424,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
   color: var(--sc-preto);
-  text-align: center;
+  text-align: left;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 15px;
   border-radius: 8px;
@@ -491,6 +505,16 @@ body {
   margin-bottom: 0;
 }
 
+/* Ajusta o enquadramento da imagem da Belo Sapore */
+.imagem-produto-ampliada {
+  width: 100%;
+  height: 380px; /* Aumenta a altura para caber a foto inteira sem cortar */
+  object-fit: contain; /* Garante que a foto inteira apareça sem cortes */
+  background-color: var(--bege-fundo); /* Fundo suave caso sobrem bordas */
+  border-radius: 8px;
+  margin-top: 15px;
+  display: block;
+}
 /* ==========================================================================
    8. BOTÃO DE WHATSAPP EM DESTAQUE (ANTES DAS AVALIAÇÕES)
    ========================================================================== */
@@ -674,4 +698,195 @@ body {
   padding-top: 15px;
   font-size: 12px;
   color: #aaa;
+}
+/* ==========================================================================
+   SEÇÃO NOSSA HISTÓRIA (REESTRUTURADA PARA O FINAL DO CARDÁPIO)
+   ========================================================================== */
+.historia-container {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  padding: 30px;
+  background-color: var(--branco);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 176, 95, 0.2);
+  box-shadow: 0 4px 12px rgba(14, 14, 82, 0.05);
+  text-align: center;
+}
+
+.historia-container h2 {
+  font-family: var(--fonte-titulos);
+  font-size: 38px;
+  color: var(--azul-marinho);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.historia-texto {
+  font-family: var(--fonte-corpo);
+  font-size: 15px;
+  color: var(--azul-marinho);
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+  text-align: justify;
+}
+
+.imagem-familia {
+  width: 100%;
+  max-width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 15px auto 0 auto;
+  display: block;
+}
+/* ==========================================================================
+   BOTÃO FLUTUANTE DO WHATSAPP (FIXO NO CANTO DA TELA)
+   ========================================================================== */
+.whatsapp-flutuante {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366; /* Verde oficial do WhatsApp */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 9999; /* Garante que fique por cima de todos os elementos */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-flutuante img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #FFFFFF;
+}
+
+/* Efeito ao passar o mouse */
+.whatsapp-flutuante:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+/* ==========================================================================
+   SEÇÃO FAQ COLAPSÁVEL (DETAILS/SUMMARY)
+   ========================================================================== */
+.secao-faq {
+  text-align: left;
+}
+
+.faq-categoria {
+  margin-bottom: 25px;
+}
+
+.faq-categoria h4 {
+  font-family: var(--fonte-titulos);
+  font-size: 26px;
+  color: var(--azul-marinho);
+  border-bottom: 1px solid var(--laranja-santo-forno);
+  padding-bottom: 4px;
+  margin-bottom: 15px;
+}
+
+.faq-item {
+  background-color: var(--bege-fundo);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 4px solid var(--laranja-santo-forno);
+  transition: background-color 0.2s ease;
+  overflow: hidden;
+}
+
+.faq-item summary {
+  padding: 14px 18px;
+  cursor: pointer;
+  list-style: none; /* Remove a seta padrão do navegador em alguns navegadores */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+/* Remove o indicador nativo no Chrome/Safari */
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Ícone de indicação (+) ao lado da pergunta */
+.faq-item summary::after {
+  content: '+';
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--azul-marinho);
+  margin-left: 10px;
+  transition: transform 0.2s ease;
+}
+
+/* Altera o ícone para (-) e destaca a caixa quando aberta */
+.faq-item[open] summary::after {
+  content: '−';
+}
+
+.faq-item[open] {
+  background-color: #FFF0E1; /* Um tom levemente mais destacado ao abrir */
+}
+
+.faq-item summary strong {
+  font-size: 15px;
+  color: var(--azul-marinho);
+}
+
+.faq-item p {
+  padding: 0 18px 15px 18px;
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+}
+/* ==========================================================================
+   MICRO-INTERAÇÕES: EFEITO POP / HOVER EM ÍCONES E BOTÕES
+   ========================================================================== */
+
+/* Transição suave padrão para imagens de ícones e botões */
+.logo-img,
+.icone-whatsapp-circulo,
+.whatsapp-flutuante,
+.btn-whatsapp-destaque,
+.btn-whatsapp-rodape,
+.btn-ver-avaliacoes,
+.btn-avaliar,
+.logo-secao,
+.logo-santa-colmeia,
+.item-torta img {
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
+}
+
+/* Efeito Little Pop ao passar o mouse (Hover) */
+.logo-img:hover,
+.icone-whatsapp-circulo:hover,
+.logo-secao:hover,
+.logo-santa-colmeia:hover {
+  transform: scale(1.08) rotate(-2deg); /* Dá uma leve aumentada e inclinadinha */
+}
+
+/* Efeito Pop nos cards do Mosaico de Tortas */
+.item-torta {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.item-torta:hover {
+  transform: translateY(-4px) scale(1.03); /* Eleva o card levemente */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito de clique (Active) - Sensation de botão físico sendo apertado */
+.btn-whatsapp-destaque:active,
+.whatsapp-flutuante:active,
+.btn-ver-avaliacoes:active,
+.btn-avaliar:active {
+  transform: scale(0.95);
 }
