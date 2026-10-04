@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. VARIÁVEIS E REGRAS GERAIS
+   1. VARIÁVEIS GERAIS & RESET DE ESTILOS
    ========================================================================== */
 :root {
   /* Marca Santo Forno */
@@ -11,7 +11,7 @@
   --fonte-logo: 'Poiret One', cursive;
   --fonte-titulos: 'Amatica SC', sans-serif;
   --fonte-corpo: 'Bai Jamjuree', sans-serif;
-  
+ 
   /* Marca Santa Colmeia */
   --sc-preto: #000000;
   --sc-amarelo: #FFDA5E;
@@ -22,7 +22,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 60px; /* Garante que o menu fixo não cubra o título da seção ao clicar */
+  scroll-padding-top: 70px; /* Garante que a barra fixa não cubra o topo da seção ao rolar */
 }
 
 * {
@@ -39,12 +39,12 @@ body {
 }
 
 /* ==========================================================================
-   2. MENU DE NAVEGAÇÃO SUPERIOR (FIXO NO TOPO)
+   2. MENU DE NAVEGAÇÃO SUPERIOR (FIXO NO TOPO + RESPONSIVO)
    ========================================================================== */
 .menu-navegacao {
   background-color: var(--azul-marinho);
   padding: 12px 20px;
-  position: fixed; /* Deixa o menu fixo mesmo ao rolar a página */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -58,15 +58,17 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 15px;
 }
 
 .menu-navegacao a {
   color: var(--bege-fundo);
   text-decoration: none;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
+  white-space: nowrap;
   transition: color 0.2s ease;
 }
 
@@ -74,99 +76,26 @@ body {
   color: var(--laranja-santo-forno);
 }
 
-/* Menu Hambúrguer (Mobile) */
+/* Oculta os controlos hambúrguer por padrão em ecrãs de computador */
 .menu-toggle,
 .hamburger {
   display: none;
 }
-@media (max-width: 1024px) {
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    width: 30px;
-    margin-left: auto;
-    position: relative;
-    z-index: 1001;
-  }
 
-  .hamburger span {
-    height: 3px;
-    width: 100%;
-    background-color: var(--bege-fundo);
-    border-radius: 2px;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .menu-navegacao ul {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding-top: 15px;
-    gap: 12px;
-  }
-
-  .menu-toggle:checked ~ ul {
-    display: flex;
-  }
-
-  /* --- Transição do Hambúrguer para X --- */
-  .menu-toggle:checked ~ .hamburger span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .menu-toggle:checked ~ .hamburger span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle:checked ~ .hamburger span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-}
-/* Reduz o espaçamento do topo do cardápio principal */
-.container-cardapio {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 10px 20px 20px 20px; /* Reduz o padding superior de 20px para 10px */
-}
-
-/* Tira o espaçamento exagerado em cima do título MENU */
-.menu-titulo {
-  font-family: var(--fonte-titulos);
-  font-size: 50px;
+/* ==========================================================================
+   3. CABEÇALHO & LOGOTIPO
+   ========================================================================== */
+.header-principal {
   text-align: center;
-  color: var(--azul-marinho);
-  margin-top: 10px; /* Reduz a margem do topo */
-  margin-bottom: 30px;
-  border-bottom: 2px solid var(--laranja-santo-forno);
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  margin-top: 50px;
 }
 
-/* Zera a margem da faixa laranja no cabeçalho */
 .faixa-laranja-header {
   background-color: var(--laranja-santo-forno);
   padding: 15px 0;
   width: 100%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 0; /* Remove a margem inferior para o conteúdo encostar mais */
-}
-/* ==========================================================================
-   3. CABEÇALHO E FAIXA DA LOGO (INTEIRIÇA E SEM CÍRCULO)
-   ========================================================================== */
-.header-principal {
-  text-align: center;
-  padding-bottom: 20px;
-  margin-top: 45px; /* Compensa a altura do menu fixo para não cobrir a logo */
-}
-
-.faixa-laranja-header {
-  background-color: var(--laranja-santo-forno);
-  padding: 15px 0; /* Reduz o espaçamento interno superior/inferior */
-  width: 100%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
 }
 
 .brand-container {
@@ -177,68 +106,72 @@ body {
 }
 
 .logo-img {
-  width: 140px;
+  width: 130px;
   height: auto;
-  border-radius: 0; /* Remove o formato circular */
-  border: none; /* Remove a borda branca */
-  box-shadow: none; /* Remove a sombra do círculo */
-  background-color: transparent; /* Mantém o fundo transparente */
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
   object-fit: contain;
 }
+
 /* ==========================================================================
-   4. ESTRUTURA GERAL DO CARDÁPIO & PRODUTOS
+   4. ESTRUTURA DOS CARDÁPIOS & LISTAS DE PRODUTOS
    ========================================================================== */
 .container-cardapio {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px 20px 20px 20px;
 }
 
+/* Redução sutil do tamanho de todos os títulos principais */
 .menu-titulo {
   font-family: var(--fonte-titulos);
-  font-size: 50px;
+  font-size: 42px; /* Reduzido de 50px */
   text-align: center;
   color: var(--azul-marinho);
-  margin-bottom: 40px;
+  margin-top: 10px;
+  margin-bottom: 25px;
   border-bottom: 2px solid var(--laranja-santo-forno);
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 
 .secao-cardapio {
   background-color: var(--branco);
   border-radius: 12px;
-  padding: 30px;
-  margin-bottom: 40px;
+  padding: 25px;
+  margin-bottom: 35px;
   box-shadow: 0 4px 12px rgba(14, 14, 82, 0.05);
   border: 1px solid rgba(255, 176, 95, 0.2);
 }
 
 .secao-cardapio h3 {
   font-family: var(--fonte-titulos);
-  font-size: 38px;
+  font-size: 32px; /* Reduzido de 38px */
   color: var(--azul-marinho);
   margin: 0 0 5px 0;
   text-align: left;
 }
 
 .descricao-secao {
-  font-size: 14px;
+  font-size: 13px;
   color: #555;
   margin-top: 0;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   font-style: italic;
 }
 
+/* Estrutura das Linhas de Produto */
 .lista-produtos {
   list-style: none;
   padding: 0;
-  margin: 0 0 25px 0;
+  margin: 0 0 20px 0;
 }
 
 .lista-produtos li {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
   padding: 12px 0;
   border-bottom: 1px dashed #e0e0e0;
 }
@@ -247,64 +180,88 @@ body {
   border-bottom: none;
 }
 
+.info-produto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  padding-right: 10px;
+}
+
+.nome-produto {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--azul-marinho);
+}
+
 .preco {
   font-weight: 700;
   color: var(--azul-marinho);
-  margin-left: 10px;
   white-space: nowrap;
+  font-size: 15px;
 }
 
+/* Selos e Etiquetas */
 .selo {
   background-color: var(--laranja-santo-forno);
   color: var(--azul-marinho);
   font-size: 11px;
   font-weight: 700;
-  padding: 2px 6px;
+  padding: 3px 8px;
   border-radius: 4px;
-  margin-left: 6px;
-  vertical-align: middle;
+  margin-top: 4px;
+  display: inline-block;
 }
 
+/* Força a etiqueta "Sucesso de Vendas" a ir sempre para a linha de baixo */
+.selo-bloco {
+  display: table !important;
+  margin-top: 6px !important;
+}
+
+/* Comentários/Notas do produto em linha inferior */
 .obs {
   font-size: 12px;
   color: #777;
-  margin-left: 5px;
+  margin-top: 4px;
+  display: block;
+  font-style: italic;
 }
 
 .obs-paragrafo {
   font-size: 12px;
   color: #666;
-  margin-top: -15px;
-  margin-bottom: 20px;
+  margin-top: -10px;
+  margin-bottom: 15px;
+  font-style: italic;
 }
 
-#campeao {
+/* Dica de porção recomendada para massas */
+.dica-porcao {
   background-color: var(--bege-fundo);
-  padding: 8px 10px;
+  border-left: 4px solid var(--laranja-santo-forno);
+  color: var(--azul-marinho);
+  font-size: 13px;
+  padding: 10px 14px;
   border-radius: 6px;
-  font-weight: 600;
-}
-
-.imagem-produto {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-top: 15px;
+  margin-top: -5px;
+  margin-bottom: 20px;
   display: block;
 }
 
-/* Ajusta o enquadramento da imagem dos Especiais da Casa */
-.imagem-produto-especiais {
+/* Imagens das Secções */
+.imagem-produto,
+.imagem-produto-especiais,
+.imagem-produto-massas {
   width: 100%;
-  height: 380px;
+  height: 320px;
   object-fit: cover;
   object-position: center;
   border-radius: 8px;
   margin-top: 15px;
   display: block;
 }
-/* Subcategorias e Massas */
+
 .subtitulo-massa,
 .titulo-subcategoria {
   font-weight: 700;
@@ -315,37 +272,8 @@ body {
   padding-bottom: 4px;
 }
 
-.lista-simples {
-  padding-left: 20px;
-  margin-bottom: 20px;
-}
-
-/* Ajusta o enquadramento da imagem das Massas Artesanais */
-.imagem-produto-massas {
-  width: 100%;
-  height: 380px; /* Aumenta a altura para exibir a foto completa */
-  object-fit: cover; /* Ou 'contain', caso queira ver a imagem sem nenhum zoom */
-  object-position: center; /* Centraliza a foto para destacar os capelettis */
-  border-radius: 8px;
-  margin-top: 15px;
-  display: block;
-}
-
-/* Dica de porção recomendada para massas */
-.dica-porcao {
-  background-color: var(--bege-fundo);
-  border-left: 4px solid var(--laranja-santo-forno);
-  color: var(--azul-marinho);
-  font-size: 14px;
-  padding: 10px 14px;
-  border-radius: 6px;
-  margin-top: -10px;
-  margin-bottom: 20px;
-  display: block;
-}
-
 /* ==========================================================================
-   5. MOSAICO DE TORTAS (FLEXBOX)
+   5. MOSAICO DE TORTAS
    ========================================================================== */
 .mosaico-tortas {
   display: flex;
@@ -357,7 +285,7 @@ body {
 
 .item-torta {
   flex: 1 1 calc(33.333% - 15px);
-  min-width: 130px;
+  min-width: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -388,17 +316,11 @@ body {
 }
 
 .item-torta-larga img {
-  height: 160px;
-}
-
-@media (max-width: 600px) {
-  .item-torta {
-    flex: 1 1 calc(50% - 15px);
-  }
+  height: 150px;
 }
 
 /* ==========================================================================
-   6. SEÇÃO SANTA COLMEIA (TEMA AMARELO)
+   6. SECÇÃO SANTA COLMEIA
    ========================================================================== */
 .secao-santa-colmeia {
   background-color: var(--sc-amarelo);
@@ -412,7 +334,7 @@ body {
 }
 
 .logo-santa-colmeia {
-  max-width: 220px;
+  max-width: 200px;
   width: 100%;
   height: auto;
   display: block;
@@ -421,11 +343,11 @@ body {
 
 .santa-colmeia-historia p {
   font-family: var(--fonte-sc-corpo);
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.6;
   color: var(--sc-preto);
   text-align: left;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.55);
   padding: 15px;
   border-radius: 8px;
   border-left: 4px solid var(--sc-preto);
@@ -443,32 +365,25 @@ body {
 
 .santa-colmeia-produtos .lista-produtos li {
   border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
-  font-family: var(--fonte-sc-corpo);
-  font-size: 16px;
 }
 
-.santa-colmeia-produtos .lista-produtos span,
+.santa-colmeia-produtos .nome-produto,
 .santa-colmeia-produtos .preco {
   color: var(--sc-preto);
+  font-family: var(--fonte-sc-corpo);
   font-weight: 600;
 }
 
-.santa-colmeia-produtos .obs-paragrafo {
-  color: #333333;
-  font-family: var(--fonte-sc-corpo);
-}
-
 /* ==========================================================================
-   7. SEÇÃO BELO SAPORE 
+   7. SECÇÃO BELO SAPORE
    ========================================================================== */
 .sobre-belo-sapore {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .logo-secao {
-  max-width: 120px;
-  /* Logo menor e delicada */
+  max-width: 110px;
   height: auto;
   display: block;
   margin: 0 auto 10px auto;
@@ -476,28 +391,26 @@ body {
 
 .titulo-belo-sapore {
   font-family: var(--fonte-titulos);
-  font-size: 34px;
+  font-size: 32px;
   color: var(--azul-marinho);
-  margin: 0 0 15px 0;
+  margin: 0 0 12px 0;
   text-align: center;
 }
 
-/* Card do texto no estilo Santa Colmeia (quadradinho com borda lateral) */
 .belo-sapore-historia {
   background-color: var(--bege-fundo);
-  padding: 18px 20px;
+  padding: 16px 18px;
   border-radius: 8px;
   border-left: 4px solid var(--azul-marinho);
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .belo-sapore-historia p {
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.6;
   color: var(--azul-marinho);
   text-align: left;
-  /* <-- ALINHA O TEXTO À ESQUERDA */
   margin: 0 0 10px 0;
 }
 
@@ -505,36 +418,35 @@ body {
   margin-bottom: 0;
 }
 
-/* Ajusta o enquadramento da imagem da Belo Sapore */
 .imagem-produto-ampliada {
   width: 100%;
-  height: 380px; /* Aumenta a altura para caber a foto inteira sem cortar */
-  object-fit: contain; /* Garante que a foto inteira apareça sem cortes */
-  background-color: var(--bege-fundo); /* Fundo suave caso sobrem bordas */
+  height: 320px;
+  object-fit: contain;
+  background-color: var(--bege-fundo);
   border-radius: 8px;
   margin-top: 15px;
   display: block;
 }
+
 /* ==========================================================================
-   8. BOTÃO DE WHATSAPP EM DESTAQUE (ANTES DAS AVALIAÇÕES)
+   8. BOTÕES DE WHATSAPP E AVALIAÇÕES
    ========================================================================== */
 .container-btn-whatsapp-principal {
   text-align: center;
-  margin: 30px 0 40px 0;
+  margin: 25px 0 35px 0;
 }
 
 .btn-whatsapp-destaque {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   background-color: #25D366;
-  /* Verde oficial do WhatsApp */
   color: #FFFFFF;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  padding: 14px 28px;
+  padding: 12px 24px;
   border-radius: 50px;
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
   transition: transform 0.2s ease, background-color 0.2s ease;
@@ -546,16 +458,13 @@ body {
 }
 
 .icone-whatsapp-circulo {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   object-fit: cover;
   background-color: #FFFFFF;
 }
 
-/* ==========================================================================
-   8. AVALIAÇÕES E BOTÕES
-   ========================================================================== */
 .secao-avaliacoes {
   text-align: center;
 }
@@ -564,24 +473,24 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .card-avaliacao {
   background-color: var(--bege-fundo);
-  padding: 20px;
+  padding: 18px;
   border-radius: 8px;
   border: 1px solid rgba(255, 176, 95, 0.4);
 }
 
 .estrelas {
   color: #FFD700;
-  font-size: 18px;
-  margin-bottom: 8px;
+  font-size: 16px;
+  margin-bottom: 6px;
 }
 
 .texto-avaliacao {
-  font-size: 14px;
+  font-size: 13.5px;
   font-style: italic;
   margin: 0 0 8px 0;
   color: var(--azul-marinho);
@@ -595,7 +504,7 @@ body {
 
 .botoes-avaliacoes {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -603,11 +512,11 @@ body {
 .btn-ver-avaliacoes,
 .btn-avaliar {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 18px;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
   transition: transform 0.2s;
 }
 
@@ -621,175 +530,40 @@ body {
   color: var(--azul-marinho);
 }
 
-.btn-ver-avaliacoes:hover,
-.btn-avaliar:hover {
-  transform: scale(1.03);
-}
-
 /* ==========================================================================
-   9. RODAPÉ
-   ========================================================================== */
-.rodape {
-  background-color: var(--azul-marinho);
-  color: var(--branco);
-  padding: 40px 20px 20px;
-  margin-top: 50px;
-}
-
-.rodape-conteudo {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.rodape-coluna {
-  flex: 1;
-  min-width: 250px;
-}
-
-.rodape-coluna h3 {
-  font-family: var(--fonte-titulos);
-  font-size: 28px;
-  color: var(--laranja-santo-forno);
-  margin-top: 0;
-  margin-bottom: 15px;
-}
-
-.rodape-coluna p {
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0 0 10px 0;
-}
-
-.link-instagram {
-  color: var(--laranja-santo-forno);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.link-instagram:hover {
-  text-decoration: underline;
-}
-
-.btn-whatsapp-rodape {
-  display: inline-block;
-  background-color: var(--laranja-santo-forno);
-  color: var(--azul-marinho);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 6px;
-  transition: background-color 0.2s, transform 0.2s;
-}
-
-.btn-whatsapp-rodape:hover {
-  background-color: var(--bege-fundo);
-  transform: scale(1.03);
-}
-
-.rodape-copyright {
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: 30px;
-  padding-top: 15px;
-  font-size: 12px;
-  color: #aaa;
-}
-/* ==========================================================================
-   SEÇÃO NOSSA HISTÓRIA (REESTRUTURADA PARA O FINAL DO CARDÁPIO)
-   ========================================================================== */
-.historia-container {
-  max-width: 800px;
-  margin: 0 auto 40px auto;
-  padding: 30px;
-  background-color: var(--branco);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 176, 95, 0.2);
-  box-shadow: 0 4px 12px rgba(14, 14, 82, 0.05);
-  text-align: center;
-}
-
-.historia-container h2 {
-  font-family: var(--fonte-titulos);
-  font-size: 38px;
-  color: var(--azul-marinho);
-  margin-top: 0;
-  margin-bottom: 15px;
-}
-
-.historia-texto {
-  font-family: var(--fonte-corpo);
-  font-size: 15px;
-  color: var(--azul-marinho);
-  line-height: 1.7;
-  margin: 0 0 20px 0;
-  text-align: justify;
-}
-
-.imagem-familia {
-  width: 100%;
-  max-width: 100%;
-  height: 380px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin: 15px auto 0 auto;
-  display: block;
-}
-/* ==========================================================================
-   BOTÃO FLUTUANTE DO WHATSAPP (FIXO NO CANTO DA TELA)
-   ========================================================================== */
-.whatsapp-flutuante {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 60px;
-  height: 60px;
-  background-color: #25D366; /* Verde oficial do WhatsApp */
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 9999; /* Garante que fique por cima de todos os elementos */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-decoration: none;
-}
-
-.whatsapp-flutuante img {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  object-fit: cover;
-  background-color: #FFFFFF;
-}
-
-/* Efeito ao passar o mouse */
-.whatsapp-flutuante:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-}
-/* ==========================================================================
-   SEÇÃO FAQ COLAPSÁVEL (DETAILS/SUMMARY)
+   9. SECÇÃO FAQ (REDESENHADA)
    ========================================================================== */
 .secao-faq {
   text-align: left;
 }
 
-.faq-categoria {
+.faq-titulo-principal {
+  font-family: var(--fonte-titulos);
+  font-size: 42px !important; /* Destaque para FAQ grande */
+  color: var(--azul-marinho);
+  margin: 0 0 4px 0;
+  text-align: left;
+}
+
+.faq-subtitulo {
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+  margin-top: 0;
   margin-bottom: 25px;
+  border-bottom: 2px solid var(--laranja-santo-forno);
+  padding-bottom: 8px;
+}
+
+.faq-categoria {
+  margin-bottom: 20px;
 }
 
 .faq-categoria h4 {
   font-family: var(--fonte-titulos);
-  font-size: 26px;
+  font-size: 24px;
   color: var(--azul-marinho);
-  border-bottom: 1px solid var(--laranja-santo-forno);
-  padding-bottom: 4px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .faq-item {
@@ -802,91 +576,271 @@ body {
 }
 
 .faq-item summary {
-  padding: 14px 18px;
+  padding: 12px 16px;
   cursor: pointer;
-  list-style: none; /* Remove a seta padrão do navegador em alguns navegadores */
+  list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
   user-select: none;
 }
 
-/* Remove o indicador nativo no Chrome/Safari */
 .faq-item summary::-webkit-details-marker {
   display: none;
 }
 
-/* Ícone de indicação (+) ao lado da pergunta */
 .faq-item summary::after {
   content: '+';
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--azul-marinho);
   margin-left: 10px;
-  transition: transform 0.2s ease;
 }
 
-/* Altera o ícone para (-) e destaca a caixa quando aberta */
 .faq-item[open] summary::after {
   content: '−';
 }
 
 .faq-item[open] {
-  background-color: #FFF0E1; /* Um tom levemente mais destacado ao abrir */
+  background-color: #FFF0E1;
 }
 
 .faq-item summary strong {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--azul-marinho);
 }
 
 .faq-item p {
-  padding: 0 18px 15px 18px;
+  padding: 0 16px 14px 16px;
   margin: 0;
-  font-size: 14px;
+  font-size: 13.5px;
   color: #444;
-  line-height: 1.6;
+  line-height: 1.5;
 }
+
 /* ==========================================================================
-   MICRO-INTERAÇÕES: EFEITO POP / HOVER EM ÍCONES E BOTÕES
+   10. SECÇÃO NOSSA HISTÓRIA
    ========================================================================== */
-
-/* Transição suave padrão para imagens de ícones e botões */
-.logo-img,
-.icone-whatsapp-circulo,
-.whatsapp-flutuante,
-.btn-whatsapp-destaque,
-.btn-whatsapp-rodape,
-.btn-ver-avaliacoes,
-.btn-avaliar,
-.logo-secao,
-.logo-santa-colmeia,
-.item-torta img {
-  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
+.historia-container {
+  max-width: 800px;
+  margin: 0 auto 35px auto;
+  padding: 25px;
+  background-color: var(--branco);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 176, 95, 0.2);
+  box-shadow: 0 4px 12px rgba(14, 14, 82, 0.05);
+  text-align: center;
 }
 
-/* Efeito Little Pop ao passar o mouse (Hover) */
-.logo-img:hover,
-.icone-whatsapp-circulo:hover,
-.logo-secao:hover,
-.logo-santa-colmeia:hover {
-  transform: scale(1.08) rotate(-2deg); /* Dá uma leve aumentada e inclinadinha */
+.historia-container h2 {
+  font-family: var(--fonte-titulos);
+  font-size: 32px;
+  color: var(--azul-marinho);
+  margin-top: 0;
+  margin-bottom: 12px;
 }
 
-/* Efeito Pop nos cards do Mosaico de Tortas */
-.item-torta {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.historia-texto {
+  font-family: var(--fonte-corpo);
+  font-size: 14px;
+  color: var(--azul-marinho);
+  line-height: 1.6;
+  margin: 0 0 15px 0;
+  text-align: justify;
 }
 
-.item-torta:hover {
-  transform: translateY(-4px) scale(1.03); /* Eleva o card levemente */
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+.imagem-familia {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 15px auto 0 auto;
+  display: block;
 }
 
-/* Efeito de clique (Active) - Sensation de botão físico sendo apertado */
-.btn-whatsapp-destaque:active,
-.whatsapp-flutuante:active,
-.btn-ver-avaliacoes:active,
-.btn-avaliar:active {
-  transform: scale(0.95);
+/* ==========================================================================
+   11. RODAPÉ
+   ========================================================================== */
+.rodape {
+  background-color: var(--azul-marinho);
+  color: var(--branco);
+  padding: 35px 20px 20px;
+  margin-top: 40px;
+}
+
+.rodape-conteudo {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.rodape-coluna {
+  flex: 1;
+  min-width: 220px;
+}
+
+.rodape-coluna h3 {
+  font-family: var(--fonte-titulos);
+  font-size: 24px;
+  color: var(--laranja-santo-forno);
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.rodape-coluna p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+}
+
+.link-instagram {
+  color: var(--laranja-santo-forno);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-whatsapp-rodape {
+  display: inline-block;
+  background-color: var(--laranja-santo-forno);
+  color: var(--azul-marinho);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+
+.rodape-copyright {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 25px;
+  padding-top: 15px;
+  font-size: 11px;
+  color: #aaa;
+}
+
+/* ==========================================================================
+   12. BOTÃO FLUTUANTE DO WHATSAPP
+   ========================================================================== */
+.whatsapp-flutuante {
+  position: fixed;
+  bottom: 85px; /* Subido para evitar sobreposição com barras do telemóvel e o badge do Netlify */
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  background-color: #25D366;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-flutuante img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #FFFFFF;
+}
+
+/* ==========================================================================
+   13. MEDIA QUERIES (RESPONSIVIDADE EXCLUSIVA PARA TELEMÓVEL)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  /* Ativação do Menu Hambúrguer em tablets e telemóveis */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    width: 28px;
+    margin-left: auto;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .hamburger span {
+    height: 3px;
+    width: 100%;
+    background-color: var(--bege-fundo);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .menu-navegacao ul {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 15px;
+    gap: 12px;
+  }
+
+  .menu-toggle:checked ~ ul {
+    display: flex;
+  }
+
+  /* Animação do Hambúrguer para o Ícone "X" */
+  .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 600px) {
+  /* Ajustes específicos para telemóveis */
+  .container-cardapio {
+    padding: 10px 12px 20px 12px;
+  }
+
+  .secao-cardapio {
+    padding: 18px 15px;
+    margin-bottom: 25px;
+  }
+
+  .menu-titulo {
+    font-size: 36px;
+  }
+
+  .secao-cardapio h3,
+  .historia-container h2 {
+    font-size: 28px;
+  }
+
+  .item-torta {
+    flex: 1 1 calc(50% - 10px); /* Exibe duas tortas por linha no telemóvel */
+  }
+
+  .imagem-produto,
+  .imagem-produto-especiais,
+  .imagem-produto-massas,
+  .imagem-produto-ampliada {
+    height: 240px; /* Reduz altura das fotos no telemóvel para poupar rolagem */
+  }
+
+  .whatsapp-flutuante {
+    bottom: 85px; /* Posição segura para não cobrir nem ser coberto no telemóvel */
+    right: 15px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .whatsapp-flutuante img {
+    width: 30px;
+    height: 30px;
+  }
 }
