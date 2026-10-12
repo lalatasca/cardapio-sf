@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <!-- Google Analytics Tracking Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSD1EFT6VT"></script>
@@ -13,7 +14,7 @@
   <meta charset="UTF-8" />
   <!-- Configuração para garantir responsividade perfeita em telemóveis e tablets -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <title>SANTO FORNO — Cardápio Digital</title>
   <meta name="description" content="Pães de fermentação natural e massas artesanais em Serra Negra - SP." />
 
@@ -23,18 +24,24 @@
   <!-- Carregamento das Fontes Oficiais da Marca -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Amatica+SC:wght@400;700&family=Bai+Jamjuree:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Jura:wght@300..700&family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Poiret+One&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amatica+SC:wght@400;700&family=Bai+Jamjuree:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Jura:wght@300..700&family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Poiret+One&display=swap"
+    rel="stylesheet" />
+
+  <!-- Animate.css via CDN para Animações (WhatsApp Flutuante) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <!-- Ficheiro Principal de Estilos CSS -->
   <link rel="stylesheet" href="style.ia.css" />
 </head>
+
 <body>
 
   <!-- ==========================================================================
        1. CABEÇALHO & MENU DE NAVEGAÇÃO
        ========================================================================== -->
   <header class="header-principal">
-    
+
     <!-- Menu Fixo Superior -->
     <nav class="menu-navegacao">
       <!-- Controle do Menu Hambúrguer via Checkbox CSS -->
@@ -53,6 +60,7 @@
         <li><a href="#tortas">Tortas</a></li>
         <li><a href="#mel">Mel Santa Colmeia</a></li>
         <li><a href="#geleias">Geléias Belo Sapore</a></li>
+        <li><a href="#alvorada">Alvorada da Serra</a></li>
         <li><a href="#nossa-historia">Nossa História</a></li>
         <li><a href="#avaliacoes">Avaliações</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -77,7 +85,7 @@
     <h1 class="menu-titulo">Menu</h1>
 
     <!-- ----------------------------------------------------------------------
-         2.1. SECÇÃO: PÃES ITALIÂNOS
+         2.1. SECÇÃO: PÃES ITALIANOS
          ---------------------------------------------------------------------- -->
     <section id="paes" class="secao-cardapio">
       <h3>Pães Italianos</h3>
@@ -137,7 +145,8 @@
         <li>
           <div class="info-produto">
             <span class="nome-produto">Focaccia Italiana</span>
-            <span class="selo selo-bloco">Sucesso de Vendas</span>
+            <!-- Adicionamos as classes de animação da Animate.css -->
+            <span class="selo selo-bloco animate__animated animate__zoomIn">Sucesso de Vendas</span>
           </div>
           <span class="preco">R$ 70</span>
         </li>
@@ -151,7 +160,8 @@
         <li>
           <div class="info-produto">
             <span class="nome-produto">Granola Artesanal</span>
-            <span class="selo">Mais Vendido!</span>
+            <!-- Adicionamos as classes de animação da Animate.css -->
+            <span class="selo animate__animated animate__zoomIn">Mais Vendido!</span>
           </div>
           <span class="preco">R$ 45</span>
         </li>
@@ -171,14 +181,14 @@
         <li>
           <div class="info-produto">
             <span class="nome-produto">Brioche</span>
-            <i class="obs">Lançamento</i>
+            <span class="selo selo-bloco animate__animated animate__zoomIn">Lançamento</span>
           </div>
           <span class="preco">R$ 65</span>
         </li>
         <li>
           <div class="info-produto">
             <span class="nome-produto">Brioche com blend de chocolate nobre</span>
-            <i class="obs">Lançamento</i>
+            <span class="selo selo-bloco animate__animated animate__zoomIn">Lançamento</span>
           </div>
           <span class="preco">R$ 70</span>
         </li>
@@ -369,9 +379,54 @@
 
       <img src="imagens/MEL.JPG" alt="Pote de Mel de verdade da Santa Colmeia" class="imagem-produto" />
     </section>
+    <!-- ----------------------------------------------------------------------
+         2.6. SECÇÃO: ALVORADA DA SERRA (QUEIJOS ARTESANAIS)
+         ---------------------------------------------------------------------- -->
+    <section id="alvorada" class="secao-cardapio secao-alvorada">
+      <div class="alvorada-header">
+        <img src="imagens/LOGOAS.jpeg" alt="Logo Queijaria Alvorada da Serra" class="logo-alvorada" />
+      </div>
+
+      <div class="alvorada-historia">
+        <p>
+          A Alvorada da Serra é uma premiada queijaria artesanal e familiar em Serra Negra (SP). Comandada por dois
+          médicos veterinários, o cuidado é total em cada etapa: da nutrição do rebanho à maturação perfeita de cada
+          peça. É essa excelência que escolhemos para o Santo Forno — do nosso pão de queijo mineiro às massas recheadas
+          e
+          pães artesanais, todos levam o sabor incomparável dos queijos Alvorada da Serra.
+        </p>
+      </div>
+
+      <div class="alvorada-produtos">
+        <ul class="lista-produtos">
+          <li>
+            <div class="info-produto">
+              <span class="nome-produto">Queijo Fresco</span>
+            </div>
+            <span class="preco">R$ 30</span>
+          </li>
+          <li>
+            <div class="info-produto">
+              <span class="nome-produto">Queijo Boursin</span>
+            </div>
+            <span class="preco">R$ 30</span>
+          </li>
+          <li>
+            <div class="info-produto">
+              <span class="nome-produto">Queijo Meia Cura</span>
+              <span class="selo animate__animated animate__zoomIn">Mais Vendido!</span>
+            </div>
+            <span class="preco">R$ 35</span>
+          </li>
+        </ul>
+      </div>
+
+      <img src="imagens/QUEIJOS ALVORADA.jpg" alt="Queijos Artesanais Alvorada da Serra"
+        class="imagem-produto-inteira" />
+    </section>
 
     <!-- ----------------------------------------------------------------------
-         2.6. SECÇÃO: BELO SAPORE (GELÉIAS ARTESANAIS)
+         2.7. SECÇÃO: BELO SAPORE (GELÉIAS ARTESANAIS)
          ---------------------------------------------------------------------- -->
     <section id="geleias" class="secao-cardapio">
       <div class="sobre-belo-sapore">
@@ -408,8 +463,10 @@
         <li>
           <div class="info-produto">
             <span class="nome-produto">Geléia de Limão Siciliano 200g</span>
+            <span class="selo animate__animated animate__zoomIn">Mais Vendido!</span>
           </div>
           <span class="preco">R$ 40</span>
+        </li>
         </li>
         <li>
           <div class="info-produto">
@@ -428,18 +485,20 @@
       <img src="imagens/GELEIA.jpg" alt="Pote de geléia artesanal Belo Sapore" class="imagem-produto-ampliada" />
     </section>
 
+
     <!-- ----------------------------------------------------------------------
-         2.7. BOTÃO PRINCIPAL DE PEDIDO VIA WHATSAPP
+         2.8. BOTÃO PRINCIPAL DE PEDIDO VIA WHATSAPP
          ---------------------------------------------------------------------- -->
     <div class="container-btn-whatsapp-principal">
-      <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!" target="_blank" class="btn-whatsapp-destaque">
+      <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!" target="_blank"
+        class="btn-whatsapp-destaque">
         <img src="imagens/LOGO WAPP.jpeg" alt="WhatsApp" class="icone-whatsapp-circulo" />
         Faça seu Pedido via WhatsApp
       </a>
     </div>
 
     <!-- ----------------------------------------------------------------------
-         2.8. SECÇÃO: NOSSA HISTÓRIA
+         2.9. SECÇÃO: NOSSA HISTÓRIA (CORRIGIDO SEM ERROS DE COMENTÁRIO)
          ---------------------------------------------------------------------- -->
     <section id="nossa-historia" class="historia-container">
       <h2>Nossa História</h2>
@@ -455,7 +514,7 @@
     </section>
 
     <!-- ----------------------------------------------------------------------
-         2.9. SECÇÃO: AVALIAÇÕES DE CLIENTES
+         2.10. SECÇÃO: AVALIAÇÕES DE CLIENTES
          ---------------------------------------------------------------------- -->
     <section id="avaliacoes" class="secao-cardapio secao-avaliacoes">
       <h3>O que nossos clientes dizem</h3>
@@ -492,7 +551,7 @@
     </section>
 
     <!-- ----------------------------------------------------------------------
-         2.10. SECÇÃO: FAQ (PERGUNTAS FREQUENTES)
+         2.11. SECÇÃO: FAQ (PERGUNTAS FREQUENTES)
          ---------------------------------------------------------------------- -->
     <section id="faq" class="secao-cardapio secao-faq">
       <!-- FAQ em Destaque Principal -->
@@ -502,7 +561,7 @@
       <!-- Categoria 1: Pedidos e Funcionamento -->
       <div class="faq-categoria">
         <h4>1. Pedidos e Funcionamento</h4>
-        
+
         <details class="faq-item">
           <summary><strong>Com quanto tempo de antecedência devo fazer meu pedido?</strong></summary>
           <p>Pedimos que os pedidos sejam feitos com no mínimo 2 dias de antecedência. Como nossos pães passam por um
@@ -571,7 +630,7 @@
         <details class="faq-item">
           <summary><strong>Quais são as formas de pagamento aceitas?</strong></summary>
           <p>Aceitamos pagamentos via PIX ou Dinheiro. O pagamento deve ser realizado no momento da retirada do produto
-            ou no ato da entrega.</p>
+            or no ato da entrega.</p>
         </details>
       </div>
     </section>
@@ -583,11 +642,12 @@
        ========================================================================== -->
   <footer class="rodape">
     <div class="rodape-conteudo">
-     
+
       <!-- Coluna 1: Contatos e Redes Sociais -->
       <div class="rodape-coluna">
         <h3>Contato & Pedidos</h3>
-        <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!" class="btn-whatsapp-rodape" target="_blank">
+        <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!"
+          class="btn-whatsapp-rodape" target="_blank">
           Pedir pelo WhatsApp
         </a>
         <br /><br />
@@ -629,11 +689,40 @@
   </footer>
 
   <!-- ==========================================================================
-       4. BOTÃO FLUTUANTE DO WHATSAPP (FIXO NO CANTO INFERIOR)
+       4. BOTÃO FLUTUANTE DO WHATSAPP (COM IDENTIFICADOR PARA O SCRIPT)
        ========================================================================== -->
-  <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!" target="_blank" class="whatsapp-flutuante" title="Fazer pedido pelo WhatsApp">
+  <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!" target="_blank"
+    class="whatsapp-flutuante" id="btn-wapp" title="Fazer pedido pelo WhatsApp">
     <img src="imagens/LOGO WAPP.jpeg" alt="WhatsApp Santo Forno" />
   </a>
 
+  <!-- ==========================================================================
+       5. SCRIPTS INTERATIVOS (TIMER DE ANIMAÇÃO DO WHATSAPP)
+       ========================================================================== -->
+  <script>
+    // Captura o elemento do botão flutuante pelo ID
+    const btnWapp = document.getElementById('btn-wapp');
+
+    // Função responsável por adicionar a animação shakeY e removê-la após a execução
+    function dispararAnimacaoWapp() {
+      if (btnWapp) {
+        // Adiciona as classes da biblioteca Animate.css
+        btnWapp.classList.add('animate__animated', 'animate__shakeY');
+
+        // Remove as classes após 1 segundo (tempo total do efeito shakeY)
+        setTimeout(() => {
+          btnWapp.classList.remove('animate__animated', 'animate__shakeY');
+        }, 1000);
+      }
+    }
+
+    // Primeiro disparo após 5 segundos da abertura da página
+    setTimeout(dispararAnimacaoWapp, 5000);
+
+    // Ciclo contínuo disparado a cada 20 segundos (20.000ms)
+    setInterval(dispararAnimacaoWapp, 20000);
+  </script>
+
 </body>
+
 </html>

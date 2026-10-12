@@ -11,18 +11,24 @@
   --fonte-logo: 'Poiret One', cursive;
   --fonte-titulos: 'Amatica SC', sans-serif;
   --fonte-corpo: 'Bai Jamjuree', sans-serif;
- 
+
   /* Marca Santa Colmeia */
   --sc-preto: #000000;
   --sc-amarelo: #FFDA5E;
   --sc-laranja: #F28610;
   --fonte-sc-titulo: 'Libre Bodoni', serif;
   --fonte-sc-corpo: 'Jura', sans-serif;
+
+  /* Marca Alvorada da Serra */
+  --as-dourado: #9A8C4A;
+  --as-preto: #000000;
+  --as-branco: #FFFFFF;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 70px; /* Garante que a barra fixa não cubra o topo da seção ao rolar */
+  scroll-padding-top: 70px;
+  /* Garante que a barra fixa não cubra o topo da seção ao rolar */
 }
 
 * {
@@ -69,11 +75,20 @@ body {
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
-  transition: color 0.2s ease;
+  padding: 4px 8px;
+  /* Dá espaço para o fundo laranja quando passar o mouse */
+  border-radius: 4px;
+  cursor: pointer;
+  /* Mãozinha para indicar que é clicável */
+
+  /* Transiciona tanto a cor do texto quanto a cor de fundo */
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.menu-navegacao a:hover {
-  color: var(--laranja-santo-forno);
+.menu-navegacao a:hover,
+.menu-navegacao a:focus-visible {
+  color: var(--azul-marinho);
+  background-color: var(--laranja-santo-forno);
 }
 
 /* Oculta os controlos hambúrguer por padrão em ecrãs de computador */
@@ -127,7 +142,7 @@ body {
 /* Redução sutil do tamanho de todos os títulos principais */
 .menu-titulo {
   font-family: var(--fonte-titulos);
-  font-size: 42px; /* Reduzido de 50px */
+  font-size: 42px;
   text-align: center;
   color: var(--azul-marinho);
   margin-top: 10px;
@@ -143,11 +158,22 @@ body {
   margin-bottom: 35px;
   box-shadow: 0 4px 12px rgba(14, 14, 82, 0.05);
   border: 1px solid rgba(255, 176, 95, 0.2);
+
+  /* A transição fica AQUI no elemento base, nunca no :hover */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Quando o cliente passar o mouse sobre a seção */
+.secao-cardapio:hover {
+  transform: translateY(-4px);
+  /* Sobe 4px sem empurrar vizinhos */
+  box-shadow: 0 10px 20px rgba(14, 14, 82, 0.12);
+  /* Sombra fica mais suave e distante */
 }
 
 .secao-cardapio h3 {
   font-family: var(--fonte-titulos);
-  font-size: 32px; /* Reduzido de 38px */
+  font-size: 32px;
   color: var(--azul-marinho);
   margin: 0 0 5px 0;
   text-align: left;
@@ -202,18 +228,29 @@ body {
 }
 
 /* Selos e Etiquetas */
+/* Selos e Etiquetas com Animação e Destaque */
 .selo {
   background-color: var(--laranja-santo-forno);
-  color: var(--azul-marinho);
+  color: var(--azul-marinho) !important;
   font-size: 11px;
   font-weight: 700;
   padding: 3px 8px;
   border-radius: 4px;
   margin-top: 4px;
   display: inline-block;
+
+  /* Transição suave aprendida na aula */
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-/* Força a etiqueta "Sucesso de Vendas" a ir sempre para a linha de baixo */
+/* Efeito Hover sutil no selo ao passar o mouse */
+.selo:hover {
+  transform: scale(1.08);
+  /* Aumenta 8% suavemente */
+  background-color: #ffa03a;
+}
+
+/* Força a etiqueta a ir sempre para a linha de baixo quando necessário */
 .selo-bloco {
   display: table !important;
   margin-top: 6px !important;
@@ -249,7 +286,7 @@ body {
   display: block;
 }
 
-/* Imagens das Secções */
+/* Imagens Padrão das Secções */
 .imagem-produto,
 .imagem-produto-especiais,
 .imagem-produto-massas {
@@ -294,6 +331,14 @@ body {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid rgba(255, 176, 95, 0.3);
+
+  /* Prepara para a animação do hover */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item-torta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(14, 14, 82, 0.1);
 }
 
 .item-torta img {
@@ -418,11 +463,72 @@ body {
   margin-bottom: 0;
 }
 
+/* Imagem da Belo Sapore ajustada com object-fit cover sem faixas */
 .imagem-produto-ampliada {
   width: 100%;
   height: 320px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin-top: 15px;
+  display: block;
+}
+
+/* ==========================================================================
+   7.1. SECÇÃO ALVORADA DA SERRA (CORES INVERTIDAS)
+   ========================================================================== */
+.secao-alvorada {
+  background-color: var(--branco) !important;
+  color: var(--azul-marinho);
+  border: 1px solid rgba(154, 140, 74, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.alvorada-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-alvorada {
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 15px auto;
+  clip-path: inset(10% 7% 15% 7%);
+  /* Recorta a margem superior e inferior da imagem */
+}
+
+/* Caixinha da História da Alvorada em tom oliva com texto branco e borda preta */
+.alvorada-historia p {
+  font-family: var(--fonte-corpo);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--as-branco) !important;
+  text-align: left;
+  background-color: var(--as-dourado);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 5px solid var(--as-preto);
+  margin-bottom: 20px;
+}
+
+.alvorada-produtos .lista-produtos li {
+  border-bottom: 1px dashed #e0e0e0;
+}
+
+.alvorada-produtos .nome-produto,
+.alvorada-produtos .preco {
+  color: var(--azul-marinho) !important;
+  font-weight: 600;
+}
+
+/* Exibe a imagem de produto inteira sem cortes para a Alvorada da Serra */
+.imagem-produto-inteira {
+  width: 100%;
+  height: auto;
+  max-height: 550px;
   object-fit: contain;
-  background-color: var(--bege-fundo);
   border-radius: 8px;
   margin-top: 15px;
   display: block;
@@ -449,12 +555,20 @@ body {
   padding: 12px 24px;
   border-radius: 50px;
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+  /* Mãozinha de clique */
+
+  /* Incluímos box-shadow na transição */
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn-whatsapp-destaque:hover {
+.btn-whatsapp-destaque:hover,
+.btn-whatsapp-destaque:focus-visible {
   background-color: #20BA5A;
   transform: scale(1.04);
+  /* Cresce 4% suavemente */
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+  /* Sombra mais destacada */
 }
 
 .icone-whatsapp-circulo {
@@ -539,7 +653,7 @@ body {
 
 .faq-titulo-principal {
   font-family: var(--fonte-titulos);
-  font-size: 42px !important; /* Destaque para FAQ grande */
+  font-size: 42px !important;
   color: var(--azul-marinho);
   margin: 0 0 4px 0;
   text-align: left;
@@ -583,6 +697,14 @@ body {
   justify-content: space-between;
   align-items: center;
   user-select: none;
+
+  /* Adiciona transição na cor de fundo ao passar o mouse */
+  transition: background-color 0.2s ease;
+}
+
+.faq-item summary:hover {
+  background-color: rgba(255, 176, 95, 0.15);
+  /* Fundo alaranjado bem suave no hover */
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -649,10 +771,12 @@ body {
   text-align: justify;
 }
 
+/* Imagem da Família com foco ajustado para o topo (sem cortar a cabeça) */
 .imagem-familia {
   width: 100%;
-  height: 300px;
+  height: 500px;
   object-fit: cover;
+  object-position: top center;
   border-radius: 8px;
   margin: 15px auto 0 auto;
   display: block;
@@ -727,7 +851,8 @@ body {
    ========================================================================== */
 .whatsapp-flutuante {
   position: fixed;
-  bottom: 85px; /* Subido para evitar sobreposição com barras do telemóvel e o badge do Netlify */
+  bottom: 85px;
+  /* Posição segura para não cobrir nem ser coberto no telemóvel */
   right: 20px;
   width: 55px;
   height: 55px;
@@ -738,8 +863,12 @@ body {
   align-items: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   z-index: 9999;
-  transition: transform 0.3s ease;
   text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-flutuante:hover {
+  transform: scale(1.1);
 }
 
 .whatsapp-flutuante img {
@@ -751,9 +880,10 @@ body {
 }
 
 /* ==========================================================================
-   13. MEDIA QUERIES (RESPONSIVIDADE EXCLUSIVA PARA TELEMÓVEL)
+   13. MEDIA QUERIES (RESPONSIVIDADE EXCLUSIVA PARA TELEMÓVEL E TABLET)
    ========================================================================== */
 @media (max-width: 1024px) {
+
   /* Ativação do Menu Hambúrguer em tablets e telemóveis */
   .hamburger {
     display: flex;
@@ -783,26 +913,33 @@ body {
     gap: 12px;
   }
 
-  .menu-toggle:checked ~ ul {
+  .menu-toggle:checked~ul {
     display: flex;
   }
 
   /* Animação do Hambúrguer para o Ícone "X" */
-  .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+  .menu-toggle:checked~.hamburger span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
 
-  .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+  .menu-toggle:checked~.hamburger span:nth-child(2) {
     opacity: 0;
   }
 
-  .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+  .menu-toggle:checked~.hamburger span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
 }
 
 @media (max-width: 600px) {
-  /* Ajustes específicos para telemóveis */
+
+  /* Evita que o card fique levantado ao ser tocado no celular */
+  .secao-cardapio:hover,
+  .historia-container:hover {
+    transform: none;
+  }
+
+  /* Ajustes específicos para ecrãs de telemóvel */
   .container-cardapio {
     padding: 10px 12px 20px 12px;
   }
@@ -822,18 +959,21 @@ body {
   }
 
   .item-torta {
-    flex: 1 1 calc(50% - 10px); /* Exibe duas tortas por linha no telemóvel */
+    flex: 1 1 calc(50% - 10px);
+    /* Exibe duas tortas por linha no telemóvel */
   }
 
   .imagem-produto,
   .imagem-produto-especiais,
   .imagem-produto-massas,
   .imagem-produto-ampliada {
-    height: 240px; /* Reduz altura das fotos no telemóvel para poupar rolagem */
+    height: 240px;
+    /* Reduz altura das fotos no telemóvel para poupar rolagem */
   }
 
   .whatsapp-flutuante {
-    bottom: 85px; /* Posição segura para não cobrir nem ser coberto no telemóvel */
+    bottom: 85px;
+    /* Posição segura para não cobrir nem ser coberto no telemóvel */
     right: 15px;
     width: 50px;
     height: 50px;
