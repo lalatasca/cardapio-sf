@@ -130,6 +130,10 @@ body {
   object-fit: contain;
 }
 
+.logo-img:hover {
+  transform: scale(1.08);
+}
+
 /* ==========================================================================
    4. ESTRUTURA DOS CARDÁPIOS & LISTAS DE PRODUTOS
    ========================================================================== */
@@ -386,6 +390,10 @@ body {
   margin: 0 auto 15px auto;
 }
 
+.logo-santa-colmeia:hover {
+  transform: scale(1.08);
+}
+
 .santa-colmeia-historia p {
   font-family: var(--fonte-sc-corpo);
   font-size: 13.5px;
@@ -432,6 +440,10 @@ body {
   height: auto;
   display: block;
   margin: 0 auto 10px auto;
+}
+
+.logo-secao:hover{
+  transform: scale(1.08);
 }
 
 .titulo-belo-sapore {
@@ -497,6 +509,10 @@ body {
   margin: 0 auto 15px auto;
   clip-path: inset(10% 7% 15% 7%);
   /* Recorta a margem superior e inferior da imagem */
+}
+
+.logo-alvorada:hover {
+  transform: scale(1.08);
 }
 
 /* Caixinha da História da Alvorada em tom oliva com texto branco e borda preta */
@@ -782,6 +798,10 @@ body {
   display: block;
 }
 
+.imagem-familia:hover {
+  transform: scale(0.9);
+}
+
 /* ==========================================================================
    11. RODAPÉ
    ========================================================================== */
@@ -983,4 +1003,25 @@ body {
     width: 30px;
     height: 30px;
   }
+}
+/* ==========================================================================
+   SECÇÃO INSTAGRAM (BEHOLD - CENTRALIZAÇÃO E ENQUADRAMENTO DE 800PX)
+   ========================================================================== */
+.secao-instagram {
+  text-align: center !important;
+  overflow: hidden;
+}
+
+/* Força o título H3 e o texto explicativo a centralizarem no cartão */
+.secao-instagram h3,
+.secao-instagram .descricao-secao {
+  text-align: center !important;
+}
+
+/* Garante que o widget do Behold preencha perfeitamente o cartão */
+.secao-instagram behold-widget {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block;
+  margin: 0 auto;
 }
