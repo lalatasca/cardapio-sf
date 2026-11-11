@@ -201,7 +201,7 @@ body {
 .lista-produtos li {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   padding: 12px 0;
   border-bottom: 1px dashed #e0e0e0;
 }
@@ -1024,4 +1024,426 @@ body {
   max-width: 100% !important;
   display: block;
   margin: 0 auto;
+}
+/* ==========================================================================
+   BARRA DE PEDIDO FIXA (STICKY TOP)
+   ========================================================================== */
+.barra-pedido {
+  position: sticky;
+  top: 50px; /* Distância para ficar logo abaixo do menu azul superior */
+  z-index: 900; /* Garante que fique sobre as seções ao rolar a página */
+  background-color: var(--azul-marinho);
+  color: var(--bege-fundo);
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 25px;
+}
+
+/* Destaca o número e o nome do produto com a cor da marca */
+.barra-pedido span {
+  color: var(--laranja-santo-forno);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO DO BOTÃO ADICIONAR (CORES INVERTIDAS)
+   ========================================================================== */
+.btn-adicionar {
+  background-color: var(--azul-marinho);
+  color: var(--branco);
+  font-family: var(--fonte-corpo);
+  font-weight: 700;
+  font-size: 13px;
+  border: 1px solid var(--azul-marinho);
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  margin-left: 12px;
+  white-space: nowrap;
+  /* Transição suave de cores e escala ao passar o mouse */
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efeito Hover: Fundo Bege, texto Azul Marinho e borda sutil */
+.btn-adicionar:hover {
+  background-color: var(--bege-fundo);
+  color: var(--azul-marinho);
+  border-color: var(--azul-marinho);
+  transform: scale(1.05);
+  box-shadow: 0 3px 8px rgba(14, 14, 82, 0.2);
+}
+
+/* Efeito ao clicar */
+.btn-adicionar:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   CARRINHO EXPANSÍVEL (STICKY TOP) EXTRA
+   ========================================================================== */
+.carrinho-pedido {
+  position: sticky;
+  top: 50px;
+  z-index: 900;
+  background-color: var(--azul-marinho);
+  color: var(--bege-fundo);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  margin-bottom: 25px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Cabeçalho clicável */
+.carrinho-header {
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 700;
+  user-select: none;
+}
+
+.carrinho-header:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.carrinho-header strong {
+  color: var(--laranja-santo-forno);
+}
+
+/* Animação da setinha ao abrir */
+.seta-carrinho {
+  transition: transform 0.3s ease;
+}
+
+.carrinho-pedido.aberto .seta-carrinho {
+  transform: rotate(180deg);
+}
+
+/* Corpo e lista dos itens */
+.carrinho-corpo {
+  max-height: 250px;
+  overflow-y: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 18px;
+  background-color: #080838; /* Um tom ligeiramente mais escuro */
+}
+
+/* Classe utilitária para esconder/mostrar via JS */
+.escondido {
+  display: none;
+}
+
+.lista-carrinho {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-carrinho li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  font-size: 13.5px;
+}
+
+.item-vazio {
+  font-style: italic;
+  color: #aaa;
+  text-align: center;
+}
+
+/* Destaque do Total no Carrinho */
+#total-pedido {
+  color: var(--laranja-santo-forno);
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+/* ==========================================================================
+   BOTÃO LIMPAR PEDIDO
+   ========================================================================== */
+.container-btn-limpar {
+  text-align: right;
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.btn-limpar {
+  background-color: transparent;
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-family: var(--fonte-corpo);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-limpar:hover {
+  background-color: #ff6b6b;
+  color: var(--branco);
+}
+
+/* ==========================================================================
+   BOTÃO FLUTUANTE DO CARRINHO (CANTO ESQUERDO)
+   ========================================================================== */
+.carrinho-flutuante {
+  position: fixed;
+  bottom: 85px;
+  left: 20px;
+  width: 55px;
+  height: 55px;
+  background-color: var(--azul-marinho);
+  color: var(--branco);
+  border: 2px solid var(--laranja-santo-forno);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 9998;
+  cursor: pointer;
+  font-size: 22px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.carrinho-flutuante:hover {
+  transform: scale(1.1);
+  background-color: #14146e;
+}
+
+/* Badge (Bolinha Vermelha/Laranja com a Contagem) */
+.badge-contador {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--laranja-santo-forno);
+  color: var(--azul-marinho);
+  font-size: 12px;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ==========================================================================
+   MODAL DO CARRINHO (POP-UP OVERLAY)
+   ========================================================================== */
+.carrinho-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65); /* Fundo escuro transparente */
+  z-index: 10000; /* Camada "mais na frente possível!" - o numero quanto maior mais na frente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  backdrop-filter: blur(3px); /* Desfoca suavemente o fundo do site */
+}
+
+/* Caixa Principal do Modal */
+.carrinho-modal-conteudo {
+  background-color: var(--branco);
+  color: var(--azul-marinho);
+  width: 100%;
+  max-width: 480px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: modalEntrada 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalEntrada {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+} /* ANIMAÇÃO DE MUDANÇA DE ESCALA E OPACIDADE */
+
+/* Cabeçalho do Modal */
+.carrinho-modal-header {
+  background-color: var(--azul-marinho);
+  color: var(--bege-fundo);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carrinho-modal-header h2 {
+  margin: 0;
+  font-family: var(--fonte-titulos);
+  font-size: 26px;
+  color: var(--laranja-santo-forno);
+}
+
+.btn-fechar-modal {
+  background: none;
+  border: none;
+  color: var(--bege-fundo);
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.btn-fechar-modal:hover {
+  color: var(--laranja-santo-forno);
+}
+
+/* Corpo e Lista */
+.carrinho-modal-corpo {
+  padding: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.lista-carrinho {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-carrinho li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #e0e0e0;
+  font-size: 14px;
+}
+
+/* Rodapé do Modal */
+.carrinho-modal-rodape {
+  background-color: var(--bege-fundo);
+  padding: 15px 20px;
+  border-top: 1px solid rgba(255, 176, 95, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resumo-total {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.resumo-total strong {
+  color: var(--azul-marinho);
+  font-size: 18px;
+  margin-left: 6px;
+}
+
+.escondido {
+  display: none !important;
+}
+/* ==========================================================================
+   ESTRUTURA DE DUAS COLUNAS DO ITEM NO CARRINHO
+   ========================================================================== */
+.item-carrinho-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px dashed rgba(14, 14, 82, 0.15);
+  gap: 10px;
+}
+
+/* Coluna 1: Nome e Detalhe do Preço Unitário */
+.item-coluna-detalhes {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.item-info-nome {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--azul-marinho);
+}
+
+.item-info-unitario {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* Coluna 2: Preço Subtotal e Botões de Ação */
+.item-coluna-acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-info-subtotal {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--azul-marinho);
+  white-space: nowrap;
+}
+
+.item-controles {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Botões +, - e X */
+.btn-qtd {
+  background-color: var(--azul-marinho);
+  color: var(--branco);
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.btn-qtd:hover {
+  background-color: var(--laranja-santo-forno);
+  color: var(--azul-marinho);
+}
+
+.qtd-numero {
+  font-weight: 700;
+  min-width: 18px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.btn-remover-item {
+  background-color: transparent;
+  color: #e74c3c;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 4px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-remover-item:hover {
+  background-color: #fadbd8;
 }

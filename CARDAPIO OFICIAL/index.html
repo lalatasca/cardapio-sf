@@ -10,38 +10,30 @@
     gtag('js', new Date());
     gtag('config', 'G-JSD1EFT6VT');
   </script>
-
   <meta charset="UTF-8" />
   <!-- Configuração para garantir responsividade perfeita em telemóveis e tablets -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>SANTO FORNO — Cardápio Digital</title>
   <meta name="description" content="Pães de fermentação natural e massas artesanais em Serra Negra - SP." />
-
   <!-- Ícone da Aba do Navegador (Favicon) -->
   <link rel="icon" href="imagens/ROND.png" type="image/x-icon" />
-
   <!-- Carregamento das Fontes Oficiais da Marca -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Amatica+SC:wght@400;700&family=Bai+Jamjuree:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Jura:wght@300..700&family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Poiret+One&display=swap"
     rel="stylesheet" />
-
   <!-- Animate.css via CDN para Animações (WhatsApp Flutuante) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
   <!-- Ficheiro Principal de Estilos CSS -->
   <link rel="stylesheet" href="style.ia.css" />
 </head>
 
 <body>
-
   <!-- ==========================================================================
        1. CABEÇALHO & MENU DE NAVEGAÇÃO
        ========================================================================== -->
   <header class="header-principal">
-
     <!-- Menu Fixo Superior -->
     <nav class="menu-navegacao">
       <!-- Controle do Menu Hambúrguer via Checkbox CSS -->
@@ -51,7 +43,6 @@
         <span></span>
         <span></span>
       </label>
-
       <!-- Links de Ancoragem para Navegação Rápida -->
       <ul>
         <li><a href="#paes">Pães Italianos</a></li>
@@ -67,23 +58,54 @@
         <li><a href="#instagram">Instagram</a></li>
       </ul>
     </nav>
-
     <!-- Faixa Laranja de Destaque da Logo -->
     <div class="faixa-laranja-header">
       <div class="brand-container">
         <img src="imagens/Logo oficial SF.png" alt="Logo Santo Forno" class="logo-img" />
       </div>
     </div>
-
   </header>
 
   <!-- ==========================================================================
        2. CONTEÚDO PRINCIPAL DO CARDÁPIO
        ========================================================================== -->
   <main class="container-cardapio">
-
     <!-- Título Principal da Página -->
     <h1 class="menu-titulo">Menu</h1>
+
+
+    <!-- ==========================================================================
+     MODAL DO CARRINHO (COMEÇA ESCONDIDO)
+     ========================================================================== -->
+    <div class="carrinho-modal-overlay escondido" id="carrinho-modal">
+      <div class="carrinho-modal-conteudo">
+
+        <!-- Cabeçalho do Modal com Título e Botão Fechar -->
+        <div class="carrinho-modal-header">
+          <h2>🛒 Seu Pedido</h2>
+          <button class="btn-fechar-modal" id="btn-fechar-modal">&times;</button>
+        </div>
+
+        <!-- Lista de Itens do Pedido -->
+        <div class="carrinho-modal-corpo">
+          <ul id="lista-carrinho" class="lista-carrinho">
+            <li class="item-vazio">Nenhum item adicionado ainda.</li>
+          </ul>
+        </div>
+
+        <!-- Rodapé do Modal com Total e Ações -->
+        <div class="carrinho-modal-rodape">
+          <div class="resumo-total">
+            <span>Total:</span>
+            <strong id="total-pedido">R$ 0,00</strong>
+          </div>
+          <div class="acoes-carrinho">
+            <button id="btn-limpar-pedido" class="btn-limpar">🗑️ Limpar Pedido</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
     <!-- ----------------------------------------------------------------------
          2.1. SECÇÃO: PÃES ITALIANOS
@@ -92,46 +114,56 @@
       <h3>Pães Italianos</h3>
       <p class="descricao-secao">Fermentação natural. Três ingredientes: Água, Farinha Italiana e Sal.</p>
 
+      <!-- 💡 JS CONEXÃO 2: ESTRUTURA DOS PRODUTOS
+           - A classe "produto" no <li> permite que o document.querySelectorAll('.produto') encontre este item.
+           - A classe "nome-produto" permite capturar o texto do nome.
+           - A classe "preco" permite capturar o valor.
+           - O botão com classe "btn-adicionar" escuta o evento de clique (addEventListener). -->
       <ul class="lista-produtos">
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Queijo Alvorada da Serra</span>
           </div>
           <span class="preco">R$ 45</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Tradicional</span>
           </div>
           <span class="preco">R$ 35</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Toscano</span>
             <span class="selo">Mais vendido!</span>
           </div>
           <span class="preco">R$ 40</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Integral</span>
           </div>
           <span class="preco">R$ 40</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Multigrãos</span>
           </div>
           <span class="preco">R$ 40</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Pesto</span>
           </div>
           <span class="preco">R$ 40</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
       </ul>
-
       <img src="imagens/DIVERSOS.jpg" alt="Pão Italiano de Fermentação Natural" class="imagem-produto" />
     </section>
 
@@ -141,60 +173,63 @@
     <section id="especiais" class="secao-cardapio">
       <h3>Especiais da Casa</h3>
       <p class="descricao-secao">Nossos queridinhos</p>
-
       <ul class="lista-produtos">
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Focaccia Italiana</span>
-            <!-- Adicionamos as classes de animação da Animate.css -->
             <span class="selo selo-bloco animate__animated animate__zoomIn">Sucesso de Vendas</span>
           </div>
           <span class="preco">R$ 70</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Pão de Queijo Mineiro (0,5Kg)</span>
             <i class="obs">*Assado acréscimo de R$5</i>
           </div>
           <span class="preco">R$ 30</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Granola Artesanal</span>
-            <!-- Adicionamos as classes de animação da Animate.css -->
             <span class="selo animate__animated animate__zoomIn">Mais Vendido!</span>
           </div>
           <span class="preco">R$ 45</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Granola Salgada</span>
           </div>
           <span class="preco">R$ 45</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Caseirinho</span>
             <i class="obs">Pão Macio</i>
           </div>
           <span class="preco">R$ 25</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Brioche</span>
             <span class="selo selo-bloco animate__animated animate__zoomIn">Lançamento</span>
           </div>
           <span class="preco">R$ 65</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Brioche com blend de chocolate nobre</span>
             <span class="selo selo-bloco animate__animated animate__zoomIn">Lançamento</span>
           </div>
           <span class="preco">R$ 70</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
       </ul>
-
       <img src="imagens/FOCACCIA.jpg" alt="Especiais da Casa Santo Forno" class="imagem-produto-especiais" />
     </section>
 
@@ -204,67 +239,69 @@
     <section id="massas" class="secao-cardapio">
       <h3>Massas Artesanais</h3>
       <p class="descricao-secao">Receitas tradicionais da cidade feitas com Farinha Italiana</p>
-
-      <!-- Caixinha de Recomendação de Porção -->
       <p class="dica-porcao">💡 <strong>Dica do Santo Forno:</strong> Recomendação por refeição: 250g por pessoa!</p>
-
       <ul class="lista-produtos">
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Ravioli de Ragu de Ossobuco (0,5Kg)</span>
           </div>
           <span class="preco">R$ 75</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Ravioli de Boursin (0,5Kg)</span>
           </div>
           <span class="preco">R$ 75</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Capeletti de Linguiça com Parmesão (0,5Kg)</span>
             <span class="selo">Mais Vendido!</span>
           </div>
           <span class="preco">R$ 55</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Capeletti de 4 queijos (0,5Kg)</span>
           </div>
           <span class="preco">R$ 60</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Capeletti de Ragu de Ossobuco (0,5Kg)</span>
           </div>
           <span class="preco">R$ 65</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
       </ul>
-
       <p class="subtitulo-massa">Recomendamos fazer sua massa com nosso:</p>
-
       <ul class="lista-produtos">
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Ragu de Ossobuco</span>
           </div>
           <span class="preco">R$ 55</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Brodo</span>
           </div>
           <span class="preco">R$ 27</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Molho napolitano</span>
           </div>
           <span class="preco">R$ 27</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
       </ul>
-
       <img src="imagens/CAPELETTI.jpg" alt="Massas Artesanais Santo Forno" class="imagem-produto-massas" />
     </section>
 
@@ -273,7 +310,6 @@
          ---------------------------------------------------------------------- -->
     <section id="tortas" class="secao-cardapio">
       <h3>Empório das Tortas</h3>
-
       <!-- Subcategoria: Tortas Doces -->
       <div class="categoria-torta">
         <p class="titulo-subcategoria">
@@ -281,7 +317,6 @@
           <span class="preco">R$ 160</span>
         </p>
         <p class="obs-paragrafo">Rende de 10 a 12 fatias bem servidas.</p>
-
         <div class="mosaico-tortas">
           <div class="item-torta">
             <img src="imagens/ALEMA.jpg" alt="Torta Alemã" />
@@ -309,7 +344,6 @@
           </div>
         </div>
       </div>
-
       <!-- Subcategoria: Tortas Salgadas -->
       <div class="categoria-torta">
         <p class="titulo-subcategoria">
@@ -317,7 +351,6 @@
           <span class="preco">R$ 130</span>
         </p>
         <p class="obs-paragrafo">Rende de 10 a 12 fatias bem servidas.</p>
-
         <div class="mosaico-tortas">
           <div class="item-torta item-torta-larga">
             <img src="imagens/FRANGO.jpg" alt="Tortas Salgadas (Frango e Palmito)" />
@@ -334,7 +367,6 @@
       <div class="santa-colmeia-header">
         <img src="imagens/LOGO SC.png" alt="Logo Santa Colmeia" class="logo-santa-colmeia" />
       </div>
-
       <div class="santa-colmeia-historia">
         <p>
           Localizado na Fazenda Lyria em Socorro (SP), na Serra da Mantiqueira, o Apiário Santa Colmeia®, cujo
@@ -344,42 +376,44 @@
           inigualável: <strong>mel de verdade</strong>.
         </p>
       </div>
-
       <img src="imagens/APIARIO.jpeg" alt="Apiário Santa Colmeia na Serra da Mantiqueira" class="imagem-apiario" />
-
       <div class="santa-colmeia-produtos">
         <ul class="lista-produtos">
-          <li>
+          <li class="produto">
             <div class="info-produto">
               <span class="nome-produto">Mel 330g</span>
             </div>
             <span class="preco">R$ 25</span>
+            <button class="btn-adicionar">Adicionar</button>
           </li>
-          <li>
+          <li class="produto">
             <div class="info-produto">
               <span class="nome-produto">Mel 750g</span>
               <i class="obs">*Floradas especiais +R$ 5</i>
             </div>
             <span class="preco">R$ 60</span>
+            <button class="btn-adicionar">Adicionar</button>
           </li>
-          <li>
+          <li class="produto">
             <div class="info-produto">
               <span class="nome-produto">Própolis 30 ml</span>
               <i class="obs">*30% álcool de cereal</i>
             </div>
             <span class="preco">R$ 30</span>
+            <button class="btn-adicionar">Adicionar</button>
           </li>
-          <li>
+          <li class="produto">
             <div class="info-produto">
               <span class="nome-produto">Pólen Apícola 80g</span>
             </div>
             <span class="preco">R$ 35</span>
+            <button class="btn-adicionar">Adicionar</button>
           </li>
         </ul>
       </div>
-
       <img src="imagens/MEL.jpeg" alt="Pote de Mel de verdade da Santa Colmeia" class="imagem-produto" />
     </section>
+
     <!-- ----------------------------------------------------------------------
          2.6. SECÇÃO: ALVORADA DA SERRA (QUEIJOS ARTESANAIS)
          ---------------------------------------------------------------------- -->
@@ -387,7 +421,6 @@
       <div class="alvorada-header">
         <img src="imagens/LOGOAS.jpeg" alt="Logo Queijaria Alvorada da Serra" class="logo-alvorada" />
       </div>
-
       <div class="alvorada-historia">
         <p>
           A Alvorada da Serra é uma premiada queijaria artesanal e familiar em Serra Negra (SP). Comandada por dois
@@ -397,31 +430,32 @@
           pães artesanais, todos levam o sabor incomparável dos queijos Alvorada da Serra.
         </p>
       </div>
-
       <div class="alvorada-produtos">
         <ul class="lista-produtos">
-          <li>
+          <li class="produto">
             <div class="info-produto">
               <span class="nome-produto">Queijo Fresco</span>
             </div>
             <span class="preco">R$ 30</span>
+            <button class="btn-adicionar">Adicionar</button>
           </li>
-          <li>
+          <li class="produto">
             <div class="info-produto">
               <span class="nome-produto">Queijo Boursin</span>
             </div>
             <span class="preco">R$ 30</span>
+            <button class="btn-adicionar">Adicionar</button>
           </li>
-          <li>
+          <li class="produto">
             <div class="info-produto">
               <span class="nome-produto">Queijo Meia Cura</span>
               <span class="selo animate__animated animate__zoomIn">Mais Vendido!</span>
             </div>
             <span class="preco">R$ 35</span>
+            <button class="btn-adicionar">Adicionar</button>
           </li>
         </ul>
       </div>
-
       <img src="imagens/QUEIJOS ALVORADA.jpg" alt="Queijos Artesanais Alvorada da Serra"
         class="imagem-produto-inteira" />
     </section>
@@ -433,7 +467,6 @@
       <div class="sobre-belo-sapore">
         <img src="imagens/LOGOBS.jpeg" alt="Logo Belo Sapore" class="logo-secao" />
         <h3 class="titulo-belo-sapore">Belo Sapore</h3>
-
         <div class="belo-sapore-historia">
           <p>
             Fundada em 2026 pela ex-executiva Mari Carvalho, carinhosamente conhecida por Mari Mineira, a Belo Sapore
@@ -447,45 +480,51 @@
           </p>
         </div>
       </div>
-
       <ul class="lista-produtos">
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Geléia de Pimenta 200g</span>
           </div>
           <span class="preco">R$ 40</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Geléia de Gengibre 200g</span>
           </div>
           <span class="preco">R$ 40</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Geléia de Limão Siciliano 200g</span>
             <span class="selo animate__animated animate__zoomIn">Mais Vendido!</span>
           </div>
           <span class="preco">R$ 40</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Geléia de Licor de Maracujá 200g</span>
           </div>
           <span class="preco">R$ 40</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
-        <li>
+        <li class="produto">
           <div class="info-produto">
             <span class="nome-produto">Chutney de Manga 200g</span>
           </div>
           <span class="preco">R$ 45</span>
+          <button class="btn-adicionar">Adicionar</button>
         </li>
       </ul>
-
       <img src="imagens/GELEIA.jpg" alt="Pote de geléia artesanal Belo Sapore" class="imagem-produto-ampliada" />
     </section>
 
+    <!-- BOTÃO FLUTUANTE DO CARRINHO (CANTO INFERIOR ESQUERDO) -->
+    <button class="carrinho-flutuante" id="btn-abrir-carrinho" title="Ver Carrinho">
+      🛒 <span id="contador-pedido" class="badge-contador">0</span>
+    </button>
 
     <!-- ----------------------------------------------------------------------
          2.8. BOTÃO PRINCIPAL DE PEDIDO VIA WHATSAPP
@@ -498,8 +537,10 @@
       </a>
     </div>
 
+
+
     <!-- ----------------------------------------------------------------------
-         2.9. SECÇÃO: NOSSA HISTÓRIA (CORRIGIDO SEM ERROS DE COMENTÁRIO)
+         2.9. SECÇÃO: NOSSA HISTÓRIA
          ---------------------------------------------------------------------- -->
     <section id="nossa-historia" class="historia-container">
       <h2>Nossa História</h2>
@@ -520,7 +561,6 @@
     <section id="avaliacoes" class="secao-cardapio secao-avaliacoes">
       <h3>O que nossos clientes dizem</h3>
       <p class="descricao-secao">Avaliações no Google</p>
-
       <div class="cards-avaliacoes">
         <div class="card-avaliacao">
           <div class="estrelas">★★★★★</div>
@@ -530,7 +570,6 @@
           </p>
           <span class="autor-avaliacao">— Cliente Google</span>
         </div>
-
         <div class="card-avaliacao">
           <div class="estrelas">★★★★★</div>
           <p class="texto-avaliacao">
@@ -540,7 +579,6 @@
           <span class="autor-avaliacao">— Cliente Google</span>
         </div>
       </div>
-
       <div class="botoes-avaliacoes">
         <a href="https://share.google/I1H2Zja1DKblYSSiT" target="_blank" class="btn-ver-avaliacoes">
           Ver mais no Google
@@ -555,28 +593,23 @@
          2.11. SECÇÃO: FAQ (PERGUNTAS FREQUENTES)
          ---------------------------------------------------------------------- -->
     <section id="faq" class="secao-cardapio secao-faq">
-      <!-- FAQ em Destaque Principal -->
       <h3 class="faq-titulo-principal">FAQ</h3>
       <p class="faq-subtitulo">Perguntas Frequentes — Clique na pergunta para ver a resposta</p>
 
-      <!-- Categoria 1: Pedidos e Funcionamento -->
       <div class="faq-categoria">
         <h4>1. Pedidos e Funcionamento</h4>
-
         <details class="faq-item">
           <summary><strong>Com quanto tempo de antecedência devo fazer meu pedido?</strong></summary>
           <p>Pedimos que os pedidos sejam feitos com no mínimo 2 dias de antecedência. Como nossos pães passam por um
             processo de longa fermentação natural (levain) e nossas massas são feitas artesanalmente, precisamos desse
             tempo para preparar tudo com o devido cuidado.</p>
         </details>
-
         <details class="faq-item">
           <summary><strong>O que acontece em caso de desistência?</strong></summary>
           <p>Fazemos encomendas sob medida para o seu momento. Porém, por se tratar de um processo artesanal e sob
             demanda, cancelamentos ou desistências feitos com menos de 24 horas de antecedência serão cobrados
             normalmente, pois a produção já terá sido iniciada e isso gera desperdício de insumos nobres.</p>
         </details>
-
         <details class="faq-item">
           <summary><strong>Vocês têm espaço físico para sentar e tomar um café?</strong></summary>
           <p>Não. Trabalhamos com portas fechadas, focados exclusivamente na produção artesanal. Atendemos apenas via
@@ -584,27 +617,22 @@
         </details>
       </div>
 
-      <!-- Categoria 2: Produtos e Disponibilidade -->
       <div class="faq-categoria">
         <h4>2. Produtos e Disponibilidade</h4>
-
         <details class="faq-item">
           <summary><strong>Como funciona a disponibilidade e o envio das tortas?</strong></summary>
           <p>Recomendamos sempre consultar a disponibilidade a pronta entrega pelo nosso WhatsApp. Ao fazer seu pedido,
             você pode escolher se prefere retirar a torta congelada ou pronta para consumo/preparo.</p>
         </details>
-
         <details class="faq-item">
           <summary><strong>As massas artesanais vêm frescas ou congeladas?</strong></summary>
           <p>Todas as nossas massas (como capelettis e raviolis) são entregues congeladas e sem preparo.</p>
         </details>
-
         <details class="faq-item">
           <summary><strong>O pão de queijo é vendido assado ou congelado?</strong></summary>
           <p>Você pode escolher! Vendemos o pacote de pão de queijo mineiro congelado para você assar quando quiser ou
             assado na hora (com acréscimo de R$ 5,00 no pedido).</p>
         </details>
-
         <details class="faq-item">
           <summary><strong>Os pães contêm glúten?</strong></summary>
           <p>Sim. Apesar de trabalharmos com o processo de longa fermentação, os nossos pães e massas podem conter
@@ -612,22 +640,18 @@
         </details>
       </div>
 
-      <!-- Categoria 3: Entregas e Pagamento -->
       <div class="faq-categoria">
         <h4>3. Entregas e Pagamento</h4>
-
         <details class="faq-item">
           <summary><strong>Vocês fazem entregas na região de Serra Negra? Qual é o valor do frete?</strong></summary>
           <p>Entregamos em Serra Negra com taxa fixa de R$ 5,00. Para entregas em cidades vizinhas da região, consulte a
             disponibilidade e o valor do frete diretamente no nosso WhatsApp.</p>
         </details>
-
         <details class="faq-item">
           <summary><strong>Vocês enviam produtos não perecíveis por Correios?</strong></summary>
           <p>Sim! Enviamos todos os produtos Santa Colmeia (mel, própolis e pólen), geléias Belo Sapore e granolas por
             Correios para todo o Brasil.</p>
         </details>
-
         <details class="faq-item">
           <summary><strong>Quais são as formas de pagamento aceitas?</strong></summary>
           <p>Aceitamos pagamentos via PIX ou Dinheiro. O pagamento deve ser realizado no momento da retirada do produto
@@ -636,32 +660,26 @@
       </div>
     </section>
 
-
-  <!-- SECÇÃO: INSTAGRAM (BEHOLD) -->
-  <section id="instagram" class="secao-cardapio secao-instagram">
-    <h3>Siga no Instagram</h3>
-    <p class="descricao-secao">Acompanhe nossas fornadas diárias pelo @santoforno.paes</p>
-
-    <!-- BEHOLD WIDGET DENTRO DA SECTION -->
-    <behold-widget feed-id="5tfauJR0EiU3QdQc9zNf"></behold-widget>
-    <script>
-      (() => {
-        if (window.__bhldScript) return; window.__bhldScript = true;
-        const d = document, s = d.createElement("script"); s.type = "module";
-        s.src = "https://w.behold.so/widget.js"; setTimeout(() => { d.head.append(s); }, 0);
-      })();
-    </script>
-  </section>
-
-    </main>
+    <!-- SECÇÃO: INSTAGRAM (BEHOLD) -->
+    <section id="instagram" class="secao-cardapio secao-instagram">
+      <h3>Siga no Instagram</h3>
+      <p class="descricao-secao">Acompanhe nossas fornadas diárias pelo @santoforno.paes</p>
+      <behold-widget feed-id="5tfauJR0EiU3QdQc9zNf"></behold-widget>
+      <script>
+        (() => {
+          if (window.__bhldScript) return; window.__bhldScript = true;
+          const d = document, s = d.createElement("script"); s.type = "module";
+          s.src = "https://w.behold.so/widget.js"; setTimeout(() => { d.head.append(s); }, 0);
+        })();
+      </script>
+    </section>
+  </main>
 
   <!-- ==========================================================================
        3. RODAPÉ DO SITE
        ========================================================================== -->
   <footer class="rodape">
     <div class="rodape-conteudo">
-
-      <!-- Coluna 1: Contatos e Redes Sociais -->
       <div class="rodape-coluna">
         <h3>Contato & Pedidos</h3>
         <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!"
@@ -682,8 +700,6 @@
           </a>
         </p>
       </div>
-
-      <!-- Coluna 2: Dados de Pagamento -->
       <div class="rodape-coluna">
         <h3>Dados de Pagamento</h3>
         <p>
@@ -691,23 +707,18 @@
           <strong>Chave Pix:</strong> 45.950.178/0001-31 (CNPJ)
         </p>
       </div>
-
-      <!-- Coluna 3: Horários -->
       <div class="rodape-coluna">
         <h3>Horário de Funcionamento</h3>
         <p>Todos os dias, das 8h às 19h.</p>
       </div>
-
     </div>
-
-    <!-- Copyright -->
     <div class="rodape-copyright">
       <p>© SANTO FORNO · Todos os direitos reservados</p>
     </div>
   </footer>
 
   <!-- ==========================================================================
-       4. BOTÃO FLUTUANTE DO WHATSAPP (COM IDENTIFICADOR PARA O SCRIPT)
+       4. BOTÃO FLUTUANTE DO WHATSAPP
        ========================================================================== -->
   <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!" target="_blank"
     class="whatsapp-flutuante" id="btn-wapp" title="Fazer pedido pelo WhatsApp">
@@ -715,32 +726,25 @@
   </a>
 
   <!-- ==========================================================================
-       5. SCRIPTS INTERATIVOS (TIMER DE ANIMAÇÃO DO WHATSAPP)
+       5. SCRIPTS INTERATIVOS
        ========================================================================== -->
   <script>
-    // Captura o elemento do botão flutuante pelo ID
     const btnWapp = document.getElementById('btn-wapp');
-
-    // Função responsável por adicionar a animação shakeY e removê-la após a execução
     function dispararAnimacaoWapp() {
       if (btnWapp) {
-        // Adiciona as classes da biblioteca Animate.css
         btnWapp.classList.add('animate__animated', 'animate__shakeY');
-
-        // Remove as classes após 1 segundo (tempo total do efeito shakeY)
         setTimeout(() => {
           btnWapp.classList.remove('animate__animated', 'animate__shakeY');
         }, 1000);
       }
     }
-
-    // Primeiro disparo após 5 segundos da abertura da página
     setTimeout(dispararAnimacaoWapp, 5000);
-
-    // Ciclo contínuo disparado a cada 20 segundos (20.000ms)
     setInterval(dispararAnimacaoWapp, 20000);
   </script>
 
+  <!-- 💡 JS CONEXÃO 3: VÍNCULO COM O ARQUIVO SCRIPT.JS
+       Esta tag garante que o navegador execute todo o código de cliques e contador -->
+  <script src="script.js"></script>
 </body>
 
 </html>
