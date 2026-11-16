@@ -27,8 +27,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 70px;
-  /* Garante que a barra fixa não cubra o topo da seção ao rolar */
+  scroll-padding-top: 55px;
 }
 
 * {
@@ -49,11 +48,12 @@ body {
    ========================================================================== */
 .menu-navegacao {
   background-color: var(--azul-marinho);
-  padding: 12px 20px;
+  padding: 8px 20px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  min-height: 38px;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
@@ -66,22 +66,18 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 15px;
+  gap: 14px;
 }
 
 .menu-navegacao a {
   color: var(--bege-fundo);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
-  padding: 4px 8px;
-  /* Dá espaço para o fundo laranja quando passar o mouse */
+  padding: 3px 8px;
   border-radius: 4px;
   cursor: pointer;
-  /* Mãozinha para indicar que é clicável */
-
-  /* Transiciona tanto a cor do texto quanto a cor de fundo */
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 
@@ -98,17 +94,19 @@ body {
 }
 
 /* ==========================================================================
-   3. CABEÇALHO & LOGOTIPO
+   3. CABEÇALHO & LOGOTIPO (FAIXA LARANJA DE PONTA A PONTA)
    ========================================================================== */
 .header-principal {
   text-align: center;
-  padding-bottom: 20px;
-  margin-top: 50px;
+  padding: 0;
+  margin: 38px 0 20px 0;
+  width: 100%;
 }
 
 .faixa-laranja-header {
   background-color: var(--laranja-santo-forno);
   padding: 15px 0;
+  margin: 0;
   width: 100%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -128,6 +126,7 @@ body {
   box-shadow: none;
   background-color: transparent;
   object-fit: contain;
+  transition: transform 0.2s ease;
 }
 
 .logo-img:hover {
@@ -143,7 +142,6 @@ body {
   padding: 10px 20px 20px 20px;
 }
 
-/* Redução sutil do tamanho de todos os títulos principais */
 .menu-titulo {
   font-family: var(--fonte-titulos);
   font-size: 42px;
@@ -162,17 +160,12 @@ body {
   margin-bottom: 35px;
   box-shadow: 0 4px 12px rgba(14, 14, 82, 0.05);
   border: 1px solid rgba(255, 176, 95, 0.2);
-
-  /* A transição fica AQUI no elemento base, nunca no :hover */
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Quando o cliente passar o mouse sobre a seção */
 .secao-cardapio:hover {
   transform: translateY(-4px);
-  /* Sobe 4px sem empurrar vizinhos */
   box-shadow: 0 10px 20px rgba(14, 14, 82, 0.12);
-  /* Sombra fica mais suave e distante */
 }
 
 .secao-cardapio h3 {
@@ -232,7 +225,6 @@ body {
 }
 
 /* Selos e Etiquetas */
-/* Selos e Etiquetas com Animação e Destaque */
 .selo {
   background-color: var(--laranja-santo-forno);
   color: var(--azul-marinho) !important;
@@ -242,25 +234,19 @@ body {
   border-radius: 4px;
   margin-top: 4px;
   display: inline-block;
-
-  /* Transição suave aprendida na aula */
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-/* Efeito Hover sutil no selo ao passar o mouse */
 .selo:hover {
   transform: scale(1.08);
-  /* Aumenta 8% suavemente */
   background-color: #ffa03a;
 }
 
-/* Força a etiqueta a ir sempre para a linha de baixo quando necessário */
 .selo-bloco {
   display: table !important;
   margin-top: 6px !important;
 }
 
-/* Comentários/Notas do produto em linha inferior */
 .obs {
   font-size: 12px;
   color: #777;
@@ -277,7 +263,6 @@ body {
   font-style: italic;
 }
 
-/* Dica de porção recomendada para massas */
 .dica-porcao {
   background-color: var(--bege-fundo);
   border-left: 4px solid var(--laranja-santo-forno);
@@ -329,14 +314,13 @@ body {
   min-width: 120px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   background-color: var(--bege-fundo);
   padding: 10px;
   border-radius: 8px;
   border: 1px solid rgba(255, 176, 95, 0.3);
-
-  /* Prepara para a animação do hover */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -368,6 +352,17 @@ body {
   height: 150px;
 }
 
+.preco-torta {
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.btn-adicionar-torta {
+  margin-left: 0;
+  margin-top: 8px;
+  width: 100%;
+}
+
 /* ==========================================================================
    6. SECÇÃO SANTA COLMEIA
    ========================================================================== */
@@ -388,6 +383,7 @@ body {
   height: auto;
   display: block;
   margin: 0 auto 15px auto;
+  transition: transform 0.2s ease;
 }
 
 .logo-santa-colmeia:hover {
@@ -440,9 +436,10 @@ body {
   height: auto;
   display: block;
   margin: 0 auto 10px auto;
+  transition: transform 0.2s ease;
 }
 
-.logo-secao:hover{
+.logo-secao:hover {
   transform: scale(1.08);
 }
 
@@ -475,7 +472,6 @@ body {
   margin-bottom: 0;
 }
 
-/* Imagem da Belo Sapore ajustada com object-fit cover sem faixas */
 .imagem-produto-ampliada {
   width: 100%;
   height: 320px;
@@ -487,7 +483,7 @@ body {
 }
 
 /* ==========================================================================
-   7.1. SECÇÃO ALVORADA DA SERRA (CORES INVERTIDAS)
+   7.1. SECÇÃO ALVORADA DA SERRA
    ========================================================================== */
 .secao-alvorada {
   background-color: var(--branco) !important;
@@ -508,14 +504,13 @@ body {
   display: block;
   margin: 0 auto 15px auto;
   clip-path: inset(10% 7% 15% 7%);
-  /* Recorta a margem superior e inferior da imagem */
+  transition: transform 0.2s ease;
 }
 
 .logo-alvorada:hover {
   transform: scale(1.08);
 }
 
-/* Caixinha da História da Alvorada em tom oliva com texto branco e borda preta */
 .alvorada-historia p {
   font-family: var(--fonte-corpo);
   font-size: 13.5px;
@@ -539,7 +534,6 @@ body {
   font-weight: 600;
 }
 
-/* Exibe a imagem de produto inteira sem cortes para a Alvorada da Serra */
 .imagem-produto-inteira {
   width: 100%;
   height: auto;
@@ -572,9 +566,6 @@ body {
   border-radius: 50px;
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
   cursor: pointer;
-  /* Mãozinha de clique */
-
-  /* Incluímos box-shadow na transição */
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -582,9 +573,7 @@ body {
 .btn-whatsapp-destaque:focus-visible {
   background-color: #20BA5A;
   transform: scale(1.04);
-  /* Cresce 4% suavemente */
   box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
-  /* Sombra mais destacada */
 }
 
 .icone-whatsapp-circulo {
@@ -661,7 +650,7 @@ body {
 }
 
 /* ==========================================================================
-   9. SECÇÃO FAQ (REDESENHADA)
+   9. SECÇÃO FAQ
    ========================================================================== */
 .secao-faq {
   text-align: left;
@@ -713,14 +702,11 @@ body {
   justify-content: space-between;
   align-items: center;
   user-select: none;
-
-  /* Adiciona transição na cor de fundo ao passar o mouse */
   transition: background-color 0.2s ease;
 }
 
 .faq-item summary:hover {
   background-color: rgba(255, 176, 95, 0.15);
-  /* Fundo alaranjado bem suave no hover */
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -787,7 +773,6 @@ body {
   text-align: justify;
 }
 
-/* Imagem da Família com foco ajustado para o topo (sem cortar a cabeça) */
 .imagem-familia {
   width: 100%;
   height: 500px;
@@ -796,10 +781,11 @@ body {
   border-radius: 8px;
   margin: 15px auto 0 auto;
   display: block;
+  transition: transform 0.2s ease;
 }
 
 .imagem-familia:hover {
-  transform: scale(0.9);
+  transform: scale(0.98);
 }
 
 /* ==========================================================================
@@ -867,190 +853,27 @@ body {
 }
 
 /* ==========================================================================
-   12. BOTÃO FLUTUANTE DO WHATSAPP
-   ========================================================================== */
-.whatsapp-flutuante {
-  position: fixed;
-  bottom: 85px;
-  /* Posição segura para não cobrir nem ser coberto no telemóvel */
-  right: 20px;
-  width: 55px;
-  height: 55px;
-  background-color: #25D366;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 9999;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-}
-
-.whatsapp-flutuante:hover {
-  transform: scale(1.1);
-}
-
-.whatsapp-flutuante img {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  object-fit: cover;
-  background-color: #FFFFFF;
-}
-
-/* ==========================================================================
-   13. MEDIA QUERIES (RESPONSIVIDADE EXCLUSIVA PARA TELEMÓVEL E TABLET)
-   ========================================================================== */
-@media (max-width: 1024px) {
-
-  /* Ativação do Menu Hambúrguer em tablets e telemóveis */
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    width: 28px;
-    margin-left: auto;
-    position: relative;
-    z-index: 1001;
-  }
-
-  .hamburger span {
-    height: 3px;
-    width: 100%;
-    background-color: var(--bege-fundo);
-    border-radius: 2px;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .menu-navegacao ul {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding-top: 15px;
-    gap: 12px;
-  }
-
-  .menu-toggle:checked~ul {
-    display: flex;
-  }
-
-  /* Animação do Hambúrguer para o Ícone "X" */
-  .menu-toggle:checked~.hamburger span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .menu-toggle:checked~.hamburger span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle:checked~.hamburger span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-}
-
-@media (max-width: 600px) {
-
-  /* Evita que o card fique levantado ao ser tocado no celular */
-  .secao-cardapio:hover,
-  .historia-container:hover {
-    transform: none;
-  }
-
-  /* Ajustes específicos para ecrãs de telemóvel */
-  .container-cardapio {
-    padding: 10px 12px 20px 12px;
-  }
-
-  .secao-cardapio {
-    padding: 18px 15px;
-    margin-bottom: 25px;
-  }
-
-  .menu-titulo {
-    font-size: 36px;
-  }
-
-  .secao-cardapio h3,
-  .historia-container h2 {
-    font-size: 28px;
-  }
-
-  .item-torta {
-    flex: 1 1 calc(50% - 10px);
-    /* Exibe duas tortas por linha no telemóvel */
-  }
-
-  .imagem-produto,
-  .imagem-produto-especiais,
-  .imagem-produto-massas,
-  .imagem-produto-ampliada {
-    height: 240px;
-    /* Reduz altura das fotos no telemóvel para poupar rolagem */
-  }
-
-  .whatsapp-flutuante {
-    bottom: 85px;
-    /* Posição segura para não cobrir nem ser coberto no telemóvel */
-    right: 15px;
-    width: 50px;
-    height: 50px;
-  }
-
-  .whatsapp-flutuante img {
-    width: 30px;
-    height: 30px;
-  }
-}
-/* ==========================================================================
-   SECÇÃO INSTAGRAM (BEHOLD - CENTRALIZAÇÃO E ENQUADRAMENTO DE 800PX)
+   12. SECÇÃO INSTAGRAM (BEHOLD)
    ========================================================================== */
 .secao-instagram {
   text-align: center !important;
   overflow: hidden;
 }
 
-/* Força o título H3 e o texto explicativo a centralizarem no cartão */
 .secao-instagram h3,
 .secao-instagram .descricao-secao {
   text-align: center !important;
 }
 
-/* Garante que o widget do Behold preencha perfeitamente o cartão */
 .secao-instagram behold-widget {
   width: 100% !important;
   max-width: 100% !important;
   display: block;
   margin: 0 auto;
 }
-/* ==========================================================================
-   BARRA DE PEDIDO FIXA (STICKY TOP)
-   ========================================================================== */
-.barra-pedido {
-  position: sticky;
-  top: 50px; /* Distância para ficar logo abaixo do menu azul superior */
-  z-index: 900; /* Garante que fique sobre as seções ao rolar a página */
-  background-color: var(--azul-marinho);
-  color: var(--bege-fundo);
-  padding: 10px 15px;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 14px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  margin-bottom: 25px;
-}
-
-/* Destaca o número e o nome do produto com a cor da marca */
-.barra-pedido span {
-  color: var(--laranja-santo-forno);
-  font-weight: 700;
-}
 
 /* ==========================================================================
-   ESTILIZAÇÃO DO BOTÃO ADICIONAR (CORES INVERTIDAS)
+   13. BOTÃO ADICIONAR
    ========================================================================== */
 .btn-adicionar {
   background-color: var(--azul-marinho);
@@ -1064,11 +887,9 @@ body {
   cursor: pointer;
   margin-left: 12px;
   white-space: nowrap;
-  /* Transição suave de cores e escala ao passar o mouse */
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Efeito Hover: Fundo Bege, texto Azul Marinho e borda sutil */
 .btn-adicionar:hover {
   background-color: var(--bege-fundo);
   color: var(--azul-marinho);
@@ -1077,142 +898,29 @@ body {
   box-shadow: 0 3px 8px rgba(14, 14, 82, 0.2);
 }
 
-/* Efeito ao clicar */
 .btn-adicionar:active {
   transform: scale(0.98);
 }
 
 /* ==========================================================================
-   CARRINHO EXPANSÍVEL (STICKY TOP) EXTRA
-   ========================================================================== */
-.carrinho-pedido {
-  position: sticky;
-  top: 50px;
-  z-index: 900;
-  background-color: var(--azul-marinho);
-  color: var(--bege-fundo);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  margin-bottom: 25px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-/* Cabeçalho clicável */
-.carrinho-header {
-  padding: 12px 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  font-weight: 700;
-  user-select: none;
-}
-
-.carrinho-header:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.carrinho-header strong {
-  color: var(--laranja-santo-forno);
-}
-
-/* Animação da setinha ao abrir */
-.seta-carrinho {
-  transition: transform 0.3s ease;
-}
-
-.carrinho-pedido.aberto .seta-carrinho {
-  transform: rotate(180deg);
-}
-
-/* Corpo e lista dos itens */
-.carrinho-corpo {
-  max-height: 250px;
-  overflow-y: auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 12px 18px;
-  background-color: #080838; /* Um tom ligeiramente mais escuro */
-}
-
-/* Classe utilitária para esconder/mostrar via JS */
-.escondido {
-  display: none;
-}
-
-.lista-carrinho {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.lista-carrinho li {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-  font-size: 13.5px;
-}
-
-.item-vazio {
-  font-style: italic;
-  color: #aaa;
-  text-align: center;
-}
-
-/* Destaque do Total no Carrinho */
-#total-pedido {
-  color: var(--laranja-santo-forno);
-  font-weight: 700;
-  margin-left: 4px;
-}
-
-/* ==========================================================================
-   BOTÃO LIMPAR PEDIDO
-   ========================================================================== */
-.container-btn-limpar {
-  text-align: right;
-  margin-top: 12px;
-  padding-top: 8px;
-  border-top: 1px dashed rgba(255, 255, 255, 0.1);
-}
-
-.btn-limpar {
-  background-color: transparent;
-  color: #ff6b6b;
-  border: 1px solid #ff6b6b;
-  border-radius: 4px;
-  padding: 4px 10px;
-  font-size: 12px;
-  font-family: var(--fonte-corpo);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-limpar:hover {
-  background-color: #ff6b6b;
-  color: var(--branco);
-}
-
-/* ==========================================================================
-   BOTÃO FLUTUANTE DO CARRINHO (CANTO ESQUERDO)
+   14. BOTÃO FLUTUANTE DO CARRINHO (DIREITA + CORES INVERTIDAS)
    ========================================================================== */
 .carrinho-flutuante {
   position: fixed;
   bottom: 85px;
-  left: 20px;
+  left: auto;
+  right: 20px;
   width: 55px;
   height: 55px;
-  background-color: var(--azul-marinho);
-  color: var(--branco);
-  border: 2px solid var(--laranja-santo-forno);
+  background-color: var(--laranja-santo-forno);
+  color: var(--azul-marinho);
+  border: 2px solid var(--azul-marinho);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 9998;
+  z-index: 9999;
   cursor: pointer;
   font-size: 22px;
   transition: transform 0.2s ease, background-color 0.2s ease;
@@ -1220,16 +928,15 @@ body {
 
 .carrinho-flutuante:hover {
   transform: scale(1.1);
-  background-color: #14146e;
+  background-color: #ffa03a;
 }
 
-/* Badge (Bolinha Vermelha/Laranja com a Contagem) */
 .badge-contador {
   position: absolute;
   top: -4px;
   right: -4px;
-  background-color: var(--laranja-santo-forno);
-  color: var(--azul-marinho);
+  background-color: var(--azul-marinho);
+  color: var(--laranja-santo-forno);
   font-size: 12px;
   font-weight: 700;
   width: 22px;
@@ -1241,7 +948,7 @@ body {
 }
 
 /* ==========================================================================
-   MODAL DO CARRINHO (POP-UP OVERLAY)
+   15. MODAL DO CARRINHO (POP-UP OVERLAY)
    ========================================================================== */
 .carrinho-modal-overlay {
   position: fixed;
@@ -1249,16 +956,15 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.65); /* Fundo escuro transparente */
-  z-index: 10000; /* Camada "mais na frente possível!" - o numero quanto maior mais na frente */
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 10000;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  backdrop-filter: blur(3px); /* Desfoca suavemente o fundo do site */
+  backdrop-filter: blur(3px);
 }
 
-/* Caixa Principal do Modal */
 .carrinho-modal-conteudo {
   background-color: var(--branco);
   color: var(--azul-marinho);
@@ -1273,9 +979,8 @@ body {
 @keyframes modalEntrada {
   from { transform: scale(0.8); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
-} /* ANIMAÇÃO DE MUDANÇA DE ESCALA E OPACIDADE */
+}
 
-/* Cabeçalho do Modal */
 .carrinho-modal-header {
   background-color: var(--azul-marinho);
   color: var(--bege-fundo);
@@ -1305,7 +1010,6 @@ body {
   color: var(--laranja-santo-forno);
 }
 
-/* Corpo e Lista */
 .carrinho-modal-corpo {
   padding: 20px;
   max-height: 300px;
@@ -1326,7 +1030,12 @@ body {
   font-size: 14px;
 }
 
-/* Rodapé do Modal */
+.item-vazio {
+  font-style: italic;
+  color: #aaa;
+  text-align: center;
+}
+
 .carrinho-modal-rodape {
   background-color: var(--bege-fundo);
   padding: 15px 20px;
@@ -1347,11 +1056,30 @@ body {
   margin-left: 6px;
 }
 
+.btn-limpar {
+  background-color: transparent;
+  color: #901119;
+  border: 1px solid #901119;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-family: var(--fonte-corpo);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-limpar:hover {
+  background-color: #901119;
+  color: var(--branco);
+}
+
 .escondido {
   display: none !important;
 }
+
 /* ==========================================================================
-   ESTRUTURA DE DUAS COLUNAS DO ITEM NO CARRINHO
+   16. ESTRUTURA DOS ITENS NO CARRINHO
    ========================================================================== */
 .item-carrinho-linha {
   display: flex;
@@ -1362,7 +1090,6 @@ body {
   gap: 10px;
 }
 
-/* Coluna 1: Nome e Detalhe do Preço Unitário */
 .item-coluna-detalhes {
   display: flex;
   flex-direction: column;
@@ -1382,7 +1109,6 @@ body {
   margin-top: 2px;
 }
 
-/* Coluna 2: Preço Subtotal e Botões de Ação */
 .item-coluna-acoes {
   display: flex;
   align-items: center;
@@ -1402,7 +1128,6 @@ body {
   gap: 4px;
 }
 
-/* Botões +, - e X */
 .btn-qtd {
   background-color: var(--azul-marinho);
   color: var(--branco);
@@ -1446,4 +1171,159 @@ body {
 
 .btn-remover-item:hover {
   background-color: #fadbd8;
+}
+
+/* ==========================================================================
+   17. OPÇÃO DE FRETE E CAMPOS DE ENTREGA NO MODAL
+   ========================================================================== */
+.carrinho-modal-frete {
+  background-color: #fdf9f5;
+  padding: 12px 20px;
+  border-top: 1px solid rgba(14, 14, 82, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.frete-opcao {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--azul-marinho);
+  cursor: pointer;
+  user-select: none;
+}
+
+.frete-opcao input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--azul-marinho);
+  cursor: pointer;
+}
+
+.frete-obs {
+  font-size: 12px;
+  color: #777;
+  font-style: italic;
+  padding-left: 25px;
+}
+
+.campos-entrega {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  padding-left: 25px;
+}
+
+.input-entrega {
+  width: 100%;
+  padding: 8px 10px;
+  font-family: var(--fonte-corpo);
+  font-size: 13px;
+  color: var(--azul-marinho);
+  background-color: var(--branco);
+  border: 1px solid rgba(14, 14, 82, 0.25);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input-entrega:focus {
+  border-color: var(--laranja-santo-forno);
+}
+
+/* ==========================================================================
+   18. MEDIA QUERIES (RESPONSIVIDADE PARA TELEMÓVEL E TABLET)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    width: 26px;
+    margin-left: auto;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .hamburger span {
+    height: 3px;
+    width: 100%;
+    background-color: var(--bege-fundo);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .menu-navegacao ul {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 12px 0 8px 0;
+    gap: 10px;
+  }
+
+  .menu-toggle:checked ~ ul {
+    display: flex;
+  }
+
+  .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .secao-cardapio:hover,
+  .historia-container:hover {
+    transform: none;
+  }
+
+  .container-cardapio {
+    padding: 10px 12px 20px 12px;
+  }
+
+  .secao-cardapio {
+    padding: 18px 15px;
+    margin-bottom: 25px;
+  }
+
+  .menu-titulo {
+    font-size: 36px;
+  }
+
+  .secao-cardapio h3,
+  .historia-container h2 {
+    font-size: 28px;
+  }
+
+  .item-torta {
+    flex: 1 1 calc(50% - 10px);
+  }
+
+  .imagem-produto,
+  .imagem-produto-especiais,
+  .imagem-produto-massas,
+  .imagem-produto-ampliada {
+    height: 240px;
+  }
+
+  .carrinho-flutuante {
+    left: auto;
+    right: 15px;
+    bottom: 85px;
+    width: 50px;
+    height: 50px;
+  }
 }

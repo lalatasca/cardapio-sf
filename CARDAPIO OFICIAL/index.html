@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <!-- Google Analytics Tracking Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSD1EFT6VT"></script>
@@ -11,43 +10,32 @@
     gtag('config', 'G-JSD1EFT6VT');
   </script>
   <meta charset="UTF-8" />
-  <!-- Configuração para garantir responsividade perfeita em telemóveis e tablets -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SANTO FORNO — Cardápio Digital</title>
   <meta name="description" content="Pães de fermentação natural e massas artesanais em Serra Negra - SP." />
-  <!-- Ícone da Aba do Navegador (Favicon) -->
   <link rel="icon" href="imagens/ROND.png" type="image/x-icon" />
-  <!-- Carregamento das Fontes Oficiais da Marca -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Amatica+SC:wght@400;700&family=Bai+Jamjuree:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Jura:wght@300..700&family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&family=Poiret+One&display=swap"
     rel="stylesheet" />
-  <!-- Animate.css via CDN para Animações (WhatsApp Flutuante) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <!-- Ficheiro Principal de Estilos CSS -->
   <link rel="stylesheet" href="style.ia.css" />
 </head>
-
 <body>
   <!-- ==========================================================================
        1. CABEÇALHO & MENU DE NAVEGAÇÃO
        ========================================================================== -->
   <header class="header-principal">
-    <!-- Menu Fixo Superior -->
     <nav class="menu-navegacao">
-      <!-- Controle do Menu Hambúrguer via Checkbox CSS -->
       <input type="checkbox" id="menu-toggle" class="menu-toggle" />
       <label for="menu-toggle" class="hamburger" aria-label="Abrir Menu">
         <span></span>
         <span></span>
         <span></span>
       </label>
-      <!-- Links de Ancoragem para Navegação Rápida -->
       <ul>
-        <li><a href="#paes">Pães Italianos</a></li>
-        <li><a href="#especiais">Especiais da Casa</a></li>
-        <li><a href="#massas">Massas Artesanais</a></li>
+        <li><a href="#paes">Pães e Massas da Casa</a></li>
         <li><a href="#tortas">Tortas</a></li>
         <li><a href="#mel">Mel Santa Colmeia</a></li>
         <li><a href="#geleias">Geléias Belo Sapore</a></li>
@@ -56,9 +44,11 @@
         <li><a href="#avaliacoes">Avaliações</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#instagram">Instagram</a></li>
+        <li><a href="#pedido-whatsapp">WhatsApp</a></li>
       </ul>
     </nav>
-    <!-- Faixa Laranja de Destaque da Logo -->
+
+    <!-- Faixa Laranja de Destaque da Logo (fora do nav para ocupar 100% sem borda azul) -->
     <div class="faixa-laranja-header">
       <div class="brand-container">
         <img src="imagens/Logo oficial SF.png" alt="Logo Santo Forno" class="logo-img" />
@@ -70,17 +60,14 @@
        2. CONTEÚDO PRINCIPAL DO CARDÁPIO
        ========================================================================== -->
   <main class="container-cardapio">
-    <!-- Título Principal da Página -->
     <h1 class="menu-titulo">Menu</h1>
 
-
     <!-- ==========================================================================
-     MODAL DO CARRINHO (COMEÇA ESCONDIDO)
-     ========================================================================== -->
+         MODAL DO CARRINHO (COMEÇA ESCONDIDO)
+         ========================================================================== -->
     <div class="carrinho-modal-overlay escondido" id="carrinho-modal">
       <div class="carrinho-modal-conteudo">
-
-        <!-- Cabeçalho do Modal com Título e Botão Fechar -->
+        <!-- Cabeçalho do Modal -->
         <div class="carrinho-modal-header">
           <h2>🛒 Seu Pedido</h2>
           <button class="btn-fechar-modal" id="btn-fechar-modal">&times;</button>
@@ -93,6 +80,31 @@
           </ul>
         </div>
 
+        <!-- Opção de Frete Serra Negra + Campos Condicionais -->
+        <div class="carrinho-modal-frete">
+          <label class="frete-opcao">
+            <input type="checkbox" id="checkbox-frete" />
+            <span>Frete Serra Negra <strong>R$ 5,00</strong></span>
+          </label>
+          <span class="frete-obs">*Demais fretes (região ou Correios) a consultar</span>
+
+          <!-- Campos que só aparecem se o checkbox acima for marcado -->
+          <div id="campos-entrega" class="campos-entrega escondido">
+            <input
+              type="text"
+              id="nome-recebedor"
+              class="input-entrega"
+              placeholder="Nome de quem vai receber"
+            />
+            <input
+              type="text"
+              id="endereco-entrega"
+              class="input-entrega"
+              placeholder="Endereço completo (Rua, nº, bairro)"
+            />
+          </div>
+        </div>
+
         <!-- Rodapé do Modal com Total e Ações -->
         <div class="carrinho-modal-rodape">
           <div class="resumo-total">
@@ -103,7 +115,6 @@
             <button id="btn-limpar-pedido" class="btn-limpar">🗑️ Limpar Pedido</button>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -113,12 +124,6 @@
     <section id="paes" class="secao-cardapio">
       <h3>Pães Italianos</h3>
       <p class="descricao-secao">Fermentação natural. Três ingredientes: Água, Farinha Italiana e Sal.</p>
-
-      <!-- 💡 JS CONEXÃO 2: ESTRUTURA DOS PRODUTOS
-           - A classe "produto" no <li> permite que o document.querySelectorAll('.produto') encontre este item.
-           - A classe "nome-produto" permite capturar o texto do nome.
-           - A classe "preco" permite capturar o valor.
-           - O botão com classe "btn-adicionar" escuta o evento de clique (addEventListener). -->
       <ul class="lista-produtos">
         <li class="produto">
           <div class="info-produto">
@@ -310,6 +315,11 @@
          ---------------------------------------------------------------------- -->
     <section id="tortas" class="secao-cardapio">
       <h3>Empório das Tortas</h3>
+
+      <p class="dica-porcao">
+        ⚠️ <strong>Importante:</strong> Consultar sabores disponíveis a pronta entrega. Sabores específicos encomendar com pelo menos 1 semana de antecedência.
+      </p>
+
       <!-- Subcategoria: Tortas Doces -->
       <div class="categoria-torta">
         <p class="titulo-subcategoria">
@@ -318,32 +328,45 @@
         </p>
         <p class="obs-paragrafo">Rende de 10 a 12 fatias bem servidas.</p>
         <div class="mosaico-tortas">
-          <div class="item-torta">
+          <div class="item-torta produto">
             <img src="imagens/ALEMA.jpg" alt="Torta Alemã" />
-            <span>Alemã</span>
+            <span class="nome-produto">Torta Alemã</span>
+            <span class="preco preco-torta">R$ 160</span>
+            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
           </div>
-          <div class="item-torta">
+          <div class="item-torta produto">
             <img src="imagens/LIMAO.jpg" alt="Torta de Limão" />
-            <span>Limão</span>
+            <span class="nome-produto">Torta de Limão</span>
+            <span class="preco preco-torta">R$ 160</span>
+            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
           </div>
-          <div class="item-torta">
+          <div class="item-torta produto">
             <img src="imagens/HOLANDESA.jpg" alt="Torta Holandesa" />
-            <span>Holandesa</span>
+            <span class="nome-produto">Torta Holandesa</span>
+            <span class="preco preco-torta">R$ 160</span>
+            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
           </div>
-          <div class="item-torta">
+          <div class="item-torta produto">
             <img src="imagens/DAMASCO.jpg" alt="Torta de Iogurte com Damasco" />
-            <span>Damasco</span>
+            <span class="nome-produto">Torta de Damasco</span>
+            <span class="preco preco-torta">R$ 160</span>
+            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
           </div>
-          <div class="item-torta">
+          <div class="item-torta produto">
             <img src="imagens/CROCANTE.jpg" alt="Torta Crocante" />
-            <span>Crocante</span>
+            <span class="nome-produto">Torta Crocante</span>
+            <span class="preco preco-torta">R$ 160</span>
+            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
           </div>
-          <div class="item-torta">
+          <div class="item-torta produto">
             <img src="imagens/VERMELHAS.jpg" alt="Torta de Frutas Vermelhas" />
-            <span>Frutas Vermelhas</span>
+            <span class="nome-produto">Torta de Frutas Vermelhas</span>
+            <span class="preco preco-torta">R$ 160</span>
+            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
           </div>
         </div>
       </div>
+
       <!-- Subcategoria: Tortas Salgadas -->
       <div class="categoria-torta">
         <p class="titulo-subcategoria">
@@ -352,9 +375,11 @@
         </p>
         <p class="obs-paragrafo">Rende de 10 a 12 fatias bem servidas.</p>
         <div class="mosaico-tortas">
-          <div class="item-torta item-torta-larga">
+          <div class="item-torta item-torta-larga produto">
             <img src="imagens/FRANGO.jpg" alt="Tortas Salgadas (Frango e Palmito)" />
-            <span>Frango com Catupiry ou Palmito</span>
+            <span class="nome-produto">Torta Salgada (Frango com Catupiry ou Palmito)</span>
+            <span class="preco preco-torta">R$ 130</span>
+            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
           </div>
         </div>
       </div>
@@ -426,8 +451,7 @@
           A Alvorada da Serra é uma premiada queijaria artesanal e familiar em Serra Negra (SP). Comandada por dois
           médicos veterinários, o cuidado é total em cada etapa: da nutrição do rebanho à maturação perfeita de cada
           peça. É essa excelência que escolhemos para o Santo Forno — do nosso pão de queijo mineiro às massas recheadas
-          e
-          pães artesanais, todos levam o sabor incomparável dos queijos Alvorada da Serra.
+          e pães artesanais, todos levam o sabor incomparável dos queijos Alvorada da Serra.
         </p>
       </div>
       <div class="alvorada-produtos">
@@ -521,7 +545,7 @@
       <img src="imagens/GELEIA.jpg" alt="Pote de geléia artesanal Belo Sapore" class="imagem-produto-ampliada" />
     </section>
 
-    <!-- BOTÃO FLUTUANTE DO CARRINHO (CANTO INFERIOR ESQUERDO) -->
+    <!-- BOTÃO FLUTUANTE DO CARRINHO (CANTO INFERIOR DIREITO) -->
     <button class="carrinho-flutuante" id="btn-abrir-carrinho" title="Ver Carrinho">
       🛒 <span id="contador-pedido" class="badge-contador">0</span>
     </button>
@@ -529,15 +553,13 @@
     <!-- ----------------------------------------------------------------------
          2.8. BOTÃO PRINCIPAL DE PEDIDO VIA WHATSAPP
          ---------------------------------------------------------------------- -->
-    <div class="container-btn-whatsapp-principal">
+    <div id="pedido-whatsapp" class="container-btn-whatsapp-principal">
       <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!" target="_blank"
         class="btn-whatsapp-destaque">
         <img src="imagens/LOGO WAPP.jpeg" alt="WhatsApp" class="icone-whatsapp-circulo" />
-        Faça seu Pedido via WhatsApp
+        Dúvidas? WhatsApp
       </a>
     </div>
-
-
 
     <!-- ----------------------------------------------------------------------
          2.9. SECÇÃO: NOSSA HISTÓRIA
@@ -595,7 +617,6 @@
     <section id="faq" class="secao-cardapio secao-faq">
       <h3 class="faq-titulo-principal">FAQ</h3>
       <p class="faq-subtitulo">Perguntas Frequentes — Clique na pergunta para ver a resposta</p>
-
       <div class="faq-categoria">
         <h4>1. Pedidos e Funcionamento</h4>
         <details class="faq-item">
@@ -616,7 +637,6 @@
             retirada no local (sob encomenda) ou delivery.</p>
         </details>
       </div>
-
       <div class="faq-categoria">
         <h4>2. Produtos e Disponibilidade</h4>
         <details class="faq-item">
@@ -639,7 +659,6 @@
             glúten e não são indicados para pessoas celíacas.</p>
         </details>
       </div>
-
       <div class="faq-categoria">
         <h4>3. Entregas e Pagamento</h4>
         <details class="faq-item">
@@ -655,7 +674,7 @@
         <details class="faq-item">
           <summary><strong>Quais são as formas de pagamento aceitas?</strong></summary>
           <p>Aceitamos pagamentos via PIX ou Dinheiro. O pagamento deve ser realizado no momento da retirada do produto
-            or no ato da entrega.</p>
+            ou no ato da entrega.</p>
         </details>
       </div>
     </section>
@@ -718,33 +737,23 @@
   </footer>
 
   <!-- ==========================================================================
-       4. BOTÃO FLUTUANTE DO WHATSAPP
-       ========================================================================== -->
-  <a href="https://wa.me/5519999213704?text=Gostaria%20de%20fazer%20um%20pedido%20Santo%20Forno%20!" target="_blank"
-    class="whatsapp-flutuante" id="btn-wapp" title="Fazer pedido pelo WhatsApp">
-    <img src="imagens/LOGO WAPP.jpeg" alt="WhatsApp Santo Forno" />
-  </a>
-
-  <!-- ==========================================================================
-       5. SCRIPTS INTERATIVOS
+       4. SCRIPTS INTERATIVOS
        ========================================================================== -->
   <script>
-    const btnWapp = document.getElementById('btn-wapp');
-    function dispararAnimacaoWapp() {
-      if (btnWapp) {
-        btnWapp.classList.add('animate__animated', 'animate__shakeY');
+    const btnCarrinhoAnimado = document.getElementById('btn-abrir-carrinho');
+    function dispararAnimacaoCarrinho() {
+      if (btnCarrinhoAnimado) {
+        btnCarrinhoAnimado.classList.add('animate__animated', 'animate__shakeY');
         setTimeout(() => {
-          btnWapp.classList.remove('animate__animated', 'animate__shakeY');
+          btnCarrinhoAnimado.classList.remove('animate__animated', 'animate__shakeY');
         }, 1000);
       }
     }
-    setTimeout(dispararAnimacaoWapp, 5000);
-    setInterval(dispararAnimacaoWapp, 20000);
+    setTimeout(dispararAnimacaoCarrinho, 5000);
+    setInterval(dispararAnimacaoCarrinho, 20000);
   </script>
 
-  <!-- 💡 JS CONEXÃO 3: VÍNCULO COM O ARQUIVO SCRIPT.JS
-       Esta tag garante que o navegador execute todo o código de cliques e contador -->
+  <!-- Conexão obrigatória com o arquivo script.js -->
   <script src="script.js"></script>
 </body>
-
 </html>

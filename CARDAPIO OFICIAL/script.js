@@ -12,25 +12,26 @@ const btnFecharModal = document.querySelector('#btn-fechar-modal');
 const modalCarrinho = document.querySelector('#carrinho-modal');
 const btnLimpar = document.querySelector('#btn-limpar-pedido');
 
+// Elementos de Frete e Entrega
+const checkboxFrete = document.querySelector('#checkbox-frete');
+const camposEntrega = document.querySelector('#campos-entrega');
+
 // Tenta carregar o carrinho do localStorage ao iniciar; se não houver nada, inicia objeto vazio {}
 let carrinho = carregarCarrinho();
 
 // ==========================================================================
 // 2. FUNÇÕES DE LOCALSTORAGE (GRAVAR E LER)
 // ==========================================================================
-
-// Salva o estado atual do carrinho no navegador
 function salvarCarrinho() {
   localStorage.setItem('carrinhoSantoForno', JSON.stringify(carrinho));
 }
 
-// Busca o carrinho salvo quando a página abre
 function carregarCarrinho() {
   const carrinhoSalvo = localStorage.getItem('carrinhoSantoForno');
   if (carrinhoSalvo) {
-    return JSON.parse(carrinhoSalvo); // Converte texto de volta para objeto
+    return JSON.parse(carrinhoSalvo);
   }
-  return {}; // Se estiver vazio, retorna objeto zerado
+  return {};
 }
 
 // ==========================================================================
@@ -60,7 +61,6 @@ if (modalCarrinho) {
 // 4. FUNÇÃO PRINCIPAL: DESENHAR O CARRINHO E RECALCULAR TOTAL
 // ==========================================================================
 function atualizarCarrinho() {
-  // 💾 Sempre que o carrinho é desenhado, salvamos a versão atualizada no localStorage!
   salvarCarrinho();
 
   listaCarrinho.innerHTML = '';
@@ -70,6 +70,7 @@ function atualizarCarrinho() {
 
   const nomesProdutos = Object.keys(carrinho);
 
+  // Se o carrinho estiver vazio
   if (nomesProdutos.length === 0) {
     listaCarrinho.innerHTML = '<li class="item-vazio">Nenhum item adicionado ainda.</li>';
     contador.textContent = 0;
@@ -77,6 +78,7 @@ function atualizarCarrinho() {
     return;
   }
 
+  // Percorre cada produto salvo no objeto carrinho
   nomesProdutos.forEach((nome) => {
     const item = carrinho[nome];
     const subtotal = item.preco * item.quantidade;
@@ -109,6 +111,11 @@ function atualizarCarrinho() {
     listaCarrinho.appendChild(li);
   });
 
+  // Soma R$ 5,00 se a opção de Frete Serra Negra estiver marcada
+  if (checkboxFrete && checkboxFrete.checked) {
+    valorTotal += 5;
+  }
+
   contador.textContent = totalItens;
   if (totalPedidoElemento) {
     totalPedidoElemento.textContent = 'R$ ' + valorTotal.toFixed(2).replace('.', ',');
@@ -116,9 +123,10 @@ function atualizarCarrinho() {
 }
 
 // ==========================================================================
-// 5. EVENTOS DE CLIQUE (ADICIONAR DO CARDÁPIO, +, - E REMOVER)
+// 5. EVENTOS DE CLIQUE (ADICIONAR, +, -, REMOVER, LIMPAR E FRETE)
 // ==========================================================================
 
+// Adicionar produto a partir do cardápio principal (incluindo tortas)
 produtos.forEach((produto) => {
   const botao = produto.querySelector('.btn-adicionar');
   if (botao) {
@@ -141,6 +149,7 @@ produtos.forEach((produto) => {
   }
 });
 
+// Botões +, - e ✕ dentro da lista do modal
 listaCarrinho.addEventListener('click', (event) => {
   const alvo = event.target;
   const nome = alvo.getAttribute('data-nome');
@@ -161,14 +170,33 @@ listaCarrinho.addEventListener('click', (event) => {
   atualizarCarrinho();
 });
 
-// Botão Limpar Pedido (Apaga do estado e remove a chave do localStorage)
+// Botão Limpar Pedido
 if (btnLimpar) {
   btnLimpar.addEventListener('click', () => {
     carrinho = {};
-    localStorage.removeItem('carrinhoSantoForno'); // Limpa a chave da memória
+    localStorage.removeItem('carrinhoSantoForno');
+
+    // Desmarca o frete e esconde os campos de endereço ao limpar o pedido
+    if (checkboxFrete) checkboxFrete.checked = false;
+    if (camposEntrega) camposEntrega.classList.add('escondido');
+
     atualizarCarrinho();
   });
 }
 
-// 🚀 Desenha o carrinho imediatamente assim que o arquivo script.js é carregado na tela
+// Mostra/esconde os campos de endereço e recalcula o total ao marcar o frete
+if (checkboxFrete) {
+  checkboxFrete.addEventListener('change', () => {
+    if (camposEntrega) {
+      if (checkboxFrete.checked) {
+        camposEntrega.classList.remove('escondido');
+      } else {
+        camposEntrega.classList.add('escondido');
+      }
+    }
+    atualizarCarrinho();
+  });
+}
+
+// Desenha o carrinho imediatamente ao carregar a página
 atualizarCarrinho();
