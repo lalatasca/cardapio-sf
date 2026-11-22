@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <!-- Google Analytics Tracking Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSD1EFT6VT"></script>
@@ -22,6 +23,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="style.ia.css" />
 </head>
+
 <body>
   <!-- ==========================================================================
        1. CABEÇALHO & MENU DE NAVEGAÇÃO
@@ -90,21 +92,56 @@
 
           <!-- Campos que só aparecem se o checkbox acima for marcado -->
           <div id="campos-entrega" class="campos-entrega escondido">
-            <input
-              type="text"
-              id="nome-recebedor"
-              class="input-entrega"
-              placeholder="Nome de quem vai receber"
-            />
-            <input
-              type="text"
-              id="endereco-entrega"
-              class="input-entrega"
-              placeholder="Endereço completo (Rua, nº, bairro)"
-            />
+            <input type="text" id="nome-recebedor" class="input-entrega" placeholder="Nome de quem vai receber" />
+            <input type="text" id="endereco-entrega" class="input-entrega"
+              placeholder="Endereço completo (Rua, nº, bairro)" />
+          </div>
+
+          <!-- Opção Obrigatória para Tortas (aparece automaticamente se houver torta no carrinho) -->
+          <div id="bloco-opcao-torta" class="carrinho-modal-frete escondido">
+            <span class="titulo-opcao-torta">🥧 Como deseja retirar sua(s) torta(s)? *</span>
+            <label class="frete-opcao">
+              <input type="radio" name="opcao-torta" value="Retirar torta congelada" />
+              <span>Retirar torta congelada</span>
+            </label>
+            <label class="frete-opcao">
+              <input type="radio" name="opcao-torta" value="Retirar torta pronta para consumo" />
+              <span>Retirar torta pronta para consumo</span>
+            </label>
+            <span id="aviso-torta-obrigatoria" class="aviso-obrigatorio escondido">
+              *Selecione uma opção acima para as tortas.
+            </span>
+          </div>
+
+        </div>
+        <!-- Data de Retirada / Entrega e Observações do Pedido -->
+        <div class="carrinho-modal-agendamento">
+          <div class="campo-agendamento">
+            <label for="data-retirada" class="label-agendamento">
+              📅 Data desejada para retirada/entrega:*
+            </label>
+            <input type="date" id="data-retirada" class="input-entrega" required />
+
+            <span id="aviso-data-obrigatoria" class="aviso-obrigatorio escondido">
+              *Por favor, selecione a data desejada para retirada ou entrega.
+            </span>
+
+            <!-- Aviso cordial caso a data tenha menos de 3 dias de antecedência -->
+            <div id="aviso-prazo-curto" class="aviso-prazo escondido">
+              💛 <strong>Nota da Santo Forno:</strong> Somos uma padaria artesanal de fermentação natural e produzimos
+              tudo fresquinho sob demanda. Para pedidos com menos de 3 dias de antecedência, pode acontecer de não
+              termos todos os itens disponíveis a pronta entrega — mas faremos o possível para te atender com carinho!
+            </div>
+          </div>
+
+          <div class="campo-agendamento">
+            <label for="observacoes-pedido" class="label-agendamento">
+              📝 Observações do pedido (opcional):
+            </label>
+            <textarea id="observacoes-pedido" class="input-entrega textarea-obs" rows="2"
+              placeholder="Ex.: Ponto de referência, horário aproximado de retirada, recado..."></textarea>
           </div>
         </div>
-
         <!-- Rodapé do Modal com Total e Ações -->
         <div class="carrinho-modal-rodape">
           <div class="resumo-total">
@@ -112,7 +149,10 @@
             <strong id="total-pedido">R$ 0,00</strong>
           </div>
           <div class="acoes-carrinho">
-            <button id="btn-limpar-pedido" class="btn-limpar">🗑️ Limpar Pedido</button>
+            <button id="btn-limpar-pedido" class="btn-limpar">🗑️ Limpar</button>
+            <button id="btn-enviar-whatsapp" class="btn-finalizar-whatsapp">
+              📲 Fazer Pedido
+            </button>
           </div>
         </div>
       </div>
@@ -315,76 +355,88 @@
          ---------------------------------------------------------------------- -->
     <section id="tortas" class="secao-cardapio">
       <h3>Empório das Tortas</h3>
-
       <p class="dica-porcao">
-        ⚠️ <strong>Importante:</strong> Consultar sabores disponíveis a pronta entrega. Sabores específicos encomendar com pelo menos 1 semana de antecedência.
+        ⚠️ <strong>Importante:</strong> Consultar sabores disponíveis a pronta entrega. Sabores específicos encomendar
+        com pelo menos 1 semana de antecedência.
       </p>
+      <p class="obs-paragrafo">Todas as tortas rendem de 10 a 12 fatias bem servidas.</p>
 
-      <!-- Subcategoria: Tortas Doces -->
-      <div class="categoria-torta">
-        <p class="titulo-subcategoria">
-          <span>Tortas Doces ~ 1,5Kg</span>
-          <span class="preco">R$ 160</span>
-        </p>
-        <p class="obs-paragrafo">Rende de 10 a 12 fatias bem servidas.</p>
-        <div class="mosaico-tortas">
-          <div class="item-torta produto">
-            <img src="imagens/ALEMA.jpg" alt="Torta Alemã" />
-            <span class="nome-produto">Torta Alemã</span>
-            <span class="preco preco-torta">R$ 160</span>
-            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
-          </div>
-          <div class="item-torta produto">
-            <img src="imagens/LIMAO.jpg" alt="Torta de Limão" />
-            <span class="nome-produto">Torta de Limão</span>
-            <span class="preco preco-torta">R$ 160</span>
-            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
-          </div>
-          <div class="item-torta produto">
-            <img src="imagens/HOLANDESA.jpg" alt="Torta Holandesa" />
-            <span class="nome-produto">Torta Holandesa</span>
-            <span class="preco preco-torta">R$ 160</span>
-            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
-          </div>
-          <div class="item-torta produto">
-            <img src="imagens/DAMASCO.jpg" alt="Torta de Iogurte com Damasco" />
-            <span class="nome-produto">Torta de Damasco</span>
-            <span class="preco preco-torta">R$ 160</span>
-            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
-          </div>
-          <div class="item-torta produto">
-            <img src="imagens/CROCANTE.jpg" alt="Torta Crocante" />
-            <span class="nome-produto">Torta Crocante</span>
-            <span class="preco preco-torta">R$ 160</span>
-            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
-          </div>
-          <div class="item-torta produto">
-            <img src="imagens/VERMELHAS.jpg" alt="Torta de Frutas Vermelhas" />
-            <span class="nome-produto">Torta de Frutas Vermelhas</span>
-            <span class="preco preco-torta">R$ 160</span>
-            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
-          </div>
+      <div class="mosaico-tortas">
+        <!-- Tortas Salgadas (com fundo azul-claro translúcido) -->
+        <div class="item-torta item-torta-salgada produto">
+          <img src="imagens/TORTA-DE-FRANGO.webp" alt="Torta de Frango com Catupiry" />
+          <span class="nome-produto">Torta de Frango com Catupiry</span>
+          <span class="peso-torta">~ 1,7Kg</span>
+          <span class="preco preco-torta">R$ 130</span>
+          <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
         </div>
-      </div>
 
-      <!-- Subcategoria: Tortas Salgadas -->
-      <div class="categoria-torta">
-        <p class="titulo-subcategoria">
-          <span>Tortas Salgadas ~ 1,7Kg</span>
-          <span class="preco">R$ 130</span>
-        </p>
-        <p class="obs-paragrafo">Rende de 10 a 12 fatias bem servidas.</p>
-        <div class="mosaico-tortas">
-          <div class="item-torta item-torta-larga produto">
-            <img src="imagens/FRANGO.jpg" alt="Tortas Salgadas (Frango e Palmito)" />
-            <span class="nome-produto">Torta Salgada (Frango com Catupiry ou Palmito)</span>
-            <span class="preco preco-torta">R$ 130</span>
-            <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
-          </div>
+        <div class="item-torta item-torta-salgada produto">
+          <img src="imagens/TORTA-DE-PALMITO.webp" alt="Torta de Palmito" />
+          <span class="nome-produto">Torta de Palmito</span>
+          <span class="peso-torta">~ 1,7Kg</span>
+          <span class="preco preco-torta">R$ 130</span>
+          <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
+        </div>
+
+        <!-- Tortas Doces (padrão bege/laranjinha) -->
+        <div class="item-torta produto">
+          <img src="imagens/ALEMA.jpg" alt="Torta Alemã" />
+          <span class="nome-produto">Torta Alemã</span>
+          <span class="peso-torta">~ 1,5Kg</span>
+          <span class="preco preco-torta">R$ 160</span>
+          <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
+        </div>
+
+        <div class="item-torta produto">
+          <img src="imagens/LIMAO.jpg" alt="Torta de Limão" />
+          <span class="nome-produto">Torta de Limão</span>
+          <span class="peso-torta">~ 1,5Kg</span>
+          <span class="preco preco-torta">R$ 160</span>
+          <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
+        </div>
+
+        <div class="item-torta produto">
+          <img src="imagens/HOLANDESA.jpg" alt="Torta Holandesa" />
+          <span class="nome-produto">Torta Holandesa</span>
+          <span class="peso-torta">~ 1,5Kg</span>
+          <span class="preco preco-torta">R$ 160</span>
+          <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
+        </div>
+
+        <div class="item-torta produto">
+          <img src="imagens/DAMASCO.jpg" alt="Torta de Iogurte com Damasco" />
+          <span class="nome-produto">Torta de Iogurte com Damasco</span>
+          <span class="peso-torta">~ 1,5Kg</span>
+          <span class="preco preco-torta">R$ 160</span>
+          <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
+        </div>
+
+        <div class="item-torta produto">
+          <img src="imagens/CROCANTE.jpg" alt="Torta Crocante" />
+          <span class="nome-produto">Torta Crocante</span>
+          <span class="peso-torta">~ 1,5Kg</span>
+          <span class="preco preco-torta">R$ 160</span>
+          <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
+        </div>
+
+        <div class="item-torta produto">
+          <img src="imagens/VERMELHAS.jpg" alt="Torta de Frutas Vermelhas" />
+          <span class="nome-produto">Torta de Frutas Vermelhas</span>
+          <span class="peso-torta">~ 1,5Kg</span>
+          <span class="preco preco-torta">R$ 160</span>
+          <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
+        </div>
+
+        <div class="item-torta produto">
+          <img src="imagens/TORTA-SWEET-PIE.webp" alt="Torta Sweet Pie" />
+          <span class="nome-produto">Torta Sweet Pie</span>
+          <span class="peso-torta">~ 1,5Kg</span>
+          <span class="preco preco-torta">R$ 160</span>
+          <button class="btn-adicionar btn-adicionar-torta">Adicionar</button>
         </div>
       </div>
     </section>
-
     <!-- ----------------------------------------------------------------------
          2.5. SECÇÃO: SANTA COLMEIA (MEL E PRODUTOS APÍCOLAS)
          ---------------------------------------------------------------------- -->
@@ -545,10 +597,23 @@
       <img src="imagens/GELEIA.jpg" alt="Pote de geléia artesanal Belo Sapore" class="imagem-produto-ampliada" />
     </section>
 
-    <!-- BOTÃO FLUTUANTE DO CARRINHO (CANTO INFERIOR DIREITO) -->
-    <button class="carrinho-flutuante" id="btn-abrir-carrinho" title="Ver Carrinho">
-      🛒 <span id="contador-pedido" class="badge-contador">0</span>
-    </button>
+    <!-- BOTÃO FLUTUANTE DO CARRINHO + BALÕES DE AVISO -->
+    <div class="carrinho-flutuante-wrapper">
+      <!-- 1. Balão Laranja (Lembrete automático a cada 1 minuto) -->
+      <div class="tooltip-carrinho escondido" id="tooltip-carrinho">
+        Confira<br />seu pedido<br />aqui
+      </div>
+
+      <!-- 2. Balão Azul (SÓ aparece imediatamente ao clicar em "Adicionar") -->
+      <div class="tooltip-carrinho tooltip-adicionado escondido" id="toast-adicionado">
+        ✓ Item<br />adicionado!
+      </div>
+
+      <button class="carrinho-flutuante" id="btn-abrir-carrinho" title="Ver Carrinho">
+        <img src="imagens/CARRINHO-SITE.webp" alt="Carrinho de Compras" class="icone-carrinho-img" />
+        <span id="contador-pedido" class="badge-contador">0</span>
+      </button>
+    </div>
 
     <!-- ----------------------------------------------------------------------
          2.8. BOTÃO PRINCIPAL DE PEDIDO VIA WHATSAPP
@@ -715,7 +780,7 @@
         <p>
           <strong>Instagram Santa Colmeia:</strong><br />
           <a href="https://www.instagram.com/santacolmeia.mel/" target="_blank" class="link-instagram">
-            @melsantacolmeia
+            @santacolmeia.mel
           </a>
         </p>
       </div>
@@ -756,4 +821,5 @@
   <!-- Conexão obrigatória com o arquivo script.js -->
   <script src="script.js"></script>
 </body>
+
 </html>

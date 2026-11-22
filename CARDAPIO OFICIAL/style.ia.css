@@ -297,7 +297,6 @@ body {
   border-bottom: 1px solid var(--laranja-santo-forno);
   padding-bottom: 4px;
 }
-
 /* ==========================================================================
    5. MOSAICO DE TORTAS
    ========================================================================== */
@@ -329,6 +328,12 @@ body {
   box-shadow: 0 6px 14px rgba(14, 14, 82, 0.1);
 }
 
+/* Diferenciação visual das Tortas Salgadas (Azul-claro translúcido) */
+.item-torta-salgada {
+  background-color: rgba(173, 216, 230, 0.28);
+  border: 1px solid rgba(14, 14, 82, 0.18);
+}
+
 .item-torta img {
   width: 100%;
   height: 110px;
@@ -343,13 +348,11 @@ body {
   color: var(--azul-marinho);
 }
 
-.item-torta-larga {
-  flex: 1 1 100%;
-  max-width: 320px;
-}
-
-.item-torta-larga img {
-  height: 150px;
+.peso-torta {
+  font-size: 11.5px !important;
+  font-weight: 400 !important;
+  color: #666 !important;
+  margin-top: 2px;
 }
 
 .preco-torta {
@@ -362,7 +365,6 @@ body {
   margin-top: 8px;
   width: 100%;
 }
-
 /* ==========================================================================
    6. SECÇÃO SANTA COLMEIA
    ========================================================================== */
@@ -903,27 +905,107 @@ body {
 }
 
 /* ==========================================================================
-   14. BOTÃO FLUTUANTE DO CARRINHO (DIREITA + CORES INVERTIDAS)
+   14. BOTÃO FLUTUANTE DO CARRINHO + BALÕES DE AVISO (LARANJA E AZUL)
    ========================================================================== */
-.carrinho-flutuante {
+.carrinho-flutuante-wrapper {
   position: fixed;
   bottom: 85px;
-  left: auto;
   right: 20px;
-  width: 55px;
-  height: 55px;
+  width: 58px;
+  height: 58px;
+  z-index: 9999;
+}
+
+/* Formato base compartilhado pelos dois balões (posição e tamanho idênticos) */
+.tooltip-carrinho {
+  position: absolute;
+  bottom: 72px; /* Mesma altura exata acima do carrinho */
+  right: 12px;  /* Mesmo deslocamento lateral */
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
   background-color: var(--laranja-santo-forno);
   color: var(--azul-marinho);
-  border: 2px solid var(--azul-marinho);
+  font-family: var(--fonte-corpo);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 10000;
+  pointer-events: none;
+  animation: aparecerTooltip 0.25s ease forwards;
+}
+
+/* Biquinho apontando para o carrinho */
+.tooltip-carrinho::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: 16px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--laranja-santo-forno);
+  transform: rotate(35deg);
+  border-bottom-right-radius: 3px;
+  z-index: -1;
+}
+
+/* Variação Azul-Marinho: EXCLUSIVA para o clique em "Adicionar" */
+.tooltip-adicionado {
+  background-color: var(--azul-marinho);
+  color: var(--bege-fundo);
+  border: 2px solid var(--laranja-santo-forno);
+  z-index: 10001; /* Fica por cima caso o laranja esteja visível */
+}
+
+.tooltip-adicionado::after {
+  background-color: var(--azul-marinho);
+  border-right: 2px solid var(--laranja-santo-forno);
+  border-bottom: 2px solid var(--laranja-santo-forno);
+}
+
+@keyframes aparecerTooltip {
+  from { opacity: 0; transform: scale(0.75) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes pulsoCarrinho {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+.carrinho-pulsando {
+  animation: pulsoCarrinho 0.35s ease;
+}
+
+.carrinho-flutuante {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  background-color: var(--laranja-santo-forno);
+  border: none;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 9999;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  font-size: 22px;
   transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.icone-carrinho-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
 }
 
 .carrinho-flutuante:hover {
@@ -936,7 +1018,7 @@ body {
   top: -4px;
   right: -4px;
   background-color: var(--azul-marinho);
-  color: var(--laranja-santo-forno);
+  color: var(--branco);
   font-size: 12px;
   font-weight: 700;
   width: 22px;
@@ -1236,6 +1318,131 @@ body {
 }
 
 /* ==========================================================================
+   VARIAÇÕES DE PRODUTOS NO CARRINHO (CORTE DE PÃO E RETIRADA DE TORTA)
+   ========================================================================== */
+.opcao-corte-pao {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--azul-marinho);
+  background-color: rgba(255, 176, 95, 0.22);
+  padding: 3px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  width: fit-content;
+}
+
+.opcao-corte-pao input[type="checkbox"] {
+  accent-color: var(--azul-marinho);
+  cursor: pointer;
+}
+
+.titulo-opcao-torta {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--azul-marinho);
+  margin-bottom: 4px;
+}
+
+.frete-opcao input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--azul-marinho);
+  cursor: pointer;
+}
+
+.aviso-obrigatorio {
+  font-size: 12px;
+  color: #c0392b;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.input-invalido {
+  border-color: #c0392b !important;
+  background-color: #fff8f8 !important;
+}
+
+/* ==========================================================================
+   DATA DE RETIRADA E OBSERVAÇÕES NO CARRINHO
+   ========================================================================== */
+.carrinho-modal-agendamento {
+  background-color: #fdf9f5;
+  padding: 12px 20px;
+  border-top: 1px solid rgba(14, 14, 82, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.campo-agendamento {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label-agendamento {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--azul-marinho);
+}
+
+.textarea-obs {
+  resize: vertical;
+  min-height: 54px;
+}
+
+.aviso-prazo {
+  margin-top: 4px;
+  padding: 8px 10px;
+  background-color: rgba(255, 176, 95, 0.25);
+  border-left: 3px solid var(--laranja-santo-forno);
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--azul-marinho);
+}
+
+/* ==========================================================================
+   BOTÃO DE FINALIZAR PEDIDO VIA WHATSAPP (DENTRO DO MODAL)
+   ========================================================================== */
+.acoes-carrinho {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-finalizar-whatsapp {
+  background-color: #25D366;
+  color: var(--branco);
+  font-family: var(--fonte-corpo);
+  font-size: 13.5px;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.35);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-finalizar-whatsapp:hover {
+  background-color: #20BA5A;
+  transform: scale(1.03);
+}
+
+.btn-finalizar-whatsapp:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
    18. MEDIA QUERIES (RESPONSIVIDADE PARA TELEMÓVEL E TABLET)
    ========================================================================== */
 @media (max-width: 1024px) {
@@ -1318,12 +1525,63 @@ body {
   .imagem-produto-ampliada {
     height: 240px;
   }
-
-  .carrinho-flutuante {
-    left: auto;
-    right: 15px;
+.carrinho-flutuante-wrapper {
     bottom: 85px;
+    right: 15px;
     width: 50px;
     height: 50px;
   }
+
+  .carrinho-flutuante {
+    width: 50px;
+    height: 50px;
+  }
+
+  .tooltip-carrinho {
+    bottom: 64px;
+    right: 10px;
+  }
+
+}
+
+/* ==========================================================================
+   ANIMAÇÃO DE FEEDBACK AO ADICIONAR ITEM NO CARRINHO
+   ========================================================================== */
+@keyframes pulsoCarrinho {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+.carrinho-pulsando {
+  animation: pulsoCarrinho 0.35s ease;
+}
+
+/* ==========================================================================
+   AVISO RÁPIDO AO CLICAR EM "ADICIONAR" (INDEPENDENTE DO TOOLTIP)
+   ========================================================================== */
+.toast-adicionado {
+  position: fixed;
+  bottom: 152px;
+  right: 20px;
+  background-color: var(--azul-marinho);
+  color: var(--bege-fundo);
+  border: 2px solid var(--laranja-santo-forno);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 10000;
+  pointer-events: none;
+  animation: fadeInToast 0.2s ease;
+}
+
+.toast-adicionado.escondido {
+  display: none !important;
+}
+
+@keyframes fadeInToast {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
